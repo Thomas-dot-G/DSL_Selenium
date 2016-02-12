@@ -1,0 +1,4 @@
+Selenium { 
+	Browser Firefox 
+	Operation DoWhile (Condition (1 = 2)) { Go "http://campus.mines-nantes.fr" }
+}

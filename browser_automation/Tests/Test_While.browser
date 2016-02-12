@@ -1,0 +1,4 @@
+Selenium { 
+	Browser Firefox 
+	Operation While (Condition FindIf (Element URL, "http://campus.mines-nantes.fr") { Go "http://campus.mines-nantes.fr" }
+}

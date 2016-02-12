@@ -1,0 +1,11 @@
+Selenium { Browser Firefox 
+Operation Go "http://campus.mines-nantes.fr" 
+Operation Click Element {id "connexion"}
+Operation Click Element {id "Cliquez ici ou sur le logo C'zam pour vous identifier"}
+Operation Fill ( Element {id "username"} , "mtisi08" )
+Operation Fill ( Element {id "password"} , "12345"  )
+Operation Select Element {id "warn"} 
+Operation Click "Connexion" 
+Operation Go "https://campusneo.mines-nantes.fr/campus/course/view.php?id=1571"
+Operation FindIf ( Element {tag "a"} {name "Consulter le profil"} , "Massimo Tisi" ) 
+}

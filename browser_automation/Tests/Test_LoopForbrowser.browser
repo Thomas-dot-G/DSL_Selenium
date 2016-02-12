@@ -1,0 +1,4 @@
+Selenium { 
+	Browser Firefox 
+	Operation For (0,4,1) { Go "http://campus.mines-nantes.fr" }
+}

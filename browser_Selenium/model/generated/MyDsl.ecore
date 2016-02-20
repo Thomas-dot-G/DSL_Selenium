@@ -39,8 +39,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="Apply_All" eSuperTypes="#//Operation">
     <eStructuralFeatures xsi:type="ecore:EReference" name="elt" eType="#//Element"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="operations" upperBound="-1"
-        eType="#//Operation" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="actions" upperBound="-1"
+        eType="#//Action" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="If" eSuperTypes="#//Operation">
     <eStructuralFeatures xsi:type="ecore:EReference" name="cond" eType="#//Condition"

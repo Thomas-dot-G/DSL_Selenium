@@ -32,6 +32,7 @@ import org.xtext.example.mydsl.myDsl.ComparableElt
 import org.xtext.example.mydsl.myDsl.Text
 import org.eclipse.emf.common.util.EList
 import org.xtext.example.mydsl.myDsl.Operation
+import org.xtext.example.mydsl.myDsl.Element
 
 /**
  * Generates code from your model files on save.
@@ -52,6 +53,7 @@ var program = resource.contents.head as Program
 		import org.openqa.selenium.chrome.ChromeDriver;
 		import org.openqa.selenium.WebElement;
 		import org.openqa.selenium.By;
+		import java.util.List;
 
 		«FOR e : p.func»
 			public void «e.name»(){
@@ -80,37 +82,56 @@ var program = resource.contents.head as Program
 			WebDriver driver=new  ChromeDriver();
 			driver.get("https://www.google.com");
 			//Selenium selenium = new DefaultSelenium("localhost"", 4444, ""*firefox"", "http://www.google.com");
-			«p.b.operations.genActions()»
+			«p.b.operations.genOperations()»
 			driver.quit();
 	'''
 	
-	def genCore (Action a, int i) '''
-		«IF a instanceof Click»
-			WebElement element_«i» = «a.elt.type.genCore»;
-			element_«i».click();
-        «ENDIF»
-        «IF a instanceof Go»driver.get("«a.link.name»");«ENDIF»
-        «IF a instanceof Fill»
-			WebElement element_«i» = «a.elt.type.genCore»;
-			element_«i».sendKeys("«a.fillwith.name»");
-        	element_«i».submit();
-        «ENDIF»
-        «IF a instanceof Select»
-        	WebElement element_«i» = «a.elt.type.genCore»;
-			element_«i».click();
-        «ENDIF»
-        «IF a instanceof Verify»
-        	WebElement element_«i» = «a.elt.type.genCore»;
-			String message_«i» = element_«i».getText();
-			System.out.println(message_«i».contains("«a.find.name»"));
-        «ENDIF»
-
+	def genAction (Action a, int i, Element elt) '''
+		«IF elt == null»
+			«IF a instanceof Click»
+				WebElement element_«i» = «a.elt.type.genCore»;
+				element_«i».click();
+	        «ENDIF»
+	        «IF a instanceof Go»driver.get("«a.link.name»");«ENDIF»
+	        «IF a instanceof Fill»
+				WebElement element_«i» = «a.elt.type.genCore»;
+				element_«i».sendKeys("«a.fillwith.name»");
+	        	element_«i».submit();
+	        «ENDIF»
+	        «IF a instanceof Select»
+	        	WebElement element_«i» = «a.elt.type.genCore»;
+				element_«i».click();
+	        «ENDIF»
+	        «IF a instanceof Verify»
+	        	WebElement element_«i» = «a.elt.type.genCore»;
+				String message_«i» = element_«i».getText();
+				System.out.println(message_«i».contains("«a.find.name»"));
+	        «ENDIF»
+	    «ELSE»
+	    	«IF a instanceof Click»elt.click();«ENDIF»
+	        «IF a instanceof Fill»
+				elt.sendKeys("«a.fillwith.name»");
+	        	elt.submit();
+	        «ENDIF»
+	        «IF a instanceof Select»
+				elt.click();
+	        «ENDIF»
+	        «IF a instanceof Verify»
+				elt.getText().contains("«a.find.name»"));
+	        «ENDIF»
+		«ENDIF»
 	'''
 	
 	def genCore (EltType e) '''
 		«IF e instanceof Tag»driver.findElement(By.«e.html»("«e.tag.name»"))
 		«ELSE»«IF e instanceof Variable»«e.name»
 		«ELSE»driver.getCurrentUrl()«ENDIF»«ENDIF»
+	'''
+	
+	def genCores (EltType e) '''
+		«IF e instanceof Tag»driver.findElements(By.«e.html»("«e.tag.name»"))
+		«ELSE»«IF e instanceof Variable»«e.name»
+		«ELSE»[driver.getCurrentUrl()]«ENDIF»«ENDIF»
 	'''
 
 	def genCore (AddCondition c) '''
@@ -132,54 +153,60 @@ var program = resource.contents.head as Program
 		«IF t.name != null »«t.name»«ENDIF»
 	'''
 
-	def genActions(EList<Operation> operations)'''
+	def genOperations(EList<Operation> operations)'''
 	«FOR e : operations»
-    	«IF e instanceof Action»
-    		«e.genCore(operations.indexOf(e))»
+    	«e.genOperation(operations.indexOf(e))»
+    «ENDFOR»
+	'''
+	
+	def genOperation(Operation e, int i)'''
+		«IF e instanceof Action»
+    		«e.genAction(i, null)»
     	«ENDIF»
     	«IF e instanceof Loop»
     		«e.genCore»
     	«ENDIF»
     	«IF e instanceof Apply_All»
-    	     //Apply_All applyall«operations.indexOf(e)» = new Apply_All();
+    		for(WebElement elt:«e.elt.type.genCores»){
+    			«FOR op : e.actions»
+    				«op.genAction(0, e.elt)»
+    			«ENDFOR»
+    		}
     	«ENDIF»
     	«IF e instanceof If»
     	     «e.genCore»
     	«ENDIF»
     	«IF e instanceof Store»
-    	     //Store store«operations.indexOf(e)» = new Store();
     	«ENDIF»
     	«IF e instanceof CallFunction»
-    	     //CallFunction callfunc«operations.indexOf(e)» = new CallFunction();
     	«ENDIF»
-    «ENDFOR»
 	'''
 
 	def genCore (Loop l) '''
 		«IF l instanceof ForLoop»
 			for(int i=«l.start»; i<«l.end»; i=i+«l.step»){
-				«l.operations.genActions»
+				«l.operations.genOperations»
 			}
 		«ENDIF»	
 		«IF l instanceof WhileLoop»
 			while(«l.c.genCore»«FOR c : l.add»«c.genCore»«ENDFOR»){
-				«l.operations.genActions»
+				«l.operations.genOperations»
 			}
 		«ENDIF»
 		«IF l instanceof DoLoop»
-			«l.operations.genActions»
+			«l.operations.genOperations»
 			while(«l.c.genCore»«FOR c : l.add»«c.genCore»«ENDFOR»){
-				«l.operations.genActions»
+				«l.operations.genOperations»
 			}
 		«ENDIF»
 	'''
 	
 	def genCore (If i) '''
 		if(«i.cond.genCore»«FOR c : i.add»«c.genCore»«ENDFOR»){
-			«i.operations.genActions»
+			«i.operations.genOperations»
 		}
 		else{
-			«i.operationsbis.genActions»
+			«i.operationsbis.genOperations»
 		}
 	'''
 }

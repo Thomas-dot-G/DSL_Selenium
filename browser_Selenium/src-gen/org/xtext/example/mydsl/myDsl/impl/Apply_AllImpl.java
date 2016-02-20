@@ -18,10 +18,10 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.xtext.example.mydsl.myDsl.Action;
 import org.xtext.example.mydsl.myDsl.Apply_All;
 import org.xtext.example.mydsl.myDsl.Element;
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
-import org.xtext.example.mydsl.myDsl.Operation;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,7 +32,7 @@ import org.xtext.example.mydsl.myDsl.Operation;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.Apply_AllImpl#getElt <em>Elt</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.Apply_AllImpl#getOperations <em>Operations</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.Apply_AllImpl#getActions <em>Actions</em>}</li>
  * </ul>
  *
  * @generated
@@ -50,14 +50,14 @@ public class Apply_AllImpl extends OperationImpl implements Apply_All
   protected Element elt;
 
   /**
-   * The cached value of the '{@link #getOperations() <em>Operations</em>}' containment reference list.
+   * The cached value of the '{@link #getActions() <em>Actions</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getOperations()
+   * @see #getActions()
    * @generated
    * @ordered
    */
-  protected EList<Operation> operations;
+  protected EList<Action> actions;
 
   /**
    * <!-- begin-user-doc -->
@@ -133,13 +133,13 @@ public class Apply_AllImpl extends OperationImpl implements Apply_All
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Operation> getOperations()
+  public EList<Action> getActions()
   {
-    if (operations == null)
+    if (actions == null)
     {
-      operations = new EObjectContainmentEList<Operation>(Operation.class, this, MyDslPackage.APPLY_ALL__OPERATIONS);
+      actions = new EObjectContainmentEList<Action>(Action.class, this, MyDslPackage.APPLY_ALL__ACTIONS);
     }
-    return operations;
+    return actions;
   }
 
   /**
@@ -154,8 +154,8 @@ public class Apply_AllImpl extends OperationImpl implements Apply_All
     {
       case MyDslPackage.APPLY_ALL__ELT:
         return basicSetElt(null, msgs);
-      case MyDslPackage.APPLY_ALL__OPERATIONS:
-        return ((InternalEList<?>)getOperations()).basicRemove(otherEnd, msgs);
+      case MyDslPackage.APPLY_ALL__ACTIONS:
+        return ((InternalEList<?>)getActions()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -172,8 +172,8 @@ public class Apply_AllImpl extends OperationImpl implements Apply_All
     {
       case MyDslPackage.APPLY_ALL__ELT:
         return getElt();
-      case MyDslPackage.APPLY_ALL__OPERATIONS:
-        return getOperations();
+      case MyDslPackage.APPLY_ALL__ACTIONS:
+        return getActions();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -192,9 +192,9 @@ public class Apply_AllImpl extends OperationImpl implements Apply_All
       case MyDslPackage.APPLY_ALL__ELT:
         setElt((Element)newValue);
         return;
-      case MyDslPackage.APPLY_ALL__OPERATIONS:
-        getOperations().clear();
-        getOperations().addAll((Collection<? extends Operation>)newValue);
+      case MyDslPackage.APPLY_ALL__ACTIONS:
+        getActions().clear();
+        getActions().addAll((Collection<? extends Action>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -213,8 +213,8 @@ public class Apply_AllImpl extends OperationImpl implements Apply_All
       case MyDslPackage.APPLY_ALL__ELT:
         setElt((Element)null);
         return;
-      case MyDslPackage.APPLY_ALL__OPERATIONS:
-        getOperations().clear();
+      case MyDslPackage.APPLY_ALL__ACTIONS:
+        getActions().clear();
         return;
     }
     super.eUnset(featureID);
@@ -232,8 +232,8 @@ public class Apply_AllImpl extends OperationImpl implements Apply_All
     {
       case MyDslPackage.APPLY_ALL__ELT:
         return elt != null;
-      case MyDslPackage.APPLY_ALL__OPERATIONS:
-        return operations != null && !operations.isEmpty();
+      case MyDslPackage.APPLY_ALL__ACTIONS:
+        return actions != null && !actions.isEmpty();
     }
     return super.eIsSet(featureID);
   }

@@ -324,15 +324,15 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cEltAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cEltElementParserRuleCall_2_0 = (RuleCall)cEltAssignment_2.eContents().get(0);
 		private final Keyword cCommaKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cOperationsAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cOperationsOperationParserRuleCall_4_0 = (RuleCall)cOperationsAssignment_4.eContents().get(0);
+		private final Assignment cActionsAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cActionsActionParserRuleCall_4_0 = (RuleCall)cActionsAssignment_4.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//Apply_All:
-		//	'Apply_All' '(' elt=Element ',' operations+=Operation* ')';
+		//	'Apply_All' '(' elt=Element ',' actions+=Action* ')';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'Apply_All' '(' elt=Element ',' operations+=Operation* ')'
+		//'Apply_All' '(' elt=Element ',' actions+=Action* ')'
 		public Group getGroup() { return cGroup; }
 		
 		//'Apply_All'
@@ -350,11 +350,11 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		//','
 		public Keyword getCommaKeyword_3() { return cCommaKeyword_3; }
 		
-		//operations+=Operation*
-		public Assignment getOperationsAssignment_4() { return cOperationsAssignment_4; }
+		//actions+=Action*
+		public Assignment getActionsAssignment_4() { return cActionsAssignment_4; }
 		
-		//Operation
-		public RuleCall getOperationsOperationParserRuleCall_4_0() { return cOperationsOperationParserRuleCall_4_0; }
+		//Action
+		public RuleCall getActionsActionParserRuleCall_4_0() { return cActionsActionParserRuleCall_4_0; }
 		
 		//')'
 		public Keyword getRightParenthesisKeyword_5() { return cRightParenthesisKeyword_5; }
@@ -1265,7 +1265,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Apply_All:
-	//	'Apply_All' '(' elt=Element ',' operations+=Operation* ')';
+	//	'Apply_All' '(' elt=Element ',' actions+=Action* ')';
 	public Apply_AllElements getApply_AllAccess() {
 		return pApply_All;
 	}

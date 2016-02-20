@@ -25,6 +25,7 @@ import org.xtext.example.mydsl.myDsl.Element;
 import org.xtext.example.mydsl.myDsl.Elements;
 import org.xtext.example.mydsl.myDsl.Fill;
 import org.xtext.example.mydsl.myDsl.ForLoop;
+import org.xtext.example.mydsl.myDsl.FuncVar;
 import org.xtext.example.mydsl.myDsl.Function;
 import org.xtext.example.mydsl.myDsl.Go;
 import org.xtext.example.mydsl.myDsl.If;
@@ -33,8 +34,10 @@ import org.xtext.example.mydsl.myDsl.Program;
 import org.xtext.example.mydsl.myDsl.Select;
 import org.xtext.example.mydsl.myDsl.SimpleOp;
 import org.xtext.example.mydsl.myDsl.Store;
+import org.xtext.example.mydsl.myDsl.StringType;
 import org.xtext.example.mydsl.myDsl.Tag;
 import org.xtext.example.mydsl.myDsl.Text;
+import org.xtext.example.mydsl.myDsl.Type;
 import org.xtext.example.mydsl.myDsl.Variable;
 import org.xtext.example.mydsl.myDsl.Verify;
 import org.xtext.example.mydsl.myDsl.WhileLoop;
@@ -87,6 +90,9 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 			case MyDslPackage.FOR_LOOP:
 				sequence_ForLoop(context, (ForLoop) semanticObject); 
 				return; 
+			case MyDslPackage.FUNC_VAR:
+				sequence_FuncVar(context, (FuncVar) semanticObject); 
+				return; 
 			case MyDslPackage.FUNCTION:
 				sequence_Function(context, (Function) semanticObject); 
 				return; 
@@ -108,11 +114,17 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 			case MyDslPackage.STORE:
 				sequence_Store(context, (Store) semanticObject); 
 				return; 
+			case MyDslPackage.STRING_TYPE:
+				sequence_StringType(context, (StringType) semanticObject); 
+				return; 
 			case MyDslPackage.TAG:
 				sequence_Tag(context, (Tag) semanticObject); 
 				return; 
 			case MyDslPackage.TEXT:
 				sequence_Text(context, (Text) semanticObject); 
+				return; 
+			case MyDslPackage.TYPE:
+				sequence_Type(context, (Type) semanticObject); 
 				return; 
 			case MyDslPackage.VARIABLE:
 				sequence_Variable(context, (Variable) semanticObject); 
@@ -171,7 +183,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     CallFunction returns CallFunction
 	 *
 	 * Constraint:
-	 *     vars+=Variable+
+	 *     (name=STRING vars+=Variable*)
 	 */
 	protected void sequence_CallFunction(ISerializationContext context, CallFunction semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -299,10 +311,31 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
+	 *     FuncVar returns FuncVar
+	 *
+	 * Constraint:
+	 *     (type=StringType name=ID)
+	 */
+	protected void sequence_FuncVar(ISerializationContext context, FuncVar semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.FUNC_VAR__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.FUNC_VAR__TYPE));
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.FUNC_VAR__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.FUNC_VAR__NAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getFuncVarAccess().getTypeStringTypeParserRuleCall_0_0(), semanticObject.getType());
+		feeder.accept(grammarAccess.getFuncVarAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     Function returns Function
 	 *
 	 * Constraint:
-	 *     (name=STRING vars+=Variable* operations+=Operation*)
+	 *     (name=STRING vars+=FuncVar* operations+=Operation*)
 	 */
 	protected void sequence_Function(ISerializationContext context, Function semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -405,9 +438,30 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     Store returns Store
 	 *
 	 * Constraint:
-	 *     (vari=ID (text=Text | elts=Elements | elt=Element | cond=Condition))
+	 *     (vari=ID t=Type)
 	 */
 	protected void sequence_Store(ISerializationContext context, Store semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.STORE__VARI) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.STORE__VARI));
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.STORE__T) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.STORE__T));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getStoreAccess().getVariIDTerminalRuleCall_2_0(), semanticObject.getVari());
+		feeder.accept(grammarAccess.getStoreAccess().getTTypeParserRuleCall_4_0(), semanticObject.getT());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     StringType returns StringType
+	 *
+	 * Constraint:
+	 *     (text='Text' | elts='Elements' | elt='Element' | cond='Condition')
+	 */
+	protected void sequence_StringType(ISerializationContext context, StringType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -442,6 +496,18 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     (vari=Variable | name=STRING)
 	 */
 	protected void sequence_Text(ISerializationContext context, Text semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Type returns Type
+	 *
+	 * Constraint:
+	 *     (text=Text | elts=Elements | elt=Element | cond=Condition)
+	 */
+	protected void sequence_Type(ISerializationContext context, Type semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

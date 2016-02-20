@@ -19,10 +19,10 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.xtext.example.mydsl.myDsl.FuncVar;
 import org.xtext.example.mydsl.myDsl.Function;
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
 import org.xtext.example.mydsl.myDsl.Operation;
-import org.xtext.example.mydsl.myDsl.Variable;
 
 /**
  * <!-- begin-user-doc -->
@@ -69,7 +69,7 @@ public class FunctionImpl extends MinimalEObjectImpl.Container implements Functi
    * @generated
    * @ordered
    */
-  protected EList<Variable> vars;
+  protected EList<FuncVar> vars;
 
   /**
    * The cached value of the '{@link #getOperations() <em>Operations</em>}' containment reference list.
@@ -130,11 +130,11 @@ public class FunctionImpl extends MinimalEObjectImpl.Container implements Functi
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Variable> getVars()
+  public EList<FuncVar> getVars()
   {
     if (vars == null)
     {
-      vars = new EObjectContainmentEList<Variable>(Variable.class, this, MyDslPackage.FUNCTION__VARS);
+      vars = new EObjectContainmentEList<FuncVar>(FuncVar.class, this, MyDslPackage.FUNCTION__VARS);
     }
     return vars;
   }
@@ -207,7 +207,7 @@ public class FunctionImpl extends MinimalEObjectImpl.Container implements Functi
         return;
       case MyDslPackage.FUNCTION__VARS:
         getVars().clear();
-        getVars().addAll((Collection<? extends Variable>)newValue);
+        getVars().addAll((Collection<? extends FuncVar>)newValue);
         return;
       case MyDslPackage.FUNCTION__OPERATIONS:
         getOperations().clear();

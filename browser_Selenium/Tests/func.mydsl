@@ -1,0 +1,7 @@
+Function (Name "func", Var=(Elements myvar), Apply_All (Elements Var myvar, Click Element {tagName ""}))
+
+Selenium {
+	Browser "Firefox"
+	Store Var myvar = Elements {tagName "a"}
+	func("func", Var myvar)
+}

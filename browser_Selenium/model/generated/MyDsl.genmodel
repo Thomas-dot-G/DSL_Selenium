@@ -45,13 +45,27 @@
     </genClasses>
     <genClasses ecoreClass="MyDsl.ecore#//Store">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Store/vari"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Store/text"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Store/elts"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Store/elt"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Store/cond"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Store/t"/>
     </genClasses>
     <genClasses ecoreClass="MyDsl.ecore#//CallFunction">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//CallFunction/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//CallFunction/vars"/>
+    </genClasses>
+    <genClasses ecoreClass="MyDsl.ecore#//Type">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Type/text"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Type/elts"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Type/elt"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Type/cond"/>
+    </genClasses>
+    <genClasses ecoreClass="MyDsl.ecore#//StringType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//StringType/text"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//StringType/elts"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//StringType/elt"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//StringType/cond"/>
+    </genClasses>
+    <genClasses ecoreClass="MyDsl.ecore#//FuncVar">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//FuncVar/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//FuncVar/name"/>
     </genClasses>
     <genClasses ecoreClass="MyDsl.ecore#//Function">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Function/name"/>

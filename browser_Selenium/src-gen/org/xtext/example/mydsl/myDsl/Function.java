@@ -55,7 +55,7 @@ public interface Function extends EObject
 
   /**
    * Returns the value of the '<em><b>Vars</b></em>' containment reference list.
-   * The list contents are of type {@link org.xtext.example.mydsl.myDsl.Variable}.
+   * The list contents are of type {@link org.xtext.example.mydsl.myDsl.FuncVar}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Vars</em>' containment reference list isn't clear,
@@ -67,7 +67,7 @@ public interface Function extends EObject
    * @model containment="true"
    * @generated
    */
-  EList<Variable> getVars();
+  EList<FuncVar> getVars();
 
   /**
    * Returns the value of the '<em><b>Operations</b></em>' containment reference list.

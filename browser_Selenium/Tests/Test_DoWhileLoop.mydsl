@@ -1,4 +1,5 @@
 Selenium { 
 	Browser "Firefox"
-	DoWhile (Condition (1 == 2)) { Go "http://campus.mines-nantes.fr" }
+	Store Var myvar = Condition ("un" == "deux")
+	DoWhile (Condition Var myvar And Condition (1 == 1)) { Go "http://campus.mines-nantes.fr" }
 }

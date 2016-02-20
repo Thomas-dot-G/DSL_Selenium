@@ -5,12 +5,15 @@ package org.xtext.example.mydsl.myDsl.impl;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -27,6 +30,7 @@ import org.xtext.example.mydsl.myDsl.Variable;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.CallFunctionImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.CallFunctionImpl#getVars <em>Vars</em>}</li>
  * </ul>
  *
@@ -34,6 +38,26 @@ import org.xtext.example.mydsl.myDsl.Variable;
  */
 public class CallFunctionImpl extends OperationImpl implements CallFunction
 {
+  /**
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected static final String NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected String name = NAME_EDEFAULT;
+
   /**
    * The cached value of the '{@link #getVars() <em>Vars</em>}' containment reference list.
    * <!-- begin-user-doc -->
@@ -63,6 +87,29 @@ public class CallFunctionImpl extends OperationImpl implements CallFunction
   protected EClass eStaticClass()
   {
     return MyDslPackage.Literals.CALL_FUNCTION;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getName()
+  {
+    return name;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setName(String newName)
+  {
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.CALL_FUNCTION__NAME, oldName, name));
   }
 
   /**
@@ -105,6 +152,8 @@ public class CallFunctionImpl extends OperationImpl implements CallFunction
   {
     switch (featureID)
     {
+      case MyDslPackage.CALL_FUNCTION__NAME:
+        return getName();
       case MyDslPackage.CALL_FUNCTION__VARS:
         return getVars();
     }
@@ -122,6 +171,9 @@ public class CallFunctionImpl extends OperationImpl implements CallFunction
   {
     switch (featureID)
     {
+      case MyDslPackage.CALL_FUNCTION__NAME:
+        setName((String)newValue);
+        return;
       case MyDslPackage.CALL_FUNCTION__VARS:
         getVars().clear();
         getVars().addAll((Collection<? extends Variable>)newValue);
@@ -140,6 +192,9 @@ public class CallFunctionImpl extends OperationImpl implements CallFunction
   {
     switch (featureID)
     {
+      case MyDslPackage.CALL_FUNCTION__NAME:
+        setName(NAME_EDEFAULT);
+        return;
       case MyDslPackage.CALL_FUNCTION__VARS:
         getVars().clear();
         return;
@@ -157,10 +212,29 @@ public class CallFunctionImpl extends OperationImpl implements CallFunction
   {
     switch (featureID)
     {
+      case MyDslPackage.CALL_FUNCTION__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case MyDslPackage.CALL_FUNCTION__VARS:
         return vars != null && !vars.isEmpty();
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (name: ");
+    result.append(name);
+    result.append(')');
+    return result.toString();
   }
 
 } //CallFunctionImpl

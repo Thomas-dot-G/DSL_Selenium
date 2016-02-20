@@ -51,17 +51,29 @@ If:
 
 
 Store:
-	'Store' 'Var' vari=ID "=" (text=Text | elts=Elements | elt=Element | cond=Condition)
+	'Store' 'Var' vari=ID "=" t=Type
 ;
 
 CallFunction:
-	'func' '(' vars+=Variable* ')'
+	'func' '('name=STRING',' vars+=Variable* ')'
+;
+
+Type:
+	text=Text | elts=Elements | elt=Element | cond=Condition
+;
+
+StringType:
+	text='Text' | elts='Elements' | elt='Element' | cond='Condition'
+;
+
+FuncVar:
+	type=StringType name=ID
 ;
 
 Function:
 	'Function' '(' 
 		'Name' name=STRING ','
-		'Var' '=' '(' vars+=Variable* ')' ','
+		'Var' '=' '(' vars+=FuncVar* ')' ','
 		 operations+=Operation*
 		 ')'
 ;

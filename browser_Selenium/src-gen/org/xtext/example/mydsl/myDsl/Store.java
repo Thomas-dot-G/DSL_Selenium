@@ -13,9 +13,11 @@ package org.xtext.example.mydsl.myDsl;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.myDsl.Store#getVar <em>Var</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.Store#getVari <em>Vari</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.Store#getText <em>Text</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.Store#getElts <em>Elts</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.Store#getElt <em>Elt</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.Store#getCond <em>Cond</em>}</li>
  * </ul>
  *
  * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getStore()
@@ -25,30 +27,30 @@ package org.xtext.example.mydsl.myDsl;
 public interface Store extends Operation
 {
   /**
-   * Returns the value of the '<em><b>Var</b></em>' attribute.
+   * Returns the value of the '<em><b>Vari</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Var</em>' attribute isn't clear,
+   * If the meaning of the '<em>Vari</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Var</em>' attribute.
-   * @see #setVar(String)
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getStore_Var()
+   * @return the value of the '<em>Vari</em>' attribute.
+   * @see #setVari(String)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getStore_Vari()
    * @model
    * @generated
    */
-  String getVar();
+  String getVari();
 
   /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.Store#getVar <em>Var</em>}' attribute.
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.Store#getVari <em>Vari</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Var</em>' attribute.
-   * @see #getVar()
+   * @param value the new value of the '<em>Vari</em>' attribute.
+   * @see #getVari()
    * @generated
    */
-  void setVar(String value);
+  void setVari(String value);
 
   /**
    * Returns the value of the '<em><b>Text</b></em>' containment reference.
@@ -77,6 +79,32 @@ public interface Store extends Operation
   void setText(Text value);
 
   /**
+   * Returns the value of the '<em><b>Elts</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Elts</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Elts</em>' containment reference.
+   * @see #setElts(Elements)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getStore_Elts()
+   * @model containment="true"
+   * @generated
+   */
+  Elements getElts();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.Store#getElts <em>Elts</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Elts</em>' containment reference.
+   * @see #getElts()
+   * @generated
+   */
+  void setElts(Elements value);
+
+  /**
    * Returns the value of the '<em><b>Elt</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
@@ -101,5 +129,31 @@ public interface Store extends Operation
    * @generated
    */
   void setElt(Element value);
+
+  /**
+   * Returns the value of the '<em><b>Cond</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Cond</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Cond</em>' containment reference.
+   * @see #setCond(Condition)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getStore_Cond()
+   * @model containment="true"
+   * @generated
+   */
+  Condition getCond();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.Store#getCond <em>Cond</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Cond</em>' containment reference.
+   * @see #getCond()
+   * @generated
+   */
+  void setCond(Condition value);
 
 } // Store

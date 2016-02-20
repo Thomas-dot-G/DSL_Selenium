@@ -33,6 +33,7 @@ import org.xtext.example.mydsl.myDsl.Text
 import org.eclipse.emf.common.util.EList
 import org.xtext.example.mydsl.myDsl.Operation
 import org.xtext.example.mydsl.myDsl.Element
+import org.xtext.example.mydsl.myDsl.Elements
 
 /**
  * Generates code from your model files on save.
@@ -86,7 +87,7 @@ var program = resource.contents.head as Program
 			driver.quit();
 	'''
 	
-	def genAction (Action a, int i, Element elt) '''
+	def genAction (Action a, int i, Elements elt) '''
 		«IF elt == null»
 			«IF a instanceof Click»
 				WebElement element_«i» = «a.elt.type.genCore»;
@@ -177,6 +178,19 @@ var program = resource.contents.head as Program
     	     «e.genCore»
     	«ENDIF»
     	«IF e instanceof Store»
+    		«IF e.elt != null»
+    			WebElement «e.vari» = «e.elt.type.genCore»;
+    		«ELSE»
+    			«IF e.elts != null»
+    			   	List<WebElement> «e.vari» = «e.elts.type.genCores»;
+    			«ELSE»
+    				«IF e.cond != null»
+    			    	Boolean «e.vari» = «e.cond.genCore»;
+    			    «ELSE»
+    			    	String «e.vari» = «e.text»;
+    			    «ENDIF»
+    			«ENDIF»
+    		«ENDIF»
     	«ENDIF»
     	«IF e instanceof CallFunction»
     	«ENDIF»

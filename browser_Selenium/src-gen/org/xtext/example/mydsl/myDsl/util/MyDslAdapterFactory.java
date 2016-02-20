@@ -176,6 +176,11 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
         return createAddConditionAdapter();
       }
       @Override
+      public Adapter caseElements(Elements object)
+      {
+        return createElementsAdapter();
+      }
+      @Override
       public Adapter caseElement(Element object)
       {
         return createElementAdapter();
@@ -528,6 +533,21 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createAddConditionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.myDsl.Elements <em>Elements</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mydsl.myDsl.Elements
+   * @generated
+   */
+  public Adapter createElementsAdapter()
   {
     return null;
   }

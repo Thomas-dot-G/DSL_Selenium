@@ -623,9 +623,9 @@ ruleApply_All returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getApply_AllAccess().getEltElementParserRuleCall_2_0());
+					newCompositeNode(grammarAccess.getApply_AllAccess().getEltElementsParserRuleCall_2_0());
 				}
-				lv_elt_2_0=ruleElement
+				lv_elt_2_0=ruleElements
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getApply_AllRule());
@@ -634,7 +634,7 @@ ruleApply_All returns [EObject current=null]
 						$current,
 						"elt",
 						lv_elt_2_0,
-						"org.xtext.example.mydsl.MyDsl.Element");
+						"org.xtext.example.mydsl.MyDsl.Elements");
 					afterParserOrEnumRuleCall();
 				}
 			)
@@ -824,9 +824,9 @@ ruleStore returns [EObject current=null]
 		}
 		(
 			(
-				lv_var_2_0=RULE_STRING
+				lv_vari_2_0=RULE_ID
 				{
-					newLeafNode(lv_var_2_0, grammarAccess.getStoreAccess().getVarSTRINGTerminalRuleCall_2_0());
+					newLeafNode(lv_vari_2_0, grammarAccess.getStoreAccess().getVariIDTerminalRuleCall_2_0());
 				}
 				{
 					if ($current==null) {
@@ -834,9 +834,9 @@ ruleStore returns [EObject current=null]
 					}
 					setWithLastConsumed(
 						$current,
-						"var",
-						lv_var_2_0,
-						"org.eclipse.xtext.common.Terminals.STRING");
+						"vari",
+						lv_vari_2_0,
+						"org.eclipse.xtext.common.Terminals.ID");
 				}
 			)
 		)
@@ -868,9 +868,29 @@ ruleStore returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getStoreAccess().getEltElementParserRuleCall_4_1_0());
+						newCompositeNode(grammarAccess.getStoreAccess().getEltsElementsParserRuleCall_4_1_0());
 					}
-					lv_elt_5_0=ruleElement
+					lv_elts_5_0=ruleElements
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getStoreRule());
+						}
+						set(
+							$current,
+							"elts",
+							lv_elts_5_0,
+							"org.xtext.example.mydsl.MyDsl.Elements");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			    |
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getStoreAccess().getEltElementParserRuleCall_4_2_0());
+					}
+					lv_elt_6_0=ruleElement
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getStoreRule());
@@ -878,8 +898,28 @@ ruleStore returns [EObject current=null]
 						set(
 							$current,
 							"elt",
-							lv_elt_5_0,
+							lv_elt_6_0,
 							"org.xtext.example.mydsl.MyDsl.Element");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			    |
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getStoreAccess().getCondConditionParserRuleCall_4_3_0());
+					}
+					lv_cond_7_0=ruleCondition
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getStoreRule());
+						}
+						set(
+							$current,
+							"cond",
+							lv_cond_7_0,
+							"org.xtext.example.mydsl.MyDsl.Condition");
 						afterParserOrEnumRuleCall();
 					}
 				)
@@ -1519,6 +1559,48 @@ ruleAddCondition returns [EObject current=null]
 						"cond",
 						lv_cond_1_0,
 						"org.xtext.example.mydsl.MyDsl.Condition");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+	)
+;
+
+// Entry rule entryRuleElements
+entryRuleElements returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getElementsRule()); }
+	iv_ruleElements=ruleElements
+	{ $current=$iv_ruleElements.current; }
+	EOF;
+
+// Rule Elements
+ruleElements returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='Elements'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getElementsAccess().getElementsKeyword_0());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getElementsAccess().getTypeEltTypeParserRuleCall_1_0());
+				}
+				lv_type_1_0=ruleEltType
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getElementsRule());
+					}
+					set(
+						$current,
+						"type",
+						lv_type_1_0,
+						"org.xtext.example.mydsl.MyDsl.EltType");
 					afterParserOrEnumRuleCall();
 				}
 			)

@@ -44,9 +44,11 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//If/operationsbis"/>
     </genClasses>
     <genClasses ecoreClass="MyDsl.ecore#//Store">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Store/var"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Store/vari"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Store/text"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Store/elts"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Store/elt"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Store/cond"/>
     </genClasses>
     <genClasses ecoreClass="MyDsl.ecore#//CallFunction">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//CallFunction/vars"/>
@@ -76,6 +78,9 @@
     <genClasses ecoreClass="MyDsl.ecore#//AddCondition">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//AddCondition/op"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//AddCondition/cond"/>
+    </genClasses>
+    <genClasses ecoreClass="MyDsl.ecore#//Elements">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Elements/type"/>
     </genClasses>
     <genClasses ecoreClass="MyDsl.ecore#//Element">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Element/type"/>

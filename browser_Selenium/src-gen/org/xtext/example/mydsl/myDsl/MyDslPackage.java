@@ -430,13 +430,13 @@ public interface MyDslPackage extends EPackage
   int STORE = 11;
 
   /**
-   * The feature id for the '<em><b>Var</b></em>' attribute.
+   * The feature id for the '<em><b>Vari</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int STORE__VAR = OPERATION_FEATURE_COUNT + 0;
+  int STORE__VARI = OPERATION_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Text</b></em>' containment reference.
@@ -448,13 +448,31 @@ public interface MyDslPackage extends EPackage
   int STORE__TEXT = OPERATION_FEATURE_COUNT + 1;
 
   /**
+   * The feature id for the '<em><b>Elts</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STORE__ELTS = OPERATION_FEATURE_COUNT + 2;
+
+  /**
    * The feature id for the '<em><b>Elt</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int STORE__ELT = OPERATION_FEATURE_COUNT + 2;
+  int STORE__ELT = OPERATION_FEATURE_COUNT + 3;
+
+  /**
+   * The feature id for the '<em><b>Cond</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STORE__COND = OPERATION_FEATURE_COUNT + 4;
 
   /**
    * The number of structural features of the '<em>Store</em>' class.
@@ -463,7 +481,7 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int STORE_FEATURE_COUNT = OPERATION_FEATURE_COUNT + 3;
+  int STORE_FEATURE_COUNT = OPERATION_FEATURE_COUNT + 5;
 
   /**
    * The meta object id for the '{@link org.xtext.example.mydsl.myDsl.impl.CallFunctionImpl <em>Call Function</em>}' class.
@@ -771,6 +789,34 @@ public interface MyDslPackage extends EPackage
   int ADD_CONDITION_FEATURE_COUNT = 2;
 
   /**
+   * The meta object id for the '{@link org.xtext.example.mydsl.myDsl.impl.ElementsImpl <em>Elements</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.example.mydsl.myDsl.impl.ElementsImpl
+   * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getElements()
+   * @generated
+   */
+  int ELEMENTS = 20;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ELEMENTS__TYPE = 0;
+
+  /**
+   * The number of structural features of the '<em>Elements</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ELEMENTS_FEATURE_COUNT = 1;
+
+  /**
    * The meta object id for the '{@link org.xtext.example.mydsl.myDsl.impl.ElementImpl <em>Element</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -778,7 +824,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getElement()
    * @generated
    */
-  int ELEMENT = 20;
+  int ELEMENT = 21;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -806,7 +852,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getEltType()
    * @generated
    */
-  int ELT_TYPE = 21;
+  int ELT_TYPE = 22;
 
   /**
    * The number of structural features of the '<em>Elt Type</em>' class.
@@ -825,7 +871,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getTag()
    * @generated
    */
-  int TAG = 22;
+  int TAG = 23;
 
   /**
    * The feature id for the '<em><b>Html</b></em>' attribute.
@@ -862,7 +908,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getSimpleOp()
    * @generated
    */
-  int SIMPLE_OP = 23;
+  int SIMPLE_OP = 24;
 
   /**
    * The feature id for the '<em><b>Elt1</b></em>' containment reference.
@@ -908,7 +954,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getComparableElt()
    * @generated
    */
-  int COMPARABLE_ELT = 24;
+  int COMPARABLE_ELT = 25;
 
   /**
    * The feature id for the '<em><b>Inte</b></em>' attribute.
@@ -945,7 +991,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getText()
    * @generated
    */
-  int TEXT = 25;
+  int TEXT = 26;
 
   /**
    * The feature id for the '<em><b>Vari</b></em>' containment reference.
@@ -982,7 +1028,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getVariable()
    * @generated
    */
-  int VARIABLE = 26;
+  int VARIABLE = 27;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1311,15 +1357,15 @@ public interface MyDslPackage extends EPackage
   EClass getStore();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.myDsl.Store#getVar <em>Var</em>}'.
+   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.myDsl.Store#getVari <em>Vari</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Var</em>'.
-   * @see org.xtext.example.mydsl.myDsl.Store#getVar()
+   * @return the meta object for the attribute '<em>Vari</em>'.
+   * @see org.xtext.example.mydsl.myDsl.Store#getVari()
    * @see #getStore()
    * @generated
    */
-  EAttribute getStore_Var();
+  EAttribute getStore_Vari();
 
   /**
    * Returns the meta object for the containment reference '{@link org.xtext.example.mydsl.myDsl.Store#getText <em>Text</em>}'.
@@ -1333,6 +1379,17 @@ public interface MyDslPackage extends EPackage
   EReference getStore_Text();
 
   /**
+   * Returns the meta object for the containment reference '{@link org.xtext.example.mydsl.myDsl.Store#getElts <em>Elts</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Elts</em>'.
+   * @see org.xtext.example.mydsl.myDsl.Store#getElts()
+   * @see #getStore()
+   * @generated
+   */
+  EReference getStore_Elts();
+
+  /**
    * Returns the meta object for the containment reference '{@link org.xtext.example.mydsl.myDsl.Store#getElt <em>Elt</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1342,6 +1399,17 @@ public interface MyDslPackage extends EPackage
    * @generated
    */
   EReference getStore_Elt();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.xtext.example.mydsl.myDsl.Store#getCond <em>Cond</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Cond</em>'.
+   * @see org.xtext.example.mydsl.myDsl.Store#getCond()
+   * @see #getStore()
+   * @generated
+   */
+  EReference getStore_Cond();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.mydsl.myDsl.CallFunction <em>Call Function</em>}'.
@@ -1576,6 +1644,27 @@ public interface MyDslPackage extends EPackage
    * @generated
    */
   EReference getAddCondition_Cond();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.example.mydsl.myDsl.Elements <em>Elements</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Elements</em>'.
+   * @see org.xtext.example.mydsl.myDsl.Elements
+   * @generated
+   */
+  EClass getElements();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.xtext.example.mydsl.myDsl.Elements#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Type</em>'.
+   * @see org.xtext.example.mydsl.myDsl.Elements#getType()
+   * @see #getElements()
+   * @generated
+   */
+  EReference getElements_Type();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.mydsl.myDsl.Element <em>Element</em>}'.
@@ -2048,12 +2137,12 @@ public interface MyDslPackage extends EPackage
     EClass STORE = eINSTANCE.getStore();
 
     /**
-     * The meta object literal for the '<em><b>Var</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Vari</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute STORE__VAR = eINSTANCE.getStore_Var();
+    EAttribute STORE__VARI = eINSTANCE.getStore_Vari();
 
     /**
      * The meta object literal for the '<em><b>Text</b></em>' containment reference feature.
@@ -2064,12 +2153,28 @@ public interface MyDslPackage extends EPackage
     EReference STORE__TEXT = eINSTANCE.getStore_Text();
 
     /**
+     * The meta object literal for the '<em><b>Elts</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference STORE__ELTS = eINSTANCE.getStore_Elts();
+
+    /**
      * The meta object literal for the '<em><b>Elt</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EReference STORE__ELT = eINSTANCE.getStore_Elt();
+
+    /**
+     * The meta object literal for the '<em><b>Cond</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference STORE__COND = eINSTANCE.getStore_Cond();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.mydsl.myDsl.impl.CallFunctionImpl <em>Call Function</em>}' class.
@@ -2262,6 +2367,24 @@ public interface MyDslPackage extends EPackage
      * @generated
      */
     EReference ADD_CONDITION__COND = eINSTANCE.getAddCondition_Cond();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.example.mydsl.myDsl.impl.ElementsImpl <em>Elements</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.example.mydsl.myDsl.impl.ElementsImpl
+     * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getElements()
+     * @generated
+     */
+    EClass ELEMENTS = eINSTANCE.getElements();
+
+    /**
+     * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ELEMENTS__TYPE = eINSTANCE.getElements_Type();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.mydsl.myDsl.impl.ElementImpl <em>Element</em>}' class.

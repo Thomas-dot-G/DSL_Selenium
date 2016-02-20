@@ -204,6 +204,15 @@ public interface MyDslFactory extends EFactory
   AddCondition createAddCondition();
 
   /**
+   * Returns a new object of class '<em>Elements</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Elements</em>'.
+   * @generated
+   */
+  Elements createElements();
+
+  /**
    * Returns a new object of class '<em>Element</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

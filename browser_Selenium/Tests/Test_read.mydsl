@@ -1,0 +1,5 @@
+Selenium {
+	Browser "Firefox"
+	Store Var myvar = Elements {tagName "a"}
+	Apply_All (Elements Var myvar, Select Element {tagName "checkbox"})
+}

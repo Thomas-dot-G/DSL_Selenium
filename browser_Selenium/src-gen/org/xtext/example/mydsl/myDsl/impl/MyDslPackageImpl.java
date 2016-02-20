@@ -20,6 +20,7 @@ import org.xtext.example.mydsl.myDsl.ComparableElt;
 import org.xtext.example.mydsl.myDsl.Condition;
 import org.xtext.example.mydsl.myDsl.DoLoop;
 import org.xtext.example.mydsl.myDsl.Element;
+import org.xtext.example.mydsl.myDsl.Elements;
 import org.xtext.example.mydsl.myDsl.EltType;
 import org.xtext.example.mydsl.myDsl.Fill;
 import org.xtext.example.mydsl.myDsl.ForLoop;
@@ -187,6 +188,13 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   private EClass addConditionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass elementsEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -595,7 +603,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getStore_Var()
+  public EAttribute getStore_Vari()
   {
     return (EAttribute)storeEClass.getEStructuralFeatures().get(0);
   }
@@ -615,9 +623,29 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getStore_Elt()
+  public EReference getStore_Elts()
   {
     return (EReference)storeEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getStore_Elt()
+  {
+    return (EReference)storeEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getStore_Cond()
+  {
+    return (EReference)storeEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -838,6 +866,26 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
   public EReference getAddCondition_Cond()
   {
     return (EReference)addConditionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getElements()
+  {
+    return elementsEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getElements_Type()
+  {
+    return (EReference)elementsEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1090,9 +1138,11 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     createEReference(ifEClass, IF__OPERATIONSBIS);
 
     storeEClass = createEClass(STORE);
-    createEAttribute(storeEClass, STORE__VAR);
+    createEAttribute(storeEClass, STORE__VARI);
     createEReference(storeEClass, STORE__TEXT);
+    createEReference(storeEClass, STORE__ELTS);
     createEReference(storeEClass, STORE__ELT);
+    createEReference(storeEClass, STORE__COND);
 
     callFunctionEClass = createEClass(CALL_FUNCTION);
     createEReference(callFunctionEClass, CALL_FUNCTION__VARS);
@@ -1123,6 +1173,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     addConditionEClass = createEClass(ADD_CONDITION);
     createEAttribute(addConditionEClass, ADD_CONDITION__OP);
     createEReference(addConditionEClass, ADD_CONDITION__COND);
+
+    elementsEClass = createEClass(ELEMENTS);
+    createEReference(elementsEClass, ELEMENTS__TYPE);
 
     elementEClass = createEClass(ELEMENT);
     createEReference(elementEClass, ELEMENT__TYPE);
@@ -1230,7 +1283,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     initEReference(getVerify_Find(), this.getText(), null, "find", null, 0, 1, Verify.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(apply_AllEClass, Apply_All.class, "Apply_All", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getApply_All_Elt(), this.getElement(), null, "elt", null, 0, 1, Apply_All.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getApply_All_Elt(), this.getElements(), null, "elt", null, 0, 1, Apply_All.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getApply_All_Actions(), this.getAction(), null, "actions", null, 0, -1, Apply_All.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(ifEClass, If.class, "If", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1240,9 +1293,11 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     initEReference(getIf_Operationsbis(), this.getOperation(), null, "operationsbis", null, 0, -1, If.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(storeEClass, Store.class, "Store", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getStore_Var(), ecorePackage.getEString(), "var", null, 0, 1, Store.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getStore_Vari(), ecorePackage.getEString(), "vari", null, 0, 1, Store.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getStore_Text(), this.getText(), null, "text", null, 0, 1, Store.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getStore_Elts(), this.getElements(), null, "elts", null, 0, 1, Store.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getStore_Elt(), this.getElement(), null, "elt", null, 0, 1, Store.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getStore_Cond(), this.getCondition(), null, "cond", null, 0, 1, Store.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(callFunctionEClass, CallFunction.class, "CallFunction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getCallFunction_Vars(), this.getVariable(), null, "vars", null, 0, -1, CallFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1273,6 +1328,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     initEClass(addConditionEClass, AddCondition.class, "AddCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getAddCondition_Op(), ecorePackage.getEString(), "op", null, 0, 1, AddCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAddCondition_Cond(), this.getCondition(), null, "cond", null, 0, 1, AddCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(elementsEClass, Elements.class, "Elements", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getElements_Type(), this.getEltType(), null, "type", null, 0, 1, Elements.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(elementEClass, Element.class, "Element", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getElement_Type(), this.getEltType(), null, "type", null, 0, 1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

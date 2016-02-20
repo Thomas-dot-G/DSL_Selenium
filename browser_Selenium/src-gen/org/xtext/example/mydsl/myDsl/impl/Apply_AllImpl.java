@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.xtext.example.mydsl.myDsl.Action;
 import org.xtext.example.mydsl.myDsl.Apply_All;
-import org.xtext.example.mydsl.myDsl.Element;
+import org.xtext.example.mydsl.myDsl.Elements;
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
 
 /**
@@ -47,7 +47,7 @@ public class Apply_AllImpl extends OperationImpl implements Apply_All
    * @generated
    * @ordered
    */
-  protected Element elt;
+  protected Elements elt;
 
   /**
    * The cached value of the '{@link #getActions() <em>Actions</em>}' containment reference list.
@@ -85,7 +85,7 @@ public class Apply_AllImpl extends OperationImpl implements Apply_All
    * <!-- end-user-doc -->
    * @generated
    */
-  public Element getElt()
+  public Elements getElt()
   {
     return elt;
   }
@@ -95,9 +95,9 @@ public class Apply_AllImpl extends OperationImpl implements Apply_All
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetElt(Element newElt, NotificationChain msgs)
+  public NotificationChain basicSetElt(Elements newElt, NotificationChain msgs)
   {
-    Element oldElt = elt;
+    Elements oldElt = elt;
     elt = newElt;
     if (eNotificationRequired())
     {
@@ -112,7 +112,7 @@ public class Apply_AllImpl extends OperationImpl implements Apply_All
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setElt(Element newElt)
+  public void setElt(Elements newElt)
   {
     if (newElt != elt)
     {
@@ -190,7 +190,7 @@ public class Apply_AllImpl extends OperationImpl implements Apply_All
     switch (featureID)
     {
       case MyDslPackage.APPLY_ALL__ELT:
-        setElt((Element)newValue);
+        setElt((Elements)newValue);
         return;
       case MyDslPackage.APPLY_ALL__ACTIONS:
         getActions().clear();
@@ -211,7 +211,7 @@ public class Apply_AllImpl extends OperationImpl implements Apply_All
     switch (featureID)
     {
       case MyDslPackage.APPLY_ALL__ELT:
-        setElt((Element)null);
+        setElt((Elements)null);
         return;
       case MyDslPackage.APPLY_ALL__ACTIONS:
         getActions().clear();

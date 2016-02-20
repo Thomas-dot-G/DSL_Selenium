@@ -20,6 +20,7 @@ import org.xtext.example.mydsl.myDsl.Browser_Task;
 import org.xtext.example.mydsl.myDsl.CallFunction;
 import org.xtext.example.mydsl.myDsl.Click;
 import org.xtext.example.mydsl.myDsl.ComparableElt;
+import org.xtext.example.mydsl.myDsl.DoLoop;
 import org.xtext.example.mydsl.myDsl.Element;
 import org.xtext.example.mydsl.myDsl.Fill;
 import org.xtext.example.mydsl.myDsl.ForLoop;
@@ -35,6 +36,7 @@ import org.xtext.example.mydsl.myDsl.Tag;
 import org.xtext.example.mydsl.myDsl.Text;
 import org.xtext.example.mydsl.myDsl.Variable;
 import org.xtext.example.mydsl.myDsl.Verify;
+import org.xtext.example.mydsl.myDsl.WhileLoop;
 import org.xtext.example.mydsl.services.MyDslGrammarAccess;
 
 @SuppressWarnings("all")
@@ -69,6 +71,9 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 			case MyDslPackage.COMPARABLE_ELT:
 				sequence_ComparableElt(context, (ComparableElt) semanticObject); 
 				return; 
+			case MyDslPackage.DO_LOOP:
+				sequence_DoLoop(context, (DoLoop) semanticObject); 
+				return; 
 			case MyDslPackage.ELEMENT:
 				sequence_Element(context, (Element) semanticObject); 
 				return; 
@@ -94,25 +99,8 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 				sequence_Select(context, (Select) semanticObject); 
 				return; 
 			case MyDslPackage.SIMPLE_OP:
-				if (rule == grammarAccess.getDoLoopRule()) {
-					sequence_DoLoop_SimpleOp(context, (SimpleOp) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getOperationRule()
-						|| rule == grammarAccess.getLoopRule()) {
-					sequence_DoLoop_SimpleOp_WhileLoop(context, (SimpleOp) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getConditionRule()
-						|| rule == grammarAccess.getSimpleOpRule()) {
-					sequence_SimpleOp(context, (SimpleOp) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getWhileLoopRule()) {
-					sequence_SimpleOp_WhileLoop(context, (SimpleOp) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_SimpleOp(context, (SimpleOp) semanticObject); 
+				return; 
 			case MyDslPackage.STORE:
 				sequence_Store(context, (Store) semanticObject); 
 				return; 
@@ -123,47 +111,14 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 				sequence_Text(context, (Text) semanticObject); 
 				return; 
 			case MyDslPackage.VARIABLE:
-				if (rule == grammarAccess.getDoLoopRule()) {
-					sequence_DoLoop_Variable(context, (Variable) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getOperationRule()
-						|| rule == grammarAccess.getLoopRule()) {
-					sequence_DoLoop_Variable_WhileLoop(context, (Variable) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getConditionRule()
-						|| rule == grammarAccess.getEltTypeRule()
-						|| rule == grammarAccess.getVariableRule()) {
-					sequence_Variable(context, (Variable) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getWhileLoopRule()) {
-					sequence_Variable_WhileLoop(context, (Variable) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_Variable(context, (Variable) semanticObject); 
+				return; 
 			case MyDslPackage.VERIFY:
-				if (rule == grammarAccess.getDoLoopRule()) {
-					sequence_DoLoop_Verify(context, (Verify) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getOperationRule()
-						|| rule == grammarAccess.getLoopRule()) {
-					sequence_DoLoop_Verify_WhileLoop(context, (Verify) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getActionRule()
-						|| rule == grammarAccess.getVerifyRule()
-						|| rule == grammarAccess.getConditionRule()) {
-					sequence_Verify(context, (Verify) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getWhileLoopRule()) {
-					sequence_Verify_WhileLoop(context, (Verify) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_Verify(context, (Verify) semanticObject); 
+				return; 
+			case MyDslPackage.WHILE_LOOP:
+				sequence_WhileLoop(context, (WhileLoop) semanticObject); 
+				return; 
 			}
 		if (errorAcceptor != null)
 			errorAcceptor.accept(diagnosticProvider.createInvalidContextOrTypeDiagnostic(semanticObject, context));
@@ -174,16 +129,10 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     AddCondition returns AddCondition
 	 *
 	 * Constraint:
-	 *     cond=Condition
+	 *     ((op='And' | op='Or') cond=Condition)
 	 */
 	protected void sequence_AddCondition(ISerializationContext context, AddCondition semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.ADD_CONDITION__COND) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.ADD_CONDITION__COND));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getAddConditionAccess().getCondConditionParserRuleCall_1_0(), semanticObject.getCond());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -250,7 +199,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     ComparableElt returns ComparableElt
 	 *
 	 * Constraint:
-	 *     (int=INT | text=Text)
+	 *     (inte=INT | text=Text)
 	 */
 	protected void sequence_ComparableElt(ISerializationContext context, ComparableElt semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -259,75 +208,14 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
-	 *     DoLoop returns SimpleOp
+	 *     Operation returns DoLoop
+	 *     Loop returns DoLoop
+	 *     DoLoop returns DoLoop
 	 *
 	 * Constraint:
-	 *     (elt1=ComparableElt elt2=ComparableElt add+=AddCondition* operations+=Operation*)
+	 *     (c=Condition add+=AddCondition* operations+=Operation*)
 	 */
-	protected void sequence_DoLoop_SimpleOp(ISerializationContext context, SimpleOp semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     Operation returns SimpleOp
-	 *     Loop returns SimpleOp
-	 *
-	 * Constraint:
-	 *     (elt1=ComparableElt elt2=ComparableElt ((add+=AddCondition* operations+=Operation*) | (add+=AddCondition* operations+=Operation*)))
-	 */
-	protected void sequence_DoLoop_SimpleOp_WhileLoop(ISerializationContext context, SimpleOp semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     DoLoop returns Variable
-	 *
-	 * Constraint:
-	 *     (name=ID add+=AddCondition* operations+=Operation*)
-	 */
-	protected void sequence_DoLoop_Variable(ISerializationContext context, Variable semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     Operation returns Variable
-	 *     Loop returns Variable
-	 *
-	 * Constraint:
-	 *     (name=ID ((add+=AddCondition* operations+=Operation*) | (add+=AddCondition* operations+=Operation*)))
-	 */
-	protected void sequence_DoLoop_Variable_WhileLoop(ISerializationContext context, Variable semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     DoLoop returns Verify
-	 *
-	 * Constraint:
-	 *     (elt=Element find=Text add+=AddCondition* operations+=Operation*)
-	 */
-	protected void sequence_DoLoop_Verify(ISerializationContext context, Verify semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     Operation returns Verify
-	 *     Loop returns Verify
-	 *
-	 * Constraint:
-	 *     (elt=Element find=Text ((add+=AddCondition* operations+=Operation*) | (add+=AddCondition* operations+=Operation*)))
-	 */
-	protected void sequence_DoLoop_Verify_WhileLoop(ISerializationContext context, Verify semanticObject) {
+	protected void sequence_DoLoop(ISerializationContext context, DoLoop semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -470,31 +358,22 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     SimpleOp returns SimpleOp
 	 *
 	 * Constraint:
-	 *     (elt1=ComparableElt elt2=ComparableElt)
+	 *     (elt1=ComparableElt op=OP elt2=ComparableElt)
 	 */
 	protected void sequence_SimpleOp(ISerializationContext context, SimpleOp semanticObject) {
 		if (errorAcceptor != null) {
 			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.SIMPLE_OP__ELT1) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.SIMPLE_OP__ELT1));
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.SIMPLE_OP__OP) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.SIMPLE_OP__OP));
 			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.SIMPLE_OP__ELT2) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.SIMPLE_OP__ELT2));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getSimpleOpAccess().getElt1ComparableEltParserRuleCall_1_0(), semanticObject.getElt1());
+		feeder.accept(grammarAccess.getSimpleOpAccess().getOpOPTerminalRuleCall_2_0(), semanticObject.getOp());
 		feeder.accept(grammarAccess.getSimpleOpAccess().getElt2ComparableEltParserRuleCall_3_0(), semanticObject.getElt2());
 		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     WhileLoop returns SimpleOp
-	 *
-	 * Constraint:
-	 *     (elt1=ComparableElt elt2=ComparableElt add+=AddCondition* operations+=Operation*)
-	 */
-	protected void sequence_SimpleOp_WhileLoop(ISerializationContext context, SimpleOp semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -538,7 +417,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     Text returns Text
 	 *
 	 * Constraint:
-	 *     (var=Variable | name=STRING)
+	 *     (vari=Variable | name=STRING)
 	 */
 	protected void sequence_Text(ISerializationContext context, Text semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -567,18 +446,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
-	 *     WhileLoop returns Variable
-	 *
-	 * Constraint:
-	 *     (name=ID add+=AddCondition* operations+=Operation*)
-	 */
-	protected void sequence_Variable_WhileLoop(ISerializationContext context, Variable semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
+	 *     Operation returns Verify
 	 *     Action returns Verify
 	 *     Verify returns Verify
 	 *     Condition returns Verify
@@ -602,12 +470,14 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
-	 *     WhileLoop returns Verify
+	 *     Operation returns WhileLoop
+	 *     Loop returns WhileLoop
+	 *     WhileLoop returns WhileLoop
 	 *
 	 * Constraint:
-	 *     (elt=Element find=Text add+=AddCondition* operations+=Operation*)
+	 *     (c=Condition add+=AddCondition* operations+=Operation*)
 	 */
-	protected void sequence_Verify_WhileLoop(ISerializationContext context, Verify semanticObject) {
+	protected void sequence_WhileLoop(ISerializationContext context, WhileLoop semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

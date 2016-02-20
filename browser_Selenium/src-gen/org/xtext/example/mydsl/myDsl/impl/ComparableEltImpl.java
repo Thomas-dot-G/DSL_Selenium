@@ -24,7 +24,7 @@ import org.xtext.example.mydsl.myDsl.Text;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.ComparableEltImpl#getInt <em>Int</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.ComparableEltImpl#getInte <em>Inte</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.ComparableEltImpl#getText <em>Text</em>}</li>
  * </ul>
  *
@@ -33,24 +33,24 @@ import org.xtext.example.mydsl.myDsl.Text;
 public class ComparableEltImpl extends MinimalEObjectImpl.Container implements ComparableElt
 {
   /**
-   * The default value of the '{@link #getInt() <em>Int</em>}' attribute.
+   * The default value of the '{@link #getInte() <em>Inte</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getInt()
+   * @see #getInte()
    * @generated
    * @ordered
    */
-  protected static final int INT_EDEFAULT = 0;
+  protected static final int INTE_EDEFAULT = 0;
 
   /**
-   * The cached value of the '{@link #getInt() <em>Int</em>}' attribute.
+   * The cached value of the '{@link #getInte() <em>Inte</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getInt()
+   * @see #getInte()
    * @generated
    * @ordered
    */
-  protected int int_ = INT_EDEFAULT;
+  protected int inte = INTE_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getText() <em>Text</em>}' containment reference.
@@ -88,9 +88,9 @@ public class ComparableEltImpl extends MinimalEObjectImpl.Container implements C
    * <!-- end-user-doc -->
    * @generated
    */
-  public int getInt()
+  public int getInte()
   {
-    return int_;
+    return inte;
   }
 
   /**
@@ -98,12 +98,12 @@ public class ComparableEltImpl extends MinimalEObjectImpl.Container implements C
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setInt(int newInt)
+  public void setInte(int newInte)
   {
-    int oldInt = int_;
-    int_ = newInt;
+    int oldInte = inte;
+    inte = newInte;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.COMPARABLE_ELT__INT, oldInt, int_));
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.COMPARABLE_ELT__INTE, oldInte, inte));
   }
 
   /**
@@ -180,8 +180,8 @@ public class ComparableEltImpl extends MinimalEObjectImpl.Container implements C
   {
     switch (featureID)
     {
-      case MyDslPackage.COMPARABLE_ELT__INT:
-        return getInt();
+      case MyDslPackage.COMPARABLE_ELT__INTE:
+        return getInte();
       case MyDslPackage.COMPARABLE_ELT__TEXT:
         return getText();
     }
@@ -198,8 +198,8 @@ public class ComparableEltImpl extends MinimalEObjectImpl.Container implements C
   {
     switch (featureID)
     {
-      case MyDslPackage.COMPARABLE_ELT__INT:
-        setInt((Integer)newValue);
+      case MyDslPackage.COMPARABLE_ELT__INTE:
+        setInte((Integer)newValue);
         return;
       case MyDslPackage.COMPARABLE_ELT__TEXT:
         setText((Text)newValue);
@@ -218,8 +218,8 @@ public class ComparableEltImpl extends MinimalEObjectImpl.Container implements C
   {
     switch (featureID)
     {
-      case MyDslPackage.COMPARABLE_ELT__INT:
-        setInt(INT_EDEFAULT);
+      case MyDslPackage.COMPARABLE_ELT__INTE:
+        setInte(INTE_EDEFAULT);
         return;
       case MyDslPackage.COMPARABLE_ELT__TEXT:
         setText((Text)null);
@@ -238,8 +238,8 @@ public class ComparableEltImpl extends MinimalEObjectImpl.Container implements C
   {
     switch (featureID)
     {
-      case MyDslPackage.COMPARABLE_ELT__INT:
-        return int_ != INT_EDEFAULT;
+      case MyDslPackage.COMPARABLE_ELT__INTE:
+        return inte != INTE_EDEFAULT;
       case MyDslPackage.COMPARABLE_ELT__TEXT:
         return text != null;
     }
@@ -257,8 +257,8 @@ public class ComparableEltImpl extends MinimalEObjectImpl.Container implements C
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (int: ");
-    result.append(int_);
+    result.append(" (inte: ");
+    result.append(inte);
     result.append(')');
     return result.toString();
   }

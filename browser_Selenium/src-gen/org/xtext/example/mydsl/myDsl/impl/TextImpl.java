@@ -24,7 +24,7 @@ import org.xtext.example.mydsl.myDsl.Variable;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.TextImpl#getVar <em>Var</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.TextImpl#getVari <em>Vari</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.TextImpl#getName <em>Name</em>}</li>
  * </ul>
  *
@@ -33,14 +33,14 @@ import org.xtext.example.mydsl.myDsl.Variable;
 public class TextImpl extends MinimalEObjectImpl.Container implements Text
 {
   /**
-   * The cached value of the '{@link #getVar() <em>Var</em>}' containment reference.
+   * The cached value of the '{@link #getVari() <em>Vari</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getVar()
+   * @see #getVari()
    * @generated
    * @ordered
    */
-  protected Variable var;
+  protected Variable vari;
 
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -88,9 +88,9 @@ public class TextImpl extends MinimalEObjectImpl.Container implements Text
    * <!-- end-user-doc -->
    * @generated
    */
-  public Variable getVar()
+  public Variable getVari()
   {
-    return var;
+    return vari;
   }
 
   /**
@@ -98,13 +98,13 @@ public class TextImpl extends MinimalEObjectImpl.Container implements Text
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetVar(Variable newVar, NotificationChain msgs)
+  public NotificationChain basicSetVari(Variable newVari, NotificationChain msgs)
   {
-    Variable oldVar = var;
-    var = newVar;
+    Variable oldVari = vari;
+    vari = newVari;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.TEXT__VAR, oldVar, newVar);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.TEXT__VARI, oldVari, newVari);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -115,20 +115,20 @@ public class TextImpl extends MinimalEObjectImpl.Container implements Text
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setVar(Variable newVar)
+  public void setVari(Variable newVari)
   {
-    if (newVar != var)
+    if (newVari != vari)
     {
       NotificationChain msgs = null;
-      if (var != null)
-        msgs = ((InternalEObject)var).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.TEXT__VAR, null, msgs);
-      if (newVar != null)
-        msgs = ((InternalEObject)newVar).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.TEXT__VAR, null, msgs);
-      msgs = basicSetVar(newVar, msgs);
+      if (vari != null)
+        msgs = ((InternalEObject)vari).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.TEXT__VARI, null, msgs);
+      if (newVari != null)
+        msgs = ((InternalEObject)newVari).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.TEXT__VARI, null, msgs);
+      msgs = basicSetVari(newVari, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.TEXT__VAR, newVar, newVar));
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.TEXT__VARI, newVari, newVari));
   }
 
   /**
@@ -164,8 +164,8 @@ public class TextImpl extends MinimalEObjectImpl.Container implements Text
   {
     switch (featureID)
     {
-      case MyDslPackage.TEXT__VAR:
-        return basicSetVar(null, msgs);
+      case MyDslPackage.TEXT__VARI:
+        return basicSetVari(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -180,8 +180,8 @@ public class TextImpl extends MinimalEObjectImpl.Container implements Text
   {
     switch (featureID)
     {
-      case MyDslPackage.TEXT__VAR:
-        return getVar();
+      case MyDslPackage.TEXT__VARI:
+        return getVari();
       case MyDslPackage.TEXT__NAME:
         return getName();
     }
@@ -198,8 +198,8 @@ public class TextImpl extends MinimalEObjectImpl.Container implements Text
   {
     switch (featureID)
     {
-      case MyDslPackage.TEXT__VAR:
-        setVar((Variable)newValue);
+      case MyDslPackage.TEXT__VARI:
+        setVari((Variable)newValue);
         return;
       case MyDslPackage.TEXT__NAME:
         setName((String)newValue);
@@ -218,8 +218,8 @@ public class TextImpl extends MinimalEObjectImpl.Container implements Text
   {
     switch (featureID)
     {
-      case MyDslPackage.TEXT__VAR:
-        setVar((Variable)null);
+      case MyDslPackage.TEXT__VARI:
+        setVari((Variable)null);
         return;
       case MyDslPackage.TEXT__NAME:
         setName(NAME_EDEFAULT);
@@ -238,8 +238,8 @@ public class TextImpl extends MinimalEObjectImpl.Container implements Text
   {
     switch (featureID)
     {
-      case MyDslPackage.TEXT__VAR:
-        return var != null;
+      case MyDslPackage.TEXT__VARI:
+        return vari != null;
       case MyDslPackage.TEXT__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
     }

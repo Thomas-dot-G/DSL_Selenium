@@ -301,31 +301,13 @@ public interface MyDslPackage extends EPackage
   int VERIFY = 8;
 
   /**
-   * The feature id for the '<em><b>Add</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VERIFY__ADD = ACTION_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Operations</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VERIFY__OPERATIONS = ACTION_FEATURE_COUNT + 1;
-
-  /**
    * The feature id for the '<em><b>Elt</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int VERIFY__ELT = ACTION_FEATURE_COUNT + 2;
+  int VERIFY__ELT = ACTION_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Find</b></em>' containment reference.
@@ -334,7 +316,7 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VERIFY__FIND = ACTION_FEATURE_COUNT + 3;
+  int VERIFY__FIND = ACTION_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Verify</em>' class.
@@ -343,7 +325,7 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VERIFY_FEATURE_COUNT = ACTION_FEATURE_COUNT + 4;
+  int VERIFY_FEATURE_COUNT = ACTION_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.xtext.example.mydsl.myDsl.impl.Apply_AllImpl <em>Apply All</em>}' class.
@@ -559,13 +541,22 @@ public interface MyDslPackage extends EPackage
   int LOOP = 14;
 
   /**
+   * The feature id for the '<em><b>Operations</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LOOP__OPERATIONS = OPERATION_FEATURE_COUNT + 0;
+
+  /**
    * The number of structural features of the '<em>Loop</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LOOP_FEATURE_COUNT = OPERATION_FEATURE_COUNT + 0;
+  int LOOP_FEATURE_COUNT = OPERATION_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.xtext.example.mydsl.myDsl.impl.ForLoopImpl <em>For Loop</em>}' class.
@@ -576,6 +567,15 @@ public interface MyDslPackage extends EPackage
    * @generated
    */
   int FOR_LOOP = 15;
+
+  /**
+   * The feature id for the '<em><b>Operations</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FOR_LOOP__OPERATIONS = LOOP__OPERATIONS;
 
   /**
    * The feature id for the '<em><b>Start</b></em>' attribute.
@@ -605,22 +605,13 @@ public interface MyDslPackage extends EPackage
   int FOR_LOOP__STEP = LOOP_FEATURE_COUNT + 2;
 
   /**
-   * The feature id for the '<em><b>Operations</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FOR_LOOP__OPERATIONS = LOOP_FEATURE_COUNT + 3;
-
-  /**
    * The number of structural features of the '<em>For Loop</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FOR_LOOP_FEATURE_COUNT = LOOP_FEATURE_COUNT + 4;
+  int FOR_LOOP_FEATURE_COUNT = LOOP_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link org.xtext.example.mydsl.myDsl.impl.WhileLoopImpl <em>While Loop</em>}' class.
@@ -633,13 +624,40 @@ public interface MyDslPackage extends EPackage
   int WHILE_LOOP = 16;
 
   /**
+   * The feature id for the '<em><b>Operations</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WHILE_LOOP__OPERATIONS = LOOP__OPERATIONS;
+
+  /**
+   * The feature id for the '<em><b>C</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WHILE_LOOP__C = LOOP_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Add</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WHILE_LOOP__ADD = LOOP_FEATURE_COUNT + 1;
+
+  /**
    * The number of structural features of the '<em>While Loop</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int WHILE_LOOP_FEATURE_COUNT = LOOP_FEATURE_COUNT + 0;
+  int WHILE_LOOP_FEATURE_COUNT = LOOP_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.xtext.example.mydsl.myDsl.impl.DoLoopImpl <em>Do Loop</em>}' class.
@@ -652,13 +670,40 @@ public interface MyDslPackage extends EPackage
   int DO_LOOP = 17;
 
   /**
+   * The feature id for the '<em><b>Operations</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DO_LOOP__OPERATIONS = LOOP__OPERATIONS;
+
+  /**
+   * The feature id for the '<em><b>C</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DO_LOOP__C = LOOP_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Add</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DO_LOOP__ADD = LOOP_FEATURE_COUNT + 1;
+
+  /**
    * The number of structural features of the '<em>Do Loop</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DO_LOOP_FEATURE_COUNT = LOOP_FEATURE_COUNT + 0;
+  int DO_LOOP_FEATURE_COUNT = LOOP_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.xtext.example.mydsl.myDsl.impl.ConditionImpl <em>Condition</em>}' class.
@@ -671,31 +716,13 @@ public interface MyDslPackage extends EPackage
   int CONDITION = 18;
 
   /**
-   * The feature id for the '<em><b>Add</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONDITION__ADD = WHILE_LOOP_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Operations</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONDITION__OPERATIONS = WHILE_LOOP_FEATURE_COUNT + 1;
-
-  /**
    * The number of structural features of the '<em>Condition</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONDITION_FEATURE_COUNT = WHILE_LOOP_FEATURE_COUNT + 2;
+  int CONDITION_FEATURE_COUNT = 0;
 
   /**
    * The meta object id for the '{@link org.xtext.example.mydsl.myDsl.impl.AddConditionImpl <em>Add Condition</em>}' class.
@@ -708,13 +735,22 @@ public interface MyDslPackage extends EPackage
   int ADD_CONDITION = 19;
 
   /**
+   * The feature id for the '<em><b>Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADD_CONDITION__OP = 0;
+
+  /**
    * The feature id for the '<em><b>Cond</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ADD_CONDITION__COND = 0;
+  int ADD_CONDITION__COND = 1;
 
   /**
    * The number of structural features of the '<em>Add Condition</em>' class.
@@ -723,7 +759,7 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ADD_CONDITION_FEATURE_COUNT = 1;
+  int ADD_CONDITION_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link org.xtext.example.mydsl.myDsl.impl.ElementImpl <em>Element</em>}' class.
@@ -820,24 +856,6 @@ public interface MyDslPackage extends EPackage
   int SIMPLE_OP = 23;
 
   /**
-   * The feature id for the '<em><b>Add</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SIMPLE_OP__ADD = CONDITION__ADD;
-
-  /**
-   * The feature id for the '<em><b>Operations</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SIMPLE_OP__OPERATIONS = CONDITION__OPERATIONS;
-
-  /**
    * The feature id for the '<em><b>Elt1</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -847,13 +865,22 @@ public interface MyDslPackage extends EPackage
   int SIMPLE_OP__ELT1 = CONDITION_FEATURE_COUNT + 0;
 
   /**
+   * The feature id for the '<em><b>Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SIMPLE_OP__OP = CONDITION_FEATURE_COUNT + 1;
+
+  /**
    * The feature id for the '<em><b>Elt2</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SIMPLE_OP__ELT2 = CONDITION_FEATURE_COUNT + 1;
+  int SIMPLE_OP__ELT2 = CONDITION_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Simple Op</em>' class.
@@ -862,7 +889,7 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SIMPLE_OP_FEATURE_COUNT = CONDITION_FEATURE_COUNT + 2;
+  int SIMPLE_OP_FEATURE_COUNT = CONDITION_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link org.xtext.example.mydsl.myDsl.impl.ComparableEltImpl <em>Comparable Elt</em>}' class.
@@ -875,13 +902,13 @@ public interface MyDslPackage extends EPackage
   int COMPARABLE_ELT = 24;
 
   /**
-   * The feature id for the '<em><b>Int</b></em>' attribute.
+   * The feature id for the '<em><b>Inte</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int COMPARABLE_ELT__INT = 0;
+  int COMPARABLE_ELT__INTE = 0;
 
   /**
    * The feature id for the '<em><b>Text</b></em>' containment reference.
@@ -912,13 +939,13 @@ public interface MyDslPackage extends EPackage
   int TEXT = 25;
 
   /**
-   * The feature id for the '<em><b>Var</b></em>' containment reference.
+   * The feature id for the '<em><b>Vari</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TEXT__VAR = 0;
+  int TEXT__VARI = 0;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -947,24 +974,6 @@ public interface MyDslPackage extends EPackage
    * @generated
    */
   int VARIABLE = 26;
-
-  /**
-   * The feature id for the '<em><b>Add</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VARIABLE__ADD = CONDITION__ADD;
-
-  /**
-   * The feature id for the '<em><b>Operations</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VARIABLE__OPERATIONS = CONDITION__OPERATIONS;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1389,6 +1398,17 @@ public interface MyDslPackage extends EPackage
   EClass getLoop();
 
   /**
+   * Returns the meta object for the containment reference list '{@link org.xtext.example.mydsl.myDsl.Loop#getOperations <em>Operations</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Operations</em>'.
+   * @see org.xtext.example.mydsl.myDsl.Loop#getOperations()
+   * @see #getLoop()
+   * @generated
+   */
+  EReference getLoop_Operations();
+
+  /**
    * Returns the meta object for class '{@link org.xtext.example.mydsl.myDsl.ForLoop <em>For Loop</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1432,17 +1452,6 @@ public interface MyDslPackage extends EPackage
   EAttribute getForLoop_Step();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.xtext.example.mydsl.myDsl.ForLoop#getOperations <em>Operations</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Operations</em>'.
-   * @see org.xtext.example.mydsl.myDsl.ForLoop#getOperations()
-   * @see #getForLoop()
-   * @generated
-   */
-  EReference getForLoop_Operations();
-
-  /**
    * Returns the meta object for class '{@link org.xtext.example.mydsl.myDsl.WhileLoop <em>While Loop</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1451,6 +1460,28 @@ public interface MyDslPackage extends EPackage
    * @generated
    */
   EClass getWhileLoop();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.xtext.example.mydsl.myDsl.WhileLoop#getC <em>C</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>C</em>'.
+   * @see org.xtext.example.mydsl.myDsl.WhileLoop#getC()
+   * @see #getWhileLoop()
+   * @generated
+   */
+  EReference getWhileLoop_C();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.xtext.example.mydsl.myDsl.WhileLoop#getAdd <em>Add</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Add</em>'.
+   * @see org.xtext.example.mydsl.myDsl.WhileLoop#getAdd()
+   * @see #getWhileLoop()
+   * @generated
+   */
+  EReference getWhileLoop_Add();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.mydsl.myDsl.DoLoop <em>Do Loop</em>}'.
@@ -1463,6 +1494,28 @@ public interface MyDslPackage extends EPackage
   EClass getDoLoop();
 
   /**
+   * Returns the meta object for the containment reference '{@link org.xtext.example.mydsl.myDsl.DoLoop#getC <em>C</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>C</em>'.
+   * @see org.xtext.example.mydsl.myDsl.DoLoop#getC()
+   * @see #getDoLoop()
+   * @generated
+   */
+  EReference getDoLoop_C();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.xtext.example.mydsl.myDsl.DoLoop#getAdd <em>Add</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Add</em>'.
+   * @see org.xtext.example.mydsl.myDsl.DoLoop#getAdd()
+   * @see #getDoLoop()
+   * @generated
+   */
+  EReference getDoLoop_Add();
+
+  /**
    * Returns the meta object for class '{@link org.xtext.example.mydsl.myDsl.Condition <em>Condition</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1473,28 +1526,6 @@ public interface MyDslPackage extends EPackage
   EClass getCondition();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.xtext.example.mydsl.myDsl.Condition#getAdd <em>Add</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Add</em>'.
-   * @see org.xtext.example.mydsl.myDsl.Condition#getAdd()
-   * @see #getCondition()
-   * @generated
-   */
-  EReference getCondition_Add();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link org.xtext.example.mydsl.myDsl.Condition#getOperations <em>Operations</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Operations</em>'.
-   * @see org.xtext.example.mydsl.myDsl.Condition#getOperations()
-   * @see #getCondition()
-   * @generated
-   */
-  EReference getCondition_Operations();
-
-  /**
    * Returns the meta object for class '{@link org.xtext.example.mydsl.myDsl.AddCondition <em>Add Condition</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1503,6 +1534,17 @@ public interface MyDslPackage extends EPackage
    * @generated
    */
   EClass getAddCondition();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.myDsl.AddCondition#getOp <em>Op</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Op</em>'.
+   * @see org.xtext.example.mydsl.myDsl.AddCondition#getOp()
+   * @see #getAddCondition()
+   * @generated
+   */
+  EAttribute getAddCondition_Op();
 
   /**
    * Returns the meta object for the containment reference '{@link org.xtext.example.mydsl.myDsl.AddCondition#getCond <em>Cond</em>}'.
@@ -1600,6 +1642,17 @@ public interface MyDslPackage extends EPackage
   EReference getSimpleOp_Elt1();
 
   /**
+   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.myDsl.SimpleOp#getOp <em>Op</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Op</em>'.
+   * @see org.xtext.example.mydsl.myDsl.SimpleOp#getOp()
+   * @see #getSimpleOp()
+   * @generated
+   */
+  EAttribute getSimpleOp_Op();
+
+  /**
    * Returns the meta object for the containment reference '{@link org.xtext.example.mydsl.myDsl.SimpleOp#getElt2 <em>Elt2</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1621,15 +1674,15 @@ public interface MyDslPackage extends EPackage
   EClass getComparableElt();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.myDsl.ComparableElt#getInt <em>Int</em>}'.
+   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.myDsl.ComparableElt#getInte <em>Inte</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Int</em>'.
-   * @see org.xtext.example.mydsl.myDsl.ComparableElt#getInt()
+   * @return the meta object for the attribute '<em>Inte</em>'.
+   * @see org.xtext.example.mydsl.myDsl.ComparableElt#getInte()
    * @see #getComparableElt()
    * @generated
    */
-  EAttribute getComparableElt_Int();
+  EAttribute getComparableElt_Inte();
 
   /**
    * Returns the meta object for the containment reference '{@link org.xtext.example.mydsl.myDsl.ComparableElt#getText <em>Text</em>}'.
@@ -1653,15 +1706,15 @@ public interface MyDslPackage extends EPackage
   EClass getText();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.xtext.example.mydsl.myDsl.Text#getVar <em>Var</em>}'.
+   * Returns the meta object for the containment reference '{@link org.xtext.example.mydsl.myDsl.Text#getVari <em>Vari</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Var</em>'.
-   * @see org.xtext.example.mydsl.myDsl.Text#getVar()
+   * @return the meta object for the containment reference '<em>Vari</em>'.
+   * @see org.xtext.example.mydsl.myDsl.Text#getVari()
    * @see #getText()
    * @generated
    */
-  EReference getText_Var();
+  EReference getText_Vari();
 
   /**
    * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.myDsl.Text#getName <em>Name</em>}'.
@@ -2053,6 +2106,14 @@ public interface MyDslPackage extends EPackage
     EClass LOOP = eINSTANCE.getLoop();
 
     /**
+     * The meta object literal for the '<em><b>Operations</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference LOOP__OPERATIONS = eINSTANCE.getLoop_Operations();
+
+    /**
      * The meta object literal for the '{@link org.xtext.example.mydsl.myDsl.impl.ForLoopImpl <em>For Loop</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2087,14 +2148,6 @@ public interface MyDslPackage extends EPackage
     EAttribute FOR_LOOP__STEP = eINSTANCE.getForLoop_Step();
 
     /**
-     * The meta object literal for the '<em><b>Operations</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference FOR_LOOP__OPERATIONS = eINSTANCE.getForLoop_Operations();
-
-    /**
      * The meta object literal for the '{@link org.xtext.example.mydsl.myDsl.impl.WhileLoopImpl <em>While Loop</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2103,6 +2156,22 @@ public interface MyDslPackage extends EPackage
      * @generated
      */
     EClass WHILE_LOOP = eINSTANCE.getWhileLoop();
+
+    /**
+     * The meta object literal for the '<em><b>C</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference WHILE_LOOP__C = eINSTANCE.getWhileLoop_C();
+
+    /**
+     * The meta object literal for the '<em><b>Add</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference WHILE_LOOP__ADD = eINSTANCE.getWhileLoop_Add();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.mydsl.myDsl.impl.DoLoopImpl <em>Do Loop</em>}' class.
@@ -2115,6 +2184,22 @@ public interface MyDslPackage extends EPackage
     EClass DO_LOOP = eINSTANCE.getDoLoop();
 
     /**
+     * The meta object literal for the '<em><b>C</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference DO_LOOP__C = eINSTANCE.getDoLoop_C();
+
+    /**
+     * The meta object literal for the '<em><b>Add</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference DO_LOOP__ADD = eINSTANCE.getDoLoop_Add();
+
+    /**
      * The meta object literal for the '{@link org.xtext.example.mydsl.myDsl.impl.ConditionImpl <em>Condition</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2125,22 +2210,6 @@ public interface MyDslPackage extends EPackage
     EClass CONDITION = eINSTANCE.getCondition();
 
     /**
-     * The meta object literal for the '<em><b>Add</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference CONDITION__ADD = eINSTANCE.getCondition_Add();
-
-    /**
-     * The meta object literal for the '<em><b>Operations</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference CONDITION__OPERATIONS = eINSTANCE.getCondition_Operations();
-
-    /**
      * The meta object literal for the '{@link org.xtext.example.mydsl.myDsl.impl.AddConditionImpl <em>Add Condition</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2149,6 +2218,14 @@ public interface MyDslPackage extends EPackage
      * @generated
      */
     EClass ADD_CONDITION = eINSTANCE.getAddCondition();
+
+    /**
+     * The meta object literal for the '<em><b>Op</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ADD_CONDITION__OP = eINSTANCE.getAddCondition_Op();
 
     /**
      * The meta object literal for the '<em><b>Cond</b></em>' containment reference feature.
@@ -2231,6 +2308,14 @@ public interface MyDslPackage extends EPackage
     EReference SIMPLE_OP__ELT1 = eINSTANCE.getSimpleOp_Elt1();
 
     /**
+     * The meta object literal for the '<em><b>Op</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SIMPLE_OP__OP = eINSTANCE.getSimpleOp_Op();
+
+    /**
      * The meta object literal for the '<em><b>Elt2</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2249,12 +2334,12 @@ public interface MyDslPackage extends EPackage
     EClass COMPARABLE_ELT = eINSTANCE.getComparableElt();
 
     /**
-     * The meta object literal for the '<em><b>Int</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Inte</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute COMPARABLE_ELT__INT = eINSTANCE.getComparableElt_Int();
+    EAttribute COMPARABLE_ELT__INTE = eINSTANCE.getComparableElt_Inte();
 
     /**
      * The meta object literal for the '<em><b>Text</b></em>' containment reference feature.
@@ -2275,12 +2360,12 @@ public interface MyDslPackage extends EPackage
     EClass TEXT = eINSTANCE.getText();
 
     /**
-     * The meta object literal for the '<em><b>Var</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Vari</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference TEXT__VAR = eINSTANCE.getText_Var();
+    EReference TEXT__VARI = eINSTANCE.getText_Vari();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.

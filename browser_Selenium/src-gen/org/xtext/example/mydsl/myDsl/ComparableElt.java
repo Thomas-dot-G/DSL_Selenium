@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.myDsl.ComparableElt#getInt <em>Int</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.ComparableElt#getInte <em>Inte</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.ComparableElt#getText <em>Text</em>}</li>
  * </ul>
  *
@@ -25,30 +25,30 @@ import org.eclipse.emf.ecore.EObject;
 public interface ComparableElt extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Int</b></em>' attribute.
+   * Returns the value of the '<em><b>Inte</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Int</em>' attribute isn't clear,
+   * If the meaning of the '<em>Inte</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Int</em>' attribute.
-   * @see #setInt(int)
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getComparableElt_Int()
+   * @return the value of the '<em>Inte</em>' attribute.
+   * @see #setInte(int)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getComparableElt_Inte()
    * @model
    * @generated
    */
-  int getInt();
+  int getInte();
 
   /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.ComparableElt#getInt <em>Int</em>}' attribute.
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.ComparableElt#getInte <em>Inte</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Int</em>' attribute.
-   * @see #getInt()
+   * @param value the new value of the '<em>Inte</em>' attribute.
+   * @see #getInte()
    * @generated
    */
-  void setInt(int value);
+  void setInte(int value);
 
   /**
    * Returns the value of the '<em><b>Text</b></em>' containment reference.

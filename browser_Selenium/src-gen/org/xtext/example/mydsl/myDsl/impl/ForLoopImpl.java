@@ -3,24 +3,14 @@
  */
 package org.xtext.example.mydsl.myDsl.impl;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.xtext.example.mydsl.myDsl.ForLoop;
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
-import org.xtext.example.mydsl.myDsl.Operation;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,7 +23,6 @@ import org.xtext.example.mydsl.myDsl.Operation;
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.ForLoopImpl#getStart <em>Start</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.ForLoopImpl#getEnd <em>End</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.ForLoopImpl#getStep <em>Step</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.ForLoopImpl#getOperations <em>Operations</em>}</li>
  * </ul>
  *
  * @generated
@@ -99,16 +88,6 @@ public class ForLoopImpl extends LoopImpl implements ForLoop
    * @ordered
    */
   protected int step = STEP_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getOperations() <em>Operations</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getOperations()
-   * @generated
-   * @ordered
-   */
-  protected EList<Operation> operations;
 
   /**
    * <!-- begin-user-doc -->
@@ -205,36 +184,6 @@ public class ForLoopImpl extends LoopImpl implements ForLoop
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Operation> getOperations()
-  {
-    if (operations == null)
-    {
-      operations = new EObjectContainmentEList<Operation>(Operation.class, this, MyDslPackage.FOR_LOOP__OPERATIONS);
-    }
-    return operations;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case MyDslPackage.FOR_LOOP__OPERATIONS:
-        return ((InternalEList<?>)getOperations()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -246,8 +195,6 @@ public class ForLoopImpl extends LoopImpl implements ForLoop
         return getEnd();
       case MyDslPackage.FOR_LOOP__STEP:
         return getStep();
-      case MyDslPackage.FOR_LOOP__OPERATIONS:
-        return getOperations();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -257,7 +204,6 @@ public class ForLoopImpl extends LoopImpl implements ForLoop
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -271,10 +217,6 @@ public class ForLoopImpl extends LoopImpl implements ForLoop
         return;
       case MyDslPackage.FOR_LOOP__STEP:
         setStep((Integer)newValue);
-        return;
-      case MyDslPackage.FOR_LOOP__OPERATIONS:
-        getOperations().clear();
-        getOperations().addAll((Collection<? extends Operation>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -299,9 +241,6 @@ public class ForLoopImpl extends LoopImpl implements ForLoop
       case MyDslPackage.FOR_LOOP__STEP:
         setStep(STEP_EDEFAULT);
         return;
-      case MyDslPackage.FOR_LOOP__OPERATIONS:
-        getOperations().clear();
-        return;
     }
     super.eUnset(featureID);
   }
@@ -322,8 +261,6 @@ public class ForLoopImpl extends LoopImpl implements ForLoop
         return end != END_EDEFAULT;
       case MyDslPackage.FOR_LOOP__STEP:
         return step != STEP_EDEFAULT;
-      case MyDslPackage.FOR_LOOP__OPERATIONS:
-        return operations != null && !operations.isEmpty();
     }
     return super.eIsSet(featureID);
   }

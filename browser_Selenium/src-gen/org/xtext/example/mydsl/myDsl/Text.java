@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.myDsl.Text#getVar <em>Var</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.Text#getVari <em>Vari</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.Text#getName <em>Name</em>}</li>
  * </ul>
  *
@@ -25,30 +25,30 @@ import org.eclipse.emf.ecore.EObject;
 public interface Text extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Var</b></em>' containment reference.
+   * Returns the value of the '<em><b>Vari</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Var</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Vari</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Var</em>' containment reference.
-   * @see #setVar(Variable)
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getText_Var()
+   * @return the value of the '<em>Vari</em>' containment reference.
+   * @see #setVari(Variable)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getText_Vari()
    * @model containment="true"
    * @generated
    */
-  Variable getVar();
+  Variable getVari();
 
   /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.Text#getVar <em>Var</em>}' containment reference.
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.Text#getVari <em>Vari</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Var</em>' containment reference.
-   * @see #getVar()
+   * @param value the new value of the '<em>Vari</em>' containment reference.
+   * @see #getVari()
    * @generated
    */
-  void setVar(Variable value);
+  void setVari(Variable value);
 
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.

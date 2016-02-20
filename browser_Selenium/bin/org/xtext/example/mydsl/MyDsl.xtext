@@ -75,11 +75,11 @@ ForLoop:
 ;
 
 WhileLoop:
-	'While' '(' Condition  add+=AddCondition* ')' '{' operations+=Operation* '}' 
+	'While' '(' c=Condition  add+=AddCondition* ')' '{' operations+=Operation* '}' 
 ;
 
 DoLoop:
-	'DoWhile' '(' Condition  add+=AddCondition* ')' '{' operations+=Operation* '}' 
+	'DoWhile' '(' c=Condition  add+=AddCondition* ')' '{' operations+=Operation* '}' 
 ;
 	
 Condition:
@@ -87,7 +87,7 @@ Condition:
 ;
 
 AddCondition:
-	('And'|'Or') cond=Condition
+	op=('And'|'Or') cond=Condition
 ;
 
 
@@ -104,15 +104,15 @@ Tag:
 ;
 
 SimpleOp:
-	'(' elt1=ComparableElt OP elt2=ComparableElt')'
+	'(' elt1=ComparableElt op=OP elt2=ComparableElt')'
 ;
 
 ComparableElt:
-	int=INT | text=Text
+	inte=INT | text=Text
 ;
 	
 Text:
-	var=Variable | name=STRING
+	vari=Variable | name=STRING
 ;
 
 Variable:

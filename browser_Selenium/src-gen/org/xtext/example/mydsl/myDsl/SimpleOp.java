@@ -14,6 +14,7 @@ package org.xtext.example.mydsl.myDsl;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.mydsl.myDsl.SimpleOp#getElt1 <em>Elt1</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.SimpleOp#getOp <em>Op</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.SimpleOp#getElt2 <em>Elt2</em>}</li>
  * </ul>
  *
@@ -48,6 +49,32 @@ public interface SimpleOp extends Condition
    * @generated
    */
   void setElt1(ComparableElt value);
+
+  /**
+   * Returns the value of the '<em><b>Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Op</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Op</em>' attribute.
+   * @see #setOp(String)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getSimpleOp_Op()
+   * @model
+   * @generated
+   */
+  String getOp();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.SimpleOp#getOp <em>Op</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Op</em>' attribute.
+   * @see #getOp()
+   * @generated
+   */
+  void setOp(String value);
 
   /**
    * Returns the value of the '<em><b>Elt2</b></em>' containment reference.

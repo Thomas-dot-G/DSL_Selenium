@@ -3,31 +3,18 @@
  */
 package org.xtext.example.mydsl.myDsl.impl;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
-
-import org.xtext.example.mydsl.myDsl.AddCondition;
-import org.xtext.example.mydsl.myDsl.Condition;
-import org.xtext.example.mydsl.myDsl.DoLoop;
 import org.xtext.example.mydsl.myDsl.Element;
-import org.xtext.example.mydsl.myDsl.Loop;
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
-import org.xtext.example.mydsl.myDsl.Operation;
 import org.xtext.example.mydsl.myDsl.Text;
 import org.xtext.example.mydsl.myDsl.Verify;
-import org.xtext.example.mydsl.myDsl.WhileLoop;
 
 /**
  * <!-- begin-user-doc -->
@@ -37,8 +24,6 @@ import org.xtext.example.mydsl.myDsl.WhileLoop;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.VerifyImpl#getAdd <em>Add</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.VerifyImpl#getOperations <em>Operations</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.VerifyImpl#getElt <em>Elt</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.VerifyImpl#getFind <em>Find</em>}</li>
  * </ul>
@@ -47,26 +32,6 @@ import org.xtext.example.mydsl.myDsl.WhileLoop;
  */
 public class VerifyImpl extends ActionImpl implements Verify
 {
-  /**
-   * The cached value of the '{@link #getAdd() <em>Add</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getAdd()
-   * @generated
-   * @ordered
-   */
-  protected EList<AddCondition> add;
-
-  /**
-   * The cached value of the '{@link #getOperations() <em>Operations</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getOperations()
-   * @generated
-   * @ordered
-   */
-  protected EList<Operation> operations;
-
   /**
    * The cached value of the '{@link #getElt() <em>Elt</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -106,34 +71,6 @@ public class VerifyImpl extends ActionImpl implements Verify
   protected EClass eStaticClass()
   {
     return MyDslPackage.Literals.VERIFY;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<AddCondition> getAdd()
-  {
-    if (add == null)
-    {
-      add = new EObjectContainmentEList<AddCondition>(AddCondition.class, this, MyDslPackage.VERIFY__ADD);
-    }
-    return add;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<Operation> getOperations()
-  {
-    if (operations == null)
-    {
-      operations = new EObjectContainmentEList<Operation>(Operation.class, this, MyDslPackage.VERIFY__OPERATIONS);
-    }
-    return operations;
   }
 
   /**
@@ -242,10 +179,6 @@ public class VerifyImpl extends ActionImpl implements Verify
   {
     switch (featureID)
     {
-      case MyDslPackage.VERIFY__ADD:
-        return ((InternalEList<?>)getAdd()).basicRemove(otherEnd, msgs);
-      case MyDslPackage.VERIFY__OPERATIONS:
-        return ((InternalEList<?>)getOperations()).basicRemove(otherEnd, msgs);
       case MyDslPackage.VERIFY__ELT:
         return basicSetElt(null, msgs);
       case MyDslPackage.VERIFY__FIND:
@@ -264,10 +197,6 @@ public class VerifyImpl extends ActionImpl implements Verify
   {
     switch (featureID)
     {
-      case MyDslPackage.VERIFY__ADD:
-        return getAdd();
-      case MyDslPackage.VERIFY__OPERATIONS:
-        return getOperations();
       case MyDslPackage.VERIFY__ELT:
         return getElt();
       case MyDslPackage.VERIFY__FIND:
@@ -281,20 +210,11 @@ public class VerifyImpl extends ActionImpl implements Verify
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case MyDslPackage.VERIFY__ADD:
-        getAdd().clear();
-        getAdd().addAll((Collection<? extends AddCondition>)newValue);
-        return;
-      case MyDslPackage.VERIFY__OPERATIONS:
-        getOperations().clear();
-        getOperations().addAll((Collection<? extends Operation>)newValue);
-        return;
       case MyDslPackage.VERIFY__ELT:
         setElt((Element)newValue);
         return;
@@ -315,12 +235,6 @@ public class VerifyImpl extends ActionImpl implements Verify
   {
     switch (featureID)
     {
-      case MyDslPackage.VERIFY__ADD:
-        getAdd().clear();
-        return;
-      case MyDslPackage.VERIFY__OPERATIONS:
-        getOperations().clear();
-        return;
       case MyDslPackage.VERIFY__ELT:
         setElt((Element)null);
         return;
@@ -341,98 +255,12 @@ public class VerifyImpl extends ActionImpl implements Verify
   {
     switch (featureID)
     {
-      case MyDslPackage.VERIFY__ADD:
-        return add != null && !add.isEmpty();
-      case MyDslPackage.VERIFY__OPERATIONS:
-        return operations != null && !operations.isEmpty();
       case MyDslPackage.VERIFY__ELT:
         return elt != null;
       case MyDslPackage.VERIFY__FIND:
         return find != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
-  {
-    if (baseClass == Loop.class)
-    {
-      switch (derivedFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == WhileLoop.class)
-    {
-      switch (derivedFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == DoLoop.class)
-    {
-      switch (derivedFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == Condition.class)
-    {
-      switch (derivedFeatureID)
-      {
-        case MyDslPackage.VERIFY__ADD: return MyDslPackage.CONDITION__ADD;
-        case MyDslPackage.VERIFY__OPERATIONS: return MyDslPackage.CONDITION__OPERATIONS;
-        default: return -1;
-      }
-    }
-    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
-  {
-    if (baseClass == Loop.class)
-    {
-      switch (baseFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == WhileLoop.class)
-    {
-      switch (baseFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == DoLoop.class)
-    {
-      switch (baseFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == Condition.class)
-    {
-      switch (baseFeatureID)
-      {
-        case MyDslPackage.CONDITION__ADD: return MyDslPackage.VERIFY__ADD;
-        case MyDslPackage.CONDITION__OPERATIONS: return MyDslPackage.VERIFY__OPERATIONS;
-        default: return -1;
-      }
-    }
-    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
   }
 
 } //VerifyImpl

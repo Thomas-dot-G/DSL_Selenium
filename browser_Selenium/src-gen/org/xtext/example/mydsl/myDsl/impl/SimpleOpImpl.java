@@ -24,6 +24,7 @@ import org.xtext.example.mydsl.myDsl.SimpleOp;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.SimpleOpImpl#getElt1 <em>Elt1</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.SimpleOpImpl#getOp <em>Op</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.SimpleOpImpl#getElt2 <em>Elt2</em>}</li>
  * </ul>
  *
@@ -40,6 +41,26 @@ public class SimpleOpImpl extends ConditionImpl implements SimpleOp
    * @ordered
    */
   protected ComparableElt elt1;
+
+  /**
+   * The default value of the '{@link #getOp() <em>Op</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getOp()
+   * @generated
+   * @ordered
+   */
+  protected static final String OP_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getOp() <em>Op</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getOp()
+   * @generated
+   * @ordered
+   */
+  protected String op = OP_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getElt2() <em>Elt2</em>}' containment reference.
@@ -125,6 +146,29 @@ public class SimpleOpImpl extends ConditionImpl implements SimpleOp
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getOp()
+  {
+    return op;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setOp(String newOp)
+  {
+    String oldOp = op;
+    op = newOp;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.SIMPLE_OP__OP, oldOp, op));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public ComparableElt getElt2()
   {
     return elt2;
@@ -198,6 +242,8 @@ public class SimpleOpImpl extends ConditionImpl implements SimpleOp
     {
       case MyDslPackage.SIMPLE_OP__ELT1:
         return getElt1();
+      case MyDslPackage.SIMPLE_OP__OP:
+        return getOp();
       case MyDslPackage.SIMPLE_OP__ELT2:
         return getElt2();
     }
@@ -216,6 +262,9 @@ public class SimpleOpImpl extends ConditionImpl implements SimpleOp
     {
       case MyDslPackage.SIMPLE_OP__ELT1:
         setElt1((ComparableElt)newValue);
+        return;
+      case MyDslPackage.SIMPLE_OP__OP:
+        setOp((String)newValue);
         return;
       case MyDslPackage.SIMPLE_OP__ELT2:
         setElt2((ComparableElt)newValue);
@@ -237,6 +286,9 @@ public class SimpleOpImpl extends ConditionImpl implements SimpleOp
       case MyDslPackage.SIMPLE_OP__ELT1:
         setElt1((ComparableElt)null);
         return;
+      case MyDslPackage.SIMPLE_OP__OP:
+        setOp(OP_EDEFAULT);
+        return;
       case MyDslPackage.SIMPLE_OP__ELT2:
         setElt2((ComparableElt)null);
         return;
@@ -256,10 +308,29 @@ public class SimpleOpImpl extends ConditionImpl implements SimpleOp
     {
       case MyDslPackage.SIMPLE_OP__ELT1:
         return elt1 != null;
+      case MyDslPackage.SIMPLE_OP__OP:
+        return OP_EDEFAULT == null ? op != null : !OP_EDEFAULT.equals(op);
       case MyDslPackage.SIMPLE_OP__ELT2:
         return elt2 != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (op: ");
+    result.append(op);
+    result.append(')');
+    return result.toString();
   }
 
 } //SimpleOpImpl

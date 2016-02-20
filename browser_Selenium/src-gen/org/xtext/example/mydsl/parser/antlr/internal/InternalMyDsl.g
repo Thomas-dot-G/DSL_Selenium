@@ -1242,14 +1242,25 @@ ruleWhileLoop returns [EObject current=null]
 		{
 			newLeafNode(otherlv_1, grammarAccess.getWhileLoopAccess().getLeftParenthesisKeyword_1());
 		}
-		{
-			newCompositeNode(grammarAccess.getWhileLoopAccess().getConditionParserRuleCall_2());
-		}
-		this_Condition_2=ruleCondition
-		{
-			$current = $this_Condition_2.current;
-			afterParserOrEnumRuleCall();
-		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getWhileLoopAccess().getCConditionParserRuleCall_2_0());
+				}
+				lv_c_2_0=ruleCondition
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getWhileLoopRule());
+					}
+					set(
+						$current,
+						"c",
+						lv_c_2_0,
+						"org.xtext.example.mydsl.MyDsl.Condition");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
 		(
 			(
 				{
@@ -1327,14 +1338,25 @@ ruleDoLoop returns [EObject current=null]
 		{
 			newLeafNode(otherlv_1, grammarAccess.getDoLoopAccess().getLeftParenthesisKeyword_1());
 		}
-		{
-			newCompositeNode(grammarAccess.getDoLoopAccess().getConditionParserRuleCall_2());
-		}
-		this_Condition_2=ruleCondition
-		{
-			$current = $this_Condition_2.current;
-			afterParserOrEnumRuleCall();
-		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getDoLoopAccess().getCConditionParserRuleCall_2_0());
+				}
+				lv_c_2_0=ruleCondition
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getDoLoopRule());
+					}
+					set(
+						$current,
+						"c",
+						lv_c_2_0,
+						"org.xtext.example.mydsl.MyDsl.Condition");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
 		(
 			(
 				{
@@ -1456,22 +1478,38 @@ ruleAddCondition returns [EObject current=null]
 }:
 	(
 		(
-			otherlv_0='And'
-			{
-				newLeafNode(otherlv_0, grammarAccess.getAddConditionAccess().getAndKeyword_0_0());
-			}
-			    |
-			otherlv_1='Or'
-			{
-				newLeafNode(otherlv_1, grammarAccess.getAddConditionAccess().getOrKeyword_0_1());
-			}
+			(
+				(
+					lv_op_0_1='And'
+					{
+						newLeafNode(lv_op_0_1, grammarAccess.getAddConditionAccess().getOpAndKeyword_0_0_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getAddConditionRule());
+						}
+						setWithLastConsumed($current, "op", lv_op_0_1, null);
+					}
+					    |
+					lv_op_0_2='Or'
+					{
+						newLeafNode(lv_op_0_2, grammarAccess.getAddConditionAccess().getOpOrKeyword_0_0_1());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getAddConditionRule());
+						}
+						setWithLastConsumed($current, "op", lv_op_0_2, null);
+					}
+				)
+			)
 		)
 		(
 			(
 				{
 					newCompositeNode(grammarAccess.getAddConditionAccess().getCondConditionParserRuleCall_1_0());
 				}
-				lv_cond_2_0=ruleCondition
+				lv_cond_1_0=ruleCondition
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getAddConditionRule());
@@ -1479,7 +1517,7 @@ ruleAddCondition returns [EObject current=null]
 					set(
 						$current,
 						"cond",
-						lv_cond_2_0,
+						lv_cond_1_0,
 						"org.xtext.example.mydsl.MyDsl.Condition");
 					afterParserOrEnumRuleCall();
 				}
@@ -1674,10 +1712,24 @@ ruleSimpleOp returns [EObject current=null]
 				}
 			)
 		)
-		this_OP_2=RULE_OP
-		{
-			newLeafNode(this_OP_2, grammarAccess.getSimpleOpAccess().getOPTerminalRuleCall_2());
-		}
+		(
+			(
+				lv_op_2_0=RULE_OP
+				{
+					newLeafNode(lv_op_2_0, grammarAccess.getSimpleOpAccess().getOpOPTerminalRuleCall_2_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getSimpleOpRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"op",
+						lv_op_2_0,
+						"org.xtext.example.mydsl.MyDsl.OP");
+				}
+			)
+		)
 		(
 			(
 				{
@@ -1722,9 +1774,9 @@ ruleComparableElt returns [EObject current=null]
 	(
 		(
 			(
-				lv_int_0_0=RULE_INT
+				lv_inte_0_0=RULE_INT
 				{
-					newLeafNode(lv_int_0_0, grammarAccess.getComparableEltAccess().getIntINTTerminalRuleCall_0_0());
+					newLeafNode(lv_inte_0_0, grammarAccess.getComparableEltAccess().getInteINTTerminalRuleCall_0_0());
 				}
 				{
 					if ($current==null) {
@@ -1732,8 +1784,8 @@ ruleComparableElt returns [EObject current=null]
 					}
 					setWithLastConsumed(
 						$current,
-						"int",
-						lv_int_0_0,
+						"inte",
+						lv_inte_0_0,
 						"org.eclipse.xtext.common.Terminals.INT");
 				}
 			)
@@ -1780,17 +1832,17 @@ ruleText returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getTextAccess().getVarVariableParserRuleCall_0_0());
+					newCompositeNode(grammarAccess.getTextAccess().getVariVariableParserRuleCall_0_0());
 				}
-				lv_var_0_0=ruleVariable
+				lv_vari_0_0=ruleVariable
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getTextRule());
 					}
 					set(
 						$current,
-						"var",
-						lv_var_0_0,
+						"vari",
+						lv_vari_0_0,
 						"org.xtext.example.mydsl.MyDsl.Variable");
 					afterParserOrEnumRuleCall();
 				}

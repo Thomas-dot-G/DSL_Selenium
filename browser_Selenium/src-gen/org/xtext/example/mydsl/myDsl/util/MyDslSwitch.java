@@ -144,9 +144,6 @@ public class MyDslSwitch<T> extends Switch<T>
         T result = caseVerify(verify);
         if (result == null) result = caseAction(verify);
         if (result == null) result = caseCondition(verify);
-        if (result == null) result = caseWhileLoop(verify);
-        if (result == null) result = caseDoLoop(verify);
-        if (result == null) result = caseLoop(verify);
         if (result == null) result = caseOperation(verify);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -229,10 +226,6 @@ public class MyDslSwitch<T> extends Switch<T>
       {
         Condition condition = (Condition)theEObject;
         T result = caseCondition(condition);
-        if (result == null) result = caseWhileLoop(condition);
-        if (result == null) result = caseDoLoop(condition);
-        if (result == null) result = caseLoop(condition);
-        if (result == null) result = caseOperation(condition);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -270,10 +263,6 @@ public class MyDslSwitch<T> extends Switch<T>
         SimpleOp simpleOp = (SimpleOp)theEObject;
         T result = caseSimpleOp(simpleOp);
         if (result == null) result = caseCondition(simpleOp);
-        if (result == null) result = caseWhileLoop(simpleOp);
-        if (result == null) result = caseDoLoop(simpleOp);
-        if (result == null) result = caseLoop(simpleOp);
-        if (result == null) result = caseOperation(simpleOp);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -297,10 +286,6 @@ public class MyDslSwitch<T> extends Switch<T>
         T result = caseVariable(variable);
         if (result == null) result = caseCondition(variable);
         if (result == null) result = caseEltType(variable);
-        if (result == null) result = caseWhileLoop(variable);
-        if (result == null) result = caseDoLoop(variable);
-        if (result == null) result = caseLoop(variable);
-        if (result == null) result = caseOperation(variable);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }

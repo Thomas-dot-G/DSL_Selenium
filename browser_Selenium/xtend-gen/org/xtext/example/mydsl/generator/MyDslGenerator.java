@@ -13,13 +13,18 @@ import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.xtext.example.mydsl.myDsl.Action;
+import org.xtext.example.mydsl.myDsl.AddCondition;
 import org.xtext.example.mydsl.myDsl.Apply_All;
 import org.xtext.example.mydsl.myDsl.Browser_Task;
 import org.xtext.example.mydsl.myDsl.CallFunction;
 import org.xtext.example.mydsl.myDsl.Click;
+import org.xtext.example.mydsl.myDsl.ComparableElt;
+import org.xtext.example.mydsl.myDsl.Condition;
+import org.xtext.example.mydsl.myDsl.DoLoop;
 import org.xtext.example.mydsl.myDsl.Element;
 import org.xtext.example.mydsl.myDsl.EltType;
 import org.xtext.example.mydsl.myDsl.Fill;
+import org.xtext.example.mydsl.myDsl.ForLoop;
 import org.xtext.example.mydsl.myDsl.Function;
 import org.xtext.example.mydsl.myDsl.Go;
 import org.xtext.example.mydsl.myDsl.If;
@@ -27,11 +32,13 @@ import org.xtext.example.mydsl.myDsl.Loop;
 import org.xtext.example.mydsl.myDsl.Operation;
 import org.xtext.example.mydsl.myDsl.Program;
 import org.xtext.example.mydsl.myDsl.Select;
+import org.xtext.example.mydsl.myDsl.SimpleOp;
 import org.xtext.example.mydsl.myDsl.Store;
 import org.xtext.example.mydsl.myDsl.Tag;
 import org.xtext.example.mydsl.myDsl.Text;
 import org.xtext.example.mydsl.myDsl.Variable;
 import org.xtext.example.mydsl.myDsl.Verify;
+import org.xtext.example.mydsl.myDsl.WhileLoop;
 
 /**
  * Generates code from your model files on save.
@@ -235,6 +242,7 @@ public class MyDslGenerator extends AbstractGenerator {
         EltType _type = _elt.getType();
         CharSequence _genCore = this.genCore(_type);
         _builder.append(_genCore, "");
+        _builder.append(";");
         _builder.newLineIfNotEmpty();
         _builder.append("element_");
         _builder.append(i, "");
@@ -262,6 +270,7 @@ public class MyDslGenerator extends AbstractGenerator {
         EltType _type_1 = _elt_1.getType();
         CharSequence _genCore_1 = this.genCore(_type_1);
         _builder.append(_genCore_1, "        ");
+        _builder.append(";");
         _builder.newLineIfNotEmpty();
         _builder.append("        ");
         _builder.append("element_");
@@ -282,44 +291,49 @@ public class MyDslGenerator extends AbstractGenerator {
     }
     {
       if ((a instanceof Select)) {
-        _builder.append("        \t");
+        _builder.append("        ");
         _builder.append("WebElement element_");
-        _builder.append(i, "        \t");
+        _builder.append(i, "        ");
         _builder.append(" = ");
         Element _elt_2 = ((Select)a).getElt();
         EltType _type_2 = _elt_2.getType();
         CharSequence _genCore_2 = this.genCore(_type_2);
-        _builder.append(_genCore_2, "        \t");
+        _builder.append(_genCore_2, "        ");
+        _builder.append(";");
         _builder.newLineIfNotEmpty();
+        _builder.append("\t\t\t");
         _builder.append("element_");
-        _builder.append(i, "");
+        _builder.append(i, "\t\t\t");
         _builder.append(".click();");
         _builder.newLineIfNotEmpty();
       }
     }
     {
       if ((a instanceof Verify)) {
-        _builder.append("        \t");
+        _builder.append("        ");
         _builder.append("WebElement element_");
-        _builder.append(i, "        \t");
+        _builder.append(i, "        ");
         _builder.append(" = ");
         Element _elt_3 = ((Verify)a).getElt();
         EltType _type_3 = _elt_3.getType();
         CharSequence _genCore_3 = this.genCore(_type_3);
-        _builder.append(_genCore_3, "        \t");
+        _builder.append(_genCore_3, "        ");
+        _builder.append(";");
         _builder.newLineIfNotEmpty();
+        _builder.append("\t\t\t");
         _builder.append("String message_");
-        _builder.append(i, "");
+        _builder.append(i, "\t\t\t");
         _builder.append(" = element_");
-        _builder.append(i, "");
+        _builder.append(i, "\t\t\t");
         _builder.append(".getText();");
         _builder.newLineIfNotEmpty();
+        _builder.append("\t\t\t");
         _builder.append("System.out.println(message_");
-        _builder.append(i, "");
+        _builder.append(i, "\t\t\t");
         _builder.append(".contains(\"");
         Text _find = ((Verify)a).getFind();
         String _name_2 = _find.getName();
-        _builder.append(_name_2, "");
+        _builder.append(_name_2, "\t\t\t");
         _builder.append("\"));");
         _builder.newLineIfNotEmpty();
       }
@@ -339,31 +353,289 @@ public class MyDslGenerator extends AbstractGenerator {
         Text _tag = ((Tag)e).getTag();
         String _name = _tag.getName();
         _builder.append(_name, "");
-        _builder.append("\"));");
+        _builder.append("\"))");
         _builder.newLineIfNotEmpty();
+      } else {
+        {
+          if ((e instanceof Variable)) {
+            String _name_1 = ((Variable)e).getName();
+            _builder.append(_name_1, "");
+            _builder.newLineIfNotEmpty();
+          } else {
+            _builder.append("driver.getCurrentUrl()");
+          }
+        }
       }
     }
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+  
+  public CharSequence genCore(final AddCondition c) {
+    StringConcatenation _builder = new StringConcatenation();
     {
-      if ((e instanceof Variable)) {
-        String _name_1 = ((Variable)e).getName();
-        _builder.append(_name_1, "");
-        _builder.append(";");
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    {
-      boolean _equals = Objects.equal(e, "URL");
+      String _op = c.getOp();
+      boolean _equals = Objects.equal(_op, "And");
       if (_equals) {
-        _builder.append("// TODO URL");
-        _builder.newLine();
+        _builder.append("&& ");
+        Condition _cond = c.getCond();
+        CharSequence _genCore = this.genCore(_cond);
+        _builder.append(_genCore, "");
+        _builder.append(" ");
+      }
+    }
+    _builder.newLineIfNotEmpty();
+    {
+      String _op_1 = c.getOp();
+      boolean _equals_1 = Objects.equal(_op_1, "Or");
+      if (_equals_1) {
+        _builder.append("|| ");
+        Condition _cond_1 = c.getCond();
+        CharSequence _genCore_1 = this.genCore(_cond_1);
+        _builder.append(_genCore_1, "");
+        _builder.append(" ");
+      }
+    }
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+  
+  public CharSequence genCore(final Condition c) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      if ((c instanceof Variable)) {
+        String _name = ((Variable)c).getName();
+        _builder.append(_name, "");
+      }
+    }
+    _builder.newLineIfNotEmpty();
+    {
+      if ((c instanceof Verify)) {
+        _builder.append("(");
+        Element _elt = ((Verify)c).getElt();
+        EltType _type = _elt.getType();
+        CharSequence _genCore = this.genCore(_type);
+        _builder.append(_genCore, "");
+        {
+          boolean _or = false;
+          Element _elt_1 = ((Verify)c).getElt();
+          EltType _type_1 = _elt_1.getType();
+          if ((_type_1 instanceof Tag)) {
+            _or = true;
+          } else {
+            Element _elt_2 = ((Verify)c).getElt();
+            EltType _type_2 = _elt_2.getType();
+            _or = (_type_2 instanceof Variable);
+          }
+          if (_or) {
+            _builder.append(".getText()");
+          }
+        }
+        _builder.append(".contains(\"");
+        Text _find = ((Verify)c).getFind();
+        String _name_1 = _find.getName();
+        _builder.append(_name_1, "");
+        _builder.append("\"))");
+      }
+    }
+    _builder.newLineIfNotEmpty();
+    {
+      if ((c instanceof SimpleOp)) {
+        _builder.append("(");
+        ComparableElt _elt1 = ((SimpleOp)c).getElt1();
+        CharSequence _genCore_1 = this.genCore(_elt1);
+        _builder.append(_genCore_1, "");
+        String _op = ((SimpleOp)c).getOp();
+        _builder.append(_op, "");
+        ComparableElt _elt2 = ((SimpleOp)c).getElt2();
+        CharSequence _genCore_2 = this.genCore(_elt2);
+        _builder.append(_genCore_2, "");
+        _builder.append(")");
+      }
+    }
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+  
+  public CharSequence genCore(final ComparableElt e) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      Text _text = e.getText();
+      boolean _notEquals = (!Objects.equal(_text, null));
+      if (_notEquals) {
+        Text _text_1 = e.getText();
+        CharSequence _genText = this.genText(_text_1);
+        _builder.append(_genText, "");
+      } else {
+        int _inte = e.getInte();
+        _builder.append(_inte, "");
       }
     }
     return _builder;
   }
   
-  public CharSequence genCore(final Loop a) {
+  public CharSequence genText(final Text t) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.newLine();
+    {
+      Variable _vari = t.getVari();
+      boolean _notEquals = (!Objects.equal(_vari, null));
+      if (_notEquals) {
+        Variable _vari_1 = t.getVari();
+        String _name = _vari_1.getName();
+        _builder.append(_name, "");
+      }
+    }
+    _builder.newLineIfNotEmpty();
+    {
+      String _name_1 = t.getName();
+      boolean _notEquals_1 = (!Objects.equal(_name_1, null));
+      if (_notEquals_1) {
+        String _name_2 = t.getName();
+        _builder.append(_name_2, "");
+      }
+    }
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+  
+  public CharSequence genActions(final Loop l) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      EList<Operation> _operations = l.getOperations();
+      for(final Operation e : _operations) {
+        {
+          if ((e instanceof Action)) {
+            EList<Operation> _operations_1 = l.getOperations();
+            int _indexOf = _operations_1.indexOf(e);
+            CharSequence _genCore = this.genCore(((Action)e), _indexOf);
+            _builder.append(_genCore, "");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+        {
+          if ((e instanceof Loop)) {
+            Object _genCore_1 = this.genCore(((Loop)e));
+            _builder.append(_genCore_1, "");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+        {
+          if ((e instanceof Apply_All)) {
+            _builder.append("//Apply_All applyall");
+            EList<Operation> _operations_2 = l.getOperations();
+            int _indexOf_1 = _operations_2.indexOf(e);
+            _builder.append(_indexOf_1, "");
+            _builder.append(" = new Apply_All();");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+        {
+          if ((e instanceof If)) {
+            _builder.append("//If if");
+            EList<Operation> _operations_3 = l.getOperations();
+            int _indexOf_2 = _operations_3.indexOf(e);
+            _builder.append(_indexOf_2, "");
+            _builder.append(" = new If();");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+        {
+          if ((e instanceof Store)) {
+            _builder.append("//Store store");
+            EList<Operation> _operations_4 = l.getOperations();
+            int _indexOf_3 = _operations_4.indexOf(e);
+            _builder.append(_indexOf_3, "");
+            _builder.append(" = new Store();");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+        {
+          if ((e instanceof CallFunction)) {
+            _builder.append("//CallFunction callfunc");
+            EList<Operation> _operations_5 = l.getOperations();
+            int _indexOf_4 = _operations_5.indexOf(e);
+            _builder.append(_indexOf_4, "");
+            _builder.append(" = new CallFunction();");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+      }
+    }
+    return _builder;
+  }
+  
+  public CharSequence genCore(final Loop l) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      if ((l instanceof ForLoop)) {
+        _builder.append("for(int i=");
+        int _start = ((ForLoop)l).getStart();
+        _builder.append(_start, "");
+        _builder.append("; i<");
+        int _end = ((ForLoop)l).getEnd();
+        _builder.append(_end, "");
+        _builder.append("; i=i+");
+        int _step = ((ForLoop)l).getStep();
+        _builder.append(_step, "");
+        _builder.append("){");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        CharSequence _genActions = this.genActions(l);
+        _builder.append(_genActions, "\t");
+        _builder.newLineIfNotEmpty();
+        _builder.append("}");
+        _builder.newLine();
+      }
+    }
+    {
+      if ((l instanceof WhileLoop)) {
+        _builder.append("while(");
+        Condition _c = ((WhileLoop)l).getC();
+        CharSequence _genCore = this.genCore(_c);
+        _builder.append(_genCore, "");
+        {
+          EList<AddCondition> _add = ((WhileLoop)l).getAdd();
+          for(final AddCondition c : _add) {
+            CharSequence _genCore_1 = this.genCore(c);
+            _builder.append(_genCore_1, "");
+          }
+        }
+        _builder.append("){");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        CharSequence _genActions_1 = this.genActions(l);
+        _builder.append(_genActions_1, "\t");
+        _builder.newLineIfNotEmpty();
+        _builder.append("}");
+        _builder.newLine();
+      }
+    }
+    {
+      if ((l instanceof DoLoop)) {
+        CharSequence _genActions_2 = this.genActions(l);
+        _builder.append(_genActions_2, "");
+        _builder.newLineIfNotEmpty();
+        _builder.append("while(");
+        Condition _c_1 = ((DoLoop)l).getC();
+        CharSequence _genCore_2 = this.genCore(_c_1);
+        _builder.append(_genCore_2, "");
+        {
+          EList<AddCondition> _add_1 = ((DoLoop)l).getAdd();
+          for(final AddCondition c_1 : _add_1) {
+            CharSequence _genCore_3 = this.genCore(c_1);
+            _builder.append(_genCore_3, "");
+          }
+        }
+        _builder.append("){");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        CharSequence _genActions_3 = this.genActions(l);
+        _builder.append(_genActions_3, "\t");
+        _builder.newLineIfNotEmpty();
+        _builder.append("}");
+        _builder.newLine();
+      }
+    }
     _builder.append("\t");
     _builder.newLine();
     return _builder;

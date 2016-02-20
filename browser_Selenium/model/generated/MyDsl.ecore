@@ -67,23 +67,30 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="operations" upperBound="-1"
         eType="#//Operation" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Loop" eSuperTypes="#//Operation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Loop" eSuperTypes="#//Operation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="operations" upperBound="-1"
+        eType="#//Operation" containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ForLoop" eSuperTypes="#//Loop">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="start" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="end" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="step" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="operations" upperBound="-1"
-        eType="#//Operation" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="WhileLoop" eSuperTypes="#//Loop"/>
-  <eClassifiers xsi:type="ecore:EClass" name="DoLoop" eSuperTypes="#//Loop"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Condition" eSuperTypes="#//WhileLoop #//DoLoop">
+  <eClassifiers xsi:type="ecore:EClass" name="WhileLoop" eSuperTypes="#//Loop">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="c" eType="#//Condition"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="add" upperBound="-1" eType="#//AddCondition"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="operations" upperBound="-1"
-        eType="#//Operation" containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DoLoop" eSuperTypes="#//Loop">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="c" eType="#//Condition"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="add" upperBound="-1" eType="#//AddCondition"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Condition"/>
   <eClassifiers xsi:type="ecore:EClass" name="AddCondition">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="op" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="cond" eType="#//Condition"
         containment="true"/>
   </eClassifiers>
@@ -99,15 +106,16 @@
   <eClassifiers xsi:type="ecore:EClass" name="SimpleOp" eSuperTypes="#//Condition">
     <eStructuralFeatures xsi:type="ecore:EReference" name="elt1" eType="#//ComparableElt"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="op" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="elt2" eType="#//ComparableElt"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ComparableElt">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="int" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="inte" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="text" eType="#//Text" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Text">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="var" eType="#//Variable"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="vari" eType="#//Variable"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>

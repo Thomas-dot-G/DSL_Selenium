@@ -3,59 +3,22 @@
  */
 package org.xtext.example.mydsl.myDsl.impl;
 
-import java.util.Collection;
-
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.xtext.example.mydsl.myDsl.AddCondition;
 import org.xtext.example.mydsl.myDsl.Condition;
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
-import org.xtext.example.mydsl.myDsl.Operation;
 
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Condition</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * The following features are implemented:
- * </p>
- * <ul>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.ConditionImpl#getAdd <em>Add</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.ConditionImpl#getOperations <em>Operations</em>}</li>
- * </ul>
  *
  * @generated
  */
-public class ConditionImpl extends WhileLoopImpl implements Condition
+public class ConditionImpl extends MinimalEObjectImpl.Container implements Condition
 {
-  /**
-   * The cached value of the '{@link #getAdd() <em>Add</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getAdd()
-   * @generated
-   * @ordered
-   */
-  protected EList<AddCondition> add;
-
-  /**
-   * The cached value of the '{@link #getOperations() <em>Operations</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getOperations()
-   * @generated
-   * @ordered
-   */
-  protected EList<Operation> operations;
-
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -75,131 +38,6 @@ public class ConditionImpl extends WhileLoopImpl implements Condition
   protected EClass eStaticClass()
   {
     return MyDslPackage.Literals.CONDITION;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<AddCondition> getAdd()
-  {
-    if (add == null)
-    {
-      add = new EObjectContainmentEList<AddCondition>(AddCondition.class, this, MyDslPackage.CONDITION__ADD);
-    }
-    return add;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<Operation> getOperations()
-  {
-    if (operations == null)
-    {
-      operations = new EObjectContainmentEList<Operation>(Operation.class, this, MyDslPackage.CONDITION__OPERATIONS);
-    }
-    return operations;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case MyDslPackage.CONDITION__ADD:
-        return ((InternalEList<?>)getAdd()).basicRemove(otherEnd, msgs);
-      case MyDslPackage.CONDITION__OPERATIONS:
-        return ((InternalEList<?>)getOperations()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Object eGet(int featureID, boolean resolve, boolean coreType)
-  {
-    switch (featureID)
-    {
-      case MyDslPackage.CONDITION__ADD:
-        return getAdd();
-      case MyDslPackage.CONDITION__OPERATIONS:
-        return getOperations();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @SuppressWarnings("unchecked")
-  @Override
-  public void eSet(int featureID, Object newValue)
-  {
-    switch (featureID)
-    {
-      case MyDslPackage.CONDITION__ADD:
-        getAdd().clear();
-        getAdd().addAll((Collection<? extends AddCondition>)newValue);
-        return;
-      case MyDslPackage.CONDITION__OPERATIONS:
-        getOperations().clear();
-        getOperations().addAll((Collection<? extends Operation>)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void eUnset(int featureID)
-  {
-    switch (featureID)
-    {
-      case MyDslPackage.CONDITION__ADD:
-        getAdd().clear();
-        return;
-      case MyDslPackage.CONDITION__OPERATIONS:
-        getOperations().clear();
-        return;
-    }
-    super.eUnset(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public boolean eIsSet(int featureID)
-  {
-    switch (featureID)
-    {
-      case MyDslPackage.CONDITION__ADD:
-        return add != null && !add.isEmpty();
-      case MyDslPackage.CONDITION__OPERATIONS:
-        return operations != null && !operations.isEmpty();
-    }
-    return super.eIsSet(featureID);
   }
 
 } //ConditionImpl

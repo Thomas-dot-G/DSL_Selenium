@@ -685,6 +685,16 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getLoop_Operations()
+  {
+    return (EReference)loopEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getForLoop()
   {
     return forLoopEClass;
@@ -725,9 +735,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getForLoop_Operations()
+  public EClass getWhileLoop()
   {
-    return (EReference)forLoopEClass.getEStructuralFeatures().get(3);
+    return whileLoopEClass;
   }
 
   /**
@@ -735,9 +745,19 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getWhileLoop()
+  public EReference getWhileLoop_C()
   {
-    return whileLoopEClass;
+    return (EReference)whileLoopEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getWhileLoop_Add()
+  {
+    return (EReference)whileLoopEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -755,29 +775,29 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getDoLoop_C()
+  {
+    return (EReference)doLoopEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getDoLoop_Add()
+  {
+    return (EReference)doLoopEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getCondition()
   {
     return conditionEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getCondition_Add()
-  {
-    return (EReference)conditionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getCondition_Operations()
-  {
-    return (EReference)conditionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -795,9 +815,19 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getAddCondition_Op()
+  {
+    return (EAttribute)addConditionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EReference getAddCondition_Cond()
   {
-    return (EReference)addConditionEClass.getEStructuralFeatures().get(0);
+    return (EReference)addConditionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -885,9 +915,19 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getSimpleOp_Op()
+  {
+    return (EAttribute)simpleOpEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EReference getSimpleOp_Elt2()
   {
-    return (EReference)simpleOpEClass.getEStructuralFeatures().get(1);
+    return (EReference)simpleOpEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -905,7 +945,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getComparableElt_Int()
+  public EAttribute getComparableElt_Inte()
   {
     return (EAttribute)comparableEltEClass.getEStructuralFeatures().get(0);
   }
@@ -935,7 +975,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getText_Var()
+  public EReference getText_Vari()
   {
     return (EReference)textEClass.getEStructuralFeatures().get(0);
   }
@@ -1052,22 +1092,25 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     createEReference(functionEClass, FUNCTION__OPERATIONS);
 
     loopEClass = createEClass(LOOP);
+    createEReference(loopEClass, LOOP__OPERATIONS);
 
     forLoopEClass = createEClass(FOR_LOOP);
     createEAttribute(forLoopEClass, FOR_LOOP__START);
     createEAttribute(forLoopEClass, FOR_LOOP__END);
     createEAttribute(forLoopEClass, FOR_LOOP__STEP);
-    createEReference(forLoopEClass, FOR_LOOP__OPERATIONS);
 
     whileLoopEClass = createEClass(WHILE_LOOP);
+    createEReference(whileLoopEClass, WHILE_LOOP__C);
+    createEReference(whileLoopEClass, WHILE_LOOP__ADD);
 
     doLoopEClass = createEClass(DO_LOOP);
+    createEReference(doLoopEClass, DO_LOOP__C);
+    createEReference(doLoopEClass, DO_LOOP__ADD);
 
     conditionEClass = createEClass(CONDITION);
-    createEReference(conditionEClass, CONDITION__ADD);
-    createEReference(conditionEClass, CONDITION__OPERATIONS);
 
     addConditionEClass = createEClass(ADD_CONDITION);
+    createEAttribute(addConditionEClass, ADD_CONDITION__OP);
     createEReference(addConditionEClass, ADD_CONDITION__COND);
 
     elementEClass = createEClass(ELEMENT);
@@ -1081,14 +1124,15 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
 
     simpleOpEClass = createEClass(SIMPLE_OP);
     createEReference(simpleOpEClass, SIMPLE_OP__ELT1);
+    createEAttribute(simpleOpEClass, SIMPLE_OP__OP);
     createEReference(simpleOpEClass, SIMPLE_OP__ELT2);
 
     comparableEltEClass = createEClass(COMPARABLE_ELT);
-    createEAttribute(comparableEltEClass, COMPARABLE_ELT__INT);
+    createEAttribute(comparableEltEClass, COMPARABLE_ELT__INTE);
     createEReference(comparableEltEClass, COMPARABLE_ELT__TEXT);
 
     textEClass = createEClass(TEXT);
-    createEReference(textEClass, TEXT__VAR);
+    createEReference(textEClass, TEXT__VARI);
     createEAttribute(textEClass, TEXT__NAME);
 
     variableEClass = createEClass(VARIABLE);
@@ -1139,8 +1183,6 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     forLoopEClass.getESuperTypes().add(this.getLoop());
     whileLoopEClass.getESuperTypes().add(this.getLoop());
     doLoopEClass.getESuperTypes().add(this.getLoop());
-    conditionEClass.getESuperTypes().add(this.getWhileLoop());
-    conditionEClass.getESuperTypes().add(this.getDoLoop());
     tagEClass.getESuperTypes().add(this.getEltType());
     simpleOpEClass.getESuperTypes().add(this.getCondition());
     variableEClass.getESuperTypes().add(this.getCondition());
@@ -1199,22 +1241,25 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     initEReference(getFunction_Operations(), this.getOperation(), null, "operations", null, 0, -1, Function.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(loopEClass, Loop.class, "Loop", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getLoop_Operations(), this.getOperation(), null, "operations", null, 0, -1, Loop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(forLoopEClass, ForLoop.class, "ForLoop", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getForLoop_Start(), ecorePackage.getEInt(), "start", null, 0, 1, ForLoop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getForLoop_End(), ecorePackage.getEInt(), "end", null, 0, 1, ForLoop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getForLoop_Step(), ecorePackage.getEInt(), "step", null, 0, 1, ForLoop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getForLoop_Operations(), this.getOperation(), null, "operations", null, 0, -1, ForLoop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(whileLoopEClass, WhileLoop.class, "WhileLoop", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getWhileLoop_C(), this.getCondition(), null, "c", null, 0, 1, WhileLoop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getWhileLoop_Add(), this.getAddCondition(), null, "add", null, 0, -1, WhileLoop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(doLoopEClass, DoLoop.class, "DoLoop", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getDoLoop_C(), this.getCondition(), null, "c", null, 0, 1, DoLoop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDoLoop_Add(), this.getAddCondition(), null, "add", null, 0, -1, DoLoop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(conditionEClass, Condition.class, "Condition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getCondition_Add(), this.getAddCondition(), null, "add", null, 0, -1, Condition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getCondition_Operations(), this.getOperation(), null, "operations", null, 0, -1, Condition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(addConditionEClass, AddCondition.class, "AddCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getAddCondition_Op(), ecorePackage.getEString(), "op", null, 0, 1, AddCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAddCondition_Cond(), this.getCondition(), null, "cond", null, 0, 1, AddCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(elementEClass, Element.class, "Element", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1228,14 +1273,15 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
 
     initEClass(simpleOpEClass, SimpleOp.class, "SimpleOp", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getSimpleOp_Elt1(), this.getComparableElt(), null, "elt1", null, 0, 1, SimpleOp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getSimpleOp_Op(), ecorePackage.getEString(), "op", null, 0, 1, SimpleOp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSimpleOp_Elt2(), this.getComparableElt(), null, "elt2", null, 0, 1, SimpleOp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(comparableEltEClass, ComparableElt.class, "ComparableElt", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getComparableElt_Int(), ecorePackage.getEInt(), "int", null, 0, 1, ComparableElt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getComparableElt_Inte(), ecorePackage.getEInt(), "inte", null, 0, 1, ComparableElt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getComparableElt_Text(), this.getText(), null, "text", null, 0, 1, ComparableElt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(textEClass, Text.class, "Text", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getText_Var(), this.getVariable(), null, "var", null, 0, 1, Text.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getText_Vari(), this.getVariable(), null, "vari", null, 0, 1, Text.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getText_Name(), ecorePackage.getEString(), "name", null, 0, 1, Text.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(variableEClass, Variable.class, "Variable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

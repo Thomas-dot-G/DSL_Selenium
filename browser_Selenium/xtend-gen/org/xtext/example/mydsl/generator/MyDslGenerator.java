@@ -26,6 +26,7 @@ import org.xtext.example.mydsl.myDsl.Elements;
 import org.xtext.example.mydsl.myDsl.EltType;
 import org.xtext.example.mydsl.myDsl.Fill;
 import org.xtext.example.mydsl.myDsl.ForLoop;
+import org.xtext.example.mydsl.myDsl.FuncVar;
 import org.xtext.example.mydsl.myDsl.Function;
 import org.xtext.example.mydsl.myDsl.Go;
 import org.xtext.example.mydsl.myDsl.If;
@@ -35,8 +36,10 @@ import org.xtext.example.mydsl.myDsl.Program;
 import org.xtext.example.mydsl.myDsl.Select;
 import org.xtext.example.mydsl.myDsl.SimpleOp;
 import org.xtext.example.mydsl.myDsl.Store;
+import org.xtext.example.mydsl.myDsl.StringType;
 import org.xtext.example.mydsl.myDsl.Tag;
 import org.xtext.example.mydsl.myDsl.Text;
+import org.xtext.example.mydsl.myDsl.Type;
 import org.xtext.example.mydsl.myDsl.Variable;
 import org.xtext.example.mydsl.myDsl.Verify;
 import org.xtext.example.mydsl.myDsl.WhileLoop;
@@ -71,53 +74,93 @@ public class MyDslGenerator extends AbstractGenerator {
     _builder.append("import java.util.List;");
     _builder.newLine();
     _builder.newLine();
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("public class TestInternal {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
     {
       EList<Function> _func = p.getFunc();
       for(final Function e : _func) {
-        _builder.append("public void ");
+        _builder.append("\t");
+        _builder.append("public static void ");
         String _name = e.getName();
-        _builder.append(_name, "");
-        _builder.append("(){");
+        _builder.append(_name, "\t");
+        _builder.append("(");
         _builder.newLineIfNotEmpty();
-        _builder.append("//func");
-        EList<Function> _func_1 = p.getFunc();
-        int _indexOf = _func_1.indexOf(e);
-        _builder.append(_indexOf, "");
-        _builder.append(".setName(\"");
-        String _name_1 = e.getName();
-        _builder.append(_name_1, "");
-        _builder.append("\");");
+        {
+          EList<FuncVar> _vars = e.getVars();
+          for(final FuncVar v : _vars) {
+            _builder.append("\t");
+            {
+              EList<FuncVar> _vars_1 = e.getVars();
+              int _indexOf = _vars_1.indexOf(v);
+              boolean _greaterThan = (_indexOf > 0);
+              if (_greaterThan) {
+                _builder.append(",");
+              }
+            }
+            _builder.newLineIfNotEmpty();
+            {
+              StringType _type = v.getType();
+              String _elt = _type.getElt();
+              boolean _notEquals = (!Objects.equal(_elt, null));
+              if (_notEquals) {
+                _builder.append("\t");
+                _builder.append("WebElement ");
+                String _name_1 = v.getName();
+                _builder.append(_name_1, "\t");
+                _builder.newLineIfNotEmpty();
+              } else {
+                {
+                  StringType _type_1 = v.getType();
+                  String _elts = _type_1.getElts();
+                  boolean _notEquals_1 = (!Objects.equal(_elts, null));
+                  if (_notEquals_1) {
+                    _builder.append("List<WebElement> ");
+                    String _name_2 = v.getName();
+                    _builder.append(_name_2, "");
+                    _builder.newLineIfNotEmpty();
+                  } else {
+                    {
+                      StringType _type_2 = v.getType();
+                      String _cond = _type_2.getCond();
+                      boolean _notEquals_2 = (!Objects.equal(_cond, null));
+                      if (_notEquals_2) {
+                        _builder.append("Boolean ");
+                        String _name_3 = v.getName();
+                        _builder.append(_name_3, "");
+                        _builder.newLineIfNotEmpty();
+                      } else {
+                        _builder.append("String ");
+                        String _name_4 = v.getName();
+                        _builder.append(_name_4, "");
+                        _builder.newLineIfNotEmpty();
+                      }
+                    }
+                  }
+                }
+              }
+            }
+            _builder.append("\t\t\t\t    \t");
+          }
+        }
+        _builder.append("){");
         _builder.newLineIfNotEmpty();
-        _builder.append("//func");
-        EList<Function> _func_2 = p.getFunc();
-        int _indexOf_1 = _func_2.indexOf(e);
-        _builder.append(_indexOf_1, "");
-        _builder.append(".setVars(");
-        EList<Variable> _vars = e.getVars();
-        _builder.append(_vars, "");
-        _builder.append(");");
-        _builder.newLineIfNotEmpty();
-        _builder.append("//func");
-        EList<Function> _func_3 = p.getFunc();
-        int _indexOf_2 = _func_3.indexOf(e);
-        _builder.append(_indexOf_2, "");
-        _builder.append(".setOperations(");
+        _builder.append("\t\t\t\t    \t\t");
         EList<Operation> _operations = e.getOperations();
-        _builder.append(_operations, "");
-        _builder.append(");");
+        CharSequence _genOperations = this.genOperations(_operations);
+        _builder.append(_genOperations, "\t\t\t\t    \t\t");
         _builder.newLineIfNotEmpty();
-        _builder.append("//program.addFunction(func");
-        EList<Function> _func_4 = p.getFunc();
-        int _indexOf_3 = _func_4.indexOf(e);
-        _builder.append(_indexOf_3, "");
-        _builder.append(");");
-        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
         _builder.append("}");
         _builder.newLine();
       }
     }
+    _builder.append("\t");
     _builder.newLine();
-    _builder.append("public class TestInternal {");
+    _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("public static void main(String[] args) {");
@@ -499,8 +542,10 @@ public class MyDslGenerator extends AbstractGenerator {
       String _name_1 = t.getName();
       boolean _notEquals_1 = (!Objects.equal(_name_1, null));
       if (_notEquals_1) {
+        _builder.append("\"");
         String _name_2 = t.getName();
         _builder.append(_name_2, "");
+        _builder.append("\"");
       }
     }
     _builder.newLineIfNotEmpty();
@@ -574,7 +619,8 @@ public class MyDslGenerator extends AbstractGenerator {
     {
       if ((e instanceof Store)) {
         {
-          Element _elt_2 = ((Store)e).getElt();
+          Type _t = ((Store)e).getT();
+          Element _elt_2 = _t.getElt();
           boolean _notEquals = (!Objects.equal(_elt_2, null));
           if (_notEquals) {
             _builder.append("    \t");
@@ -582,7 +628,8 @@ public class MyDslGenerator extends AbstractGenerator {
             String _vari = ((Store)e).getVari();
             _builder.append(_vari, "    \t");
             _builder.append(" = ");
-            Element _elt_3 = ((Store)e).getElt();
+            Type _t_1 = ((Store)e).getT();
+            Element _elt_3 = _t_1.getElt();
             EltType _type_1 = _elt_3.getType();
             CharSequence _genCore_2 = this.genCore(_type_1);
             _builder.append(_genCore_2, "    \t");
@@ -590,7 +637,8 @@ public class MyDslGenerator extends AbstractGenerator {
             _builder.newLineIfNotEmpty();
           } else {
             {
-              Elements _elts = ((Store)e).getElts();
+              Type _t_2 = ((Store)e).getT();
+              Elements _elts = _t_2.getElts();
               boolean _notEquals_1 = (!Objects.equal(_elts, null));
               if (_notEquals_1) {
                 _builder.append("    \t");
@@ -598,7 +646,8 @@ public class MyDslGenerator extends AbstractGenerator {
                 String _vari_1 = ((Store)e).getVari();
                 _builder.append(_vari_1, "    \t");
                 _builder.append(" = ");
-                Elements _elts_1 = ((Store)e).getElts();
+                Type _t_3 = ((Store)e).getT();
+                Elements _elts_1 = _t_3.getElts();
                 EltType _type_2 = _elts_1.getType();
                 CharSequence _genCores_1 = this.genCores(_type_2);
                 _builder.append(_genCores_1, "    \t");
@@ -606,14 +655,16 @@ public class MyDslGenerator extends AbstractGenerator {
                 _builder.newLineIfNotEmpty();
               } else {
                 {
-                  Condition _cond = ((Store)e).getCond();
+                  Type _t_4 = ((Store)e).getT();
+                  Condition _cond = _t_4.getCond();
                   boolean _notEquals_2 = (!Objects.equal(_cond, null));
                   if (_notEquals_2) {
                     _builder.append("Boolean ");
                     String _vari_2 = ((Store)e).getVari();
                     _builder.append(_vari_2, "");
                     _builder.append(" = ");
-                    Condition _cond_1 = ((Store)e).getCond();
+                    Type _t_5 = ((Store)e).getT();
+                    Condition _cond_1 = _t_5.getCond();
                     CharSequence _genCore_3 = this.genCore(_cond_1);
                     _builder.append(_genCore_3, "");
                     _builder.append(";");
@@ -623,7 +674,8 @@ public class MyDslGenerator extends AbstractGenerator {
                     String _vari_3 = ((Store)e).getVari();
                     _builder.append(_vari_3, "");
                     _builder.append(" = ");
-                    Text _text = ((Store)e).getText();
+                    Type _t_6 = ((Store)e).getT();
+                    Text _text = _t_6.getText();
                     _builder.append(_text, "");
                     _builder.append(";");
                     _builder.newLineIfNotEmpty();
@@ -637,6 +689,20 @@ public class MyDslGenerator extends AbstractGenerator {
     }
     {
       if ((e instanceof CallFunction)) {
+        _builder.append("    \t");
+        _builder.append("TestInternal.");
+        String _name = ((CallFunction)e).getName();
+        _builder.append(_name, "    \t");
+        _builder.append("(");
+        {
+          EList<Variable> _vars = ((CallFunction)e).getVars();
+          for(final Variable v : _vars) {
+            String _name_1 = v.getName();
+            _builder.append(_name_1, "    \t");
+          }
+        }
+        _builder.append(");");
+        _builder.newLineIfNotEmpty();
       }
     }
     return _builder;

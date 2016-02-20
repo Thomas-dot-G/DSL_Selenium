@@ -1,0 +1,11 @@
+Selenium { Browser "Firefox" 
+Go "http://campus.mines-nantes.fr" 
+Click Element {id "connexion"}
+Click Element {id "Cliquez ici ou sur le logo C'zam pour vous identifier"}
+Fill ( Element {id "username"} , "mtisi08" )
+Fill ( Element {id "password"} , "12345"  )
+Select Element {id "warn"}
+Click Element {id "Connexion"}
+Go "https://campusneo.mines-nantes.fr/campus/course/view.php?id=1571"
+Verify ( Element {name "Consulter le profil"} , "Massimo Tisi" )
+}

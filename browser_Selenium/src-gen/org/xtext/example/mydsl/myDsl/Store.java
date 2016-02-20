@@ -14,10 +14,7 @@ package org.xtext.example.mydsl.myDsl;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.mydsl.myDsl.Store#getVari <em>Vari</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.Store#getText <em>Text</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.Store#getElts <em>Elts</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.Store#getElt <em>Elt</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.Store#getCond <em>Cond</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.Store#getT <em>T</em>}</li>
  * </ul>
  *
  * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getStore()
@@ -53,107 +50,29 @@ public interface Store extends Operation
   void setVari(String value);
 
   /**
-   * Returns the value of the '<em><b>Text</b></em>' containment reference.
+   * Returns the value of the '<em><b>T</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Text</em>' containment reference isn't clear,
+   * If the meaning of the '<em>T</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Text</em>' containment reference.
-   * @see #setText(Text)
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getStore_Text()
+   * @return the value of the '<em>T</em>' containment reference.
+   * @see #setT(Type)
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getStore_T()
    * @model containment="true"
    * @generated
    */
-  Text getText();
+  Type getT();
 
   /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.Store#getText <em>Text</em>}' containment reference.
+   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.Store#getT <em>T</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Text</em>' containment reference.
-   * @see #getText()
+   * @param value the new value of the '<em>T</em>' containment reference.
+   * @see #getT()
    * @generated
    */
-  void setText(Text value);
-
-  /**
-   * Returns the value of the '<em><b>Elts</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Elts</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Elts</em>' containment reference.
-   * @see #setElts(Elements)
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getStore_Elts()
-   * @model containment="true"
-   * @generated
-   */
-  Elements getElts();
-
-  /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.Store#getElts <em>Elts</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Elts</em>' containment reference.
-   * @see #getElts()
-   * @generated
-   */
-  void setElts(Elements value);
-
-  /**
-   * Returns the value of the '<em><b>Elt</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Elt</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Elt</em>' containment reference.
-   * @see #setElt(Element)
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getStore_Elt()
-   * @model containment="true"
-   * @generated
-   */
-  Element getElt();
-
-  /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.Store#getElt <em>Elt</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Elt</em>' containment reference.
-   * @see #getElt()
-   * @generated
-   */
-  void setElt(Element value);
-
-  /**
-   * Returns the value of the '<em><b>Cond</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Cond</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Cond</em>' containment reference.
-   * @see #setCond(Condition)
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getStore_Cond()
-   * @model containment="true"
-   * @generated
-   */
-  Condition getCond();
-
-  /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.Store#getCond <em>Cond</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Cond</em>' containment reference.
-   * @see #getCond()
-   * @generated
-   */
-  void setCond(Condition value);
+  void setT(Type value);
 
 } // Store

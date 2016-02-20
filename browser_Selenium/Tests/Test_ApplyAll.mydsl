@@ -1,4 +1,4 @@
 Selenium {
 	Browser "Firefox"
-	Apply_All (Element {tagName "checkbox"}, Select Element {name "warn"})
+	Apply_All (Elements {tagName "checkbox"}, Select Element {name "warn"})
 }

@@ -56,16 +56,33 @@ var program = resource.contents.head as Program
 		import org.openqa.selenium.By;
 		import java.util.List;
 
-		«FOR e : p.func»
-			public void «e.name»(){
-			//func«p.func.indexOf(e)».setName("«e.name»");
-			//func«p.func.indexOf(e)».setVars(«e.vars»);
-			//func«p.func.indexOf(e)».setOperations(«e.operations»);
-			//program.addFunction(func«p.func.indexOf(e)»);
-			}
-        «ENDFOR»
+		
 
 		public class TestInternal {
+			
+			«FOR e : p.func»
+						public static void «e.name»(
+						«FOR v : e.vars»
+							«IF e.vars.indexOf(v)>0»,«ENDIF»
+							«IF v.type.elt != null»
+							WebElement «v.name»
+				    		«ELSE»
+				    			«IF v.type.elts != null»
+				    			List<WebElement> «v.name»
+				    			«ELSE»
+				    				«IF v.type.cond != null»
+				    				Boolean «v.name»
+				    			    «ELSE»
+				    				String «v.name»
+				    			    «ENDIF»
+				    			«ENDIF»
+				    		«ENDIF»
+				    	«ENDFOR»){
+				    		«e.operations.genOperations»
+						}
+			        «ENDFOR»
+			
+			
 			public static void main(String[] args) {
 		
 				System.out.println("Start building the program");
@@ -151,7 +168,7 @@ var program = resource.contents.head as Program
 	
 	def genText (Text t) '''
 		«IF t.vari != null »«t.vari.name»«ENDIF»
-		«IF t.name != null »«t.name»«ENDIF»
+		«IF t.name != null »"«t.name»"«ENDIF»
 	'''
 
 	def genOperations(EList<Operation> operations)'''
@@ -178,21 +195,22 @@ var program = resource.contents.head as Program
     	     «e.genCore»
     	«ENDIF»
     	«IF e instanceof Store»
-    		«IF e.elt != null»
-    			WebElement «e.vari» = «e.elt.type.genCore»;
+    		«IF e.t.elt != null»
+    			WebElement «e.vari» = «e.t.elt.type.genCore»;
     		«ELSE»
-    			«IF e.elts != null»
-    			   	List<WebElement> «e.vari» = «e.elts.type.genCores»;
+    			«IF e.t.elts != null»
+    			   	List<WebElement> «e.vari» = «e.t.elts.type.genCores»;
     			«ELSE»
-    				«IF e.cond != null»
-    			    	Boolean «e.vari» = «e.cond.genCore»;
+    				«IF e.t.cond != null»
+    			    	Boolean «e.vari» = «e.t.cond.genCore»;
     			    «ELSE»
-    			    	String «e.vari» = «e.text»;
+    			    	String «e.vari» = «e.t.text»;
     			    «ENDIF»
     			«ENDIF»
     		«ENDIF»
     	«ENDIF»
     	«IF e instanceof CallFunction»
+    		TestInternal.«e.name»(«FOR v : e.vars»«v.name»«ENDFOR»);
     	«ENDIF»
 	'''
 

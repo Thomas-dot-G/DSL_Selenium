@@ -78,6 +78,9 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
       case MyDslPackage.IF: return createIf();
       case MyDslPackage.STORE: return createStore();
       case MyDslPackage.CALL_FUNCTION: return createCallFunction();
+      case MyDslPackage.TYPE: return createType();
+      case MyDslPackage.STRING_TYPE: return createStringType();
+      case MyDslPackage.FUNC_VAR: return createFuncVar();
       case MyDslPackage.FUNCTION: return createFunction();
       case MyDslPackage.LOOP: return createLoop();
       case MyDslPackage.FOR_LOOP: return createForLoop();
@@ -239,6 +242,39 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
   {
     CallFunctionImpl callFunction = new CallFunctionImpl();
     return callFunction;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Type createType()
+  {
+    TypeImpl type = new TypeImpl();
+    return type;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public StringType createStringType()
+  {
+    StringTypeImpl stringType = new StringTypeImpl();
+    return stringType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public FuncVar createFuncVar()
+  {
+    FuncVarImpl funcVar = new FuncVarImpl();
+    return funcVar;
   }
 
   /**

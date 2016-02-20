@@ -11,12 +11,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.xtext.example.mydsl.myDsl.Condition;
-import org.xtext.example.mydsl.myDsl.Element;
-import org.xtext.example.mydsl.myDsl.Elements;
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
 import org.xtext.example.mydsl.myDsl.Store;
-import org.xtext.example.mydsl.myDsl.Text;
+import org.xtext.example.mydsl.myDsl.Type;
 
 /**
  * <!-- begin-user-doc -->
@@ -27,10 +24,7 @@ import org.xtext.example.mydsl.myDsl.Text;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.StoreImpl#getVari <em>Vari</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.StoreImpl#getText <em>Text</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.StoreImpl#getElts <em>Elts</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.StoreImpl#getElt <em>Elt</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.StoreImpl#getCond <em>Cond</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.StoreImpl#getT <em>T</em>}</li>
  * </ul>
  *
  * @generated
@@ -58,44 +52,14 @@ public class StoreImpl extends OperationImpl implements Store
   protected String vari = VARI_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getText() <em>Text</em>}' containment reference.
+   * The cached value of the '{@link #getT() <em>T</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getText()
+   * @see #getT()
    * @generated
    * @ordered
    */
-  protected Text text;
-
-  /**
-   * The cached value of the '{@link #getElts() <em>Elts</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getElts()
-   * @generated
-   * @ordered
-   */
-  protected Elements elts;
-
-  /**
-   * The cached value of the '{@link #getElt() <em>Elt</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getElt()
-   * @generated
-   * @ordered
-   */
-  protected Element elt;
-
-  /**
-   * The cached value of the '{@link #getCond() <em>Cond</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getCond()
-   * @generated
-   * @ordered
-   */
-  protected Condition cond;
+  protected Type t;
 
   /**
    * <!-- begin-user-doc -->
@@ -146,9 +110,9 @@ public class StoreImpl extends OperationImpl implements Store
    * <!-- end-user-doc -->
    * @generated
    */
-  public Text getText()
+  public Type getT()
   {
-    return text;
+    return t;
   }
 
   /**
@@ -156,13 +120,13 @@ public class StoreImpl extends OperationImpl implements Store
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetText(Text newText, NotificationChain msgs)
+  public NotificationChain basicSetT(Type newT, NotificationChain msgs)
   {
-    Text oldText = text;
-    text = newText;
+    Type oldT = t;
+    t = newT;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.STORE__TEXT, oldText, newText);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.STORE__T, oldT, newT);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -173,164 +137,20 @@ public class StoreImpl extends OperationImpl implements Store
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setText(Text newText)
+  public void setT(Type newT)
   {
-    if (newText != text)
+    if (newT != t)
     {
       NotificationChain msgs = null;
-      if (text != null)
-        msgs = ((InternalEObject)text).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.STORE__TEXT, null, msgs);
-      if (newText != null)
-        msgs = ((InternalEObject)newText).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.STORE__TEXT, null, msgs);
-      msgs = basicSetText(newText, msgs);
+      if (t != null)
+        msgs = ((InternalEObject)t).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.STORE__T, null, msgs);
+      if (newT != null)
+        msgs = ((InternalEObject)newT).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.STORE__T, null, msgs);
+      msgs = basicSetT(newT, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.STORE__TEXT, newText, newText));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Elements getElts()
-  {
-    return elts;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetElts(Elements newElts, NotificationChain msgs)
-  {
-    Elements oldElts = elts;
-    elts = newElts;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.STORE__ELTS, oldElts, newElts);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setElts(Elements newElts)
-  {
-    if (newElts != elts)
-    {
-      NotificationChain msgs = null;
-      if (elts != null)
-        msgs = ((InternalEObject)elts).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.STORE__ELTS, null, msgs);
-      if (newElts != null)
-        msgs = ((InternalEObject)newElts).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.STORE__ELTS, null, msgs);
-      msgs = basicSetElts(newElts, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.STORE__ELTS, newElts, newElts));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Element getElt()
-  {
-    return elt;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetElt(Element newElt, NotificationChain msgs)
-  {
-    Element oldElt = elt;
-    elt = newElt;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.STORE__ELT, oldElt, newElt);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setElt(Element newElt)
-  {
-    if (newElt != elt)
-    {
-      NotificationChain msgs = null;
-      if (elt != null)
-        msgs = ((InternalEObject)elt).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.STORE__ELT, null, msgs);
-      if (newElt != null)
-        msgs = ((InternalEObject)newElt).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.STORE__ELT, null, msgs);
-      msgs = basicSetElt(newElt, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.STORE__ELT, newElt, newElt));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Condition getCond()
-  {
-    return cond;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetCond(Condition newCond, NotificationChain msgs)
-  {
-    Condition oldCond = cond;
-    cond = newCond;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.STORE__COND, oldCond, newCond);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setCond(Condition newCond)
-  {
-    if (newCond != cond)
-    {
-      NotificationChain msgs = null;
-      if (cond != null)
-        msgs = ((InternalEObject)cond).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.STORE__COND, null, msgs);
-      if (newCond != null)
-        msgs = ((InternalEObject)newCond).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.STORE__COND, null, msgs);
-      msgs = basicSetCond(newCond, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.STORE__COND, newCond, newCond));
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.STORE__T, newT, newT));
   }
 
   /**
@@ -343,14 +163,8 @@ public class StoreImpl extends OperationImpl implements Store
   {
     switch (featureID)
     {
-      case MyDslPackage.STORE__TEXT:
-        return basicSetText(null, msgs);
-      case MyDslPackage.STORE__ELTS:
-        return basicSetElts(null, msgs);
-      case MyDslPackage.STORE__ELT:
-        return basicSetElt(null, msgs);
-      case MyDslPackage.STORE__COND:
-        return basicSetCond(null, msgs);
+      case MyDslPackage.STORE__T:
+        return basicSetT(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -367,14 +181,8 @@ public class StoreImpl extends OperationImpl implements Store
     {
       case MyDslPackage.STORE__VARI:
         return getVari();
-      case MyDslPackage.STORE__TEXT:
-        return getText();
-      case MyDslPackage.STORE__ELTS:
-        return getElts();
-      case MyDslPackage.STORE__ELT:
-        return getElt();
-      case MyDslPackage.STORE__COND:
-        return getCond();
+      case MyDslPackage.STORE__T:
+        return getT();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -392,17 +200,8 @@ public class StoreImpl extends OperationImpl implements Store
       case MyDslPackage.STORE__VARI:
         setVari((String)newValue);
         return;
-      case MyDslPackage.STORE__TEXT:
-        setText((Text)newValue);
-        return;
-      case MyDslPackage.STORE__ELTS:
-        setElts((Elements)newValue);
-        return;
-      case MyDslPackage.STORE__ELT:
-        setElt((Element)newValue);
-        return;
-      case MyDslPackage.STORE__COND:
-        setCond((Condition)newValue);
+      case MyDslPackage.STORE__T:
+        setT((Type)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -421,17 +220,8 @@ public class StoreImpl extends OperationImpl implements Store
       case MyDslPackage.STORE__VARI:
         setVari(VARI_EDEFAULT);
         return;
-      case MyDslPackage.STORE__TEXT:
-        setText((Text)null);
-        return;
-      case MyDslPackage.STORE__ELTS:
-        setElts((Elements)null);
-        return;
-      case MyDslPackage.STORE__ELT:
-        setElt((Element)null);
-        return;
-      case MyDslPackage.STORE__COND:
-        setCond((Condition)null);
+      case MyDslPackage.STORE__T:
+        setT((Type)null);
         return;
     }
     super.eUnset(featureID);
@@ -449,14 +239,8 @@ public class StoreImpl extends OperationImpl implements Store
     {
       case MyDslPackage.STORE__VARI:
         return VARI_EDEFAULT == null ? vari != null : !VARI_EDEFAULT.equals(vari);
-      case MyDslPackage.STORE__TEXT:
-        return text != null;
-      case MyDslPackage.STORE__ELTS:
-        return elts != null;
-      case MyDslPackage.STORE__ELT:
-        return elt != null;
-      case MyDslPackage.STORE__COND:
-        return cond != null;
+      case MyDslPackage.STORE__T:
+        return t != null;
     }
     return super.eIsSet(featureID);
   }

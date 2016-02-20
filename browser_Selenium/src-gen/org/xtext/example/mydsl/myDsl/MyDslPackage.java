@@ -347,13 +347,13 @@ public interface MyDslPackage extends EPackage
   int APPLY_ALL__ELT = OPERATION_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Operations</b></em>' containment reference list.
+   * The feature id for the '<em><b>Actions</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int APPLY_ALL__OPERATIONS = OPERATION_FEATURE_COUNT + 1;
+  int APPLY_ALL__ACTIONS = OPERATION_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Apply All</em>' class.
@@ -1236,15 +1236,15 @@ public interface MyDslPackage extends EPackage
   EReference getApply_All_Elt();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.xtext.example.mydsl.myDsl.Apply_All#getOperations <em>Operations</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.xtext.example.mydsl.myDsl.Apply_All#getActions <em>Actions</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Operations</em>'.
-   * @see org.xtext.example.mydsl.myDsl.Apply_All#getOperations()
+   * @return the meta object for the containment reference list '<em>Actions</em>'.
+   * @see org.xtext.example.mydsl.myDsl.Apply_All#getActions()
    * @see #getApply_All()
    * @generated
    */
-  EReference getApply_All_Operations();
+  EReference getApply_All_Actions();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.mydsl.myDsl.If <em>If</em>}'.
@@ -1988,12 +1988,12 @@ public interface MyDslPackage extends EPackage
     EReference APPLY_ALL__ELT = eINSTANCE.getApply_All_Elt();
 
     /**
-     * The meta object literal for the '<em><b>Operations</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Actions</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference APPLY_ALL__OPERATIONS = eINSTANCE.getApply_All_Operations();
+    EReference APPLY_ALL__ACTIONS = eINSTANCE.getApply_All_Actions();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.mydsl.myDsl.impl.IfImpl <em>If</em>}' class.

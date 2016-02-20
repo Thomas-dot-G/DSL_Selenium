@@ -15,7 +15,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.mydsl.myDsl.Apply_All#getElt <em>Elt</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.myDsl.Apply_All#getOperations <em>Operations</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.Apply_All#getActions <em>Actions</em>}</li>
  * </ul>
  *
  * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getApply_All()
@@ -51,19 +51,19 @@ public interface Apply_All extends Operation
   void setElt(Element value);
 
   /**
-   * Returns the value of the '<em><b>Operations</b></em>' containment reference list.
-   * The list contents are of type {@link org.xtext.example.mydsl.myDsl.Operation}.
+   * Returns the value of the '<em><b>Actions</b></em>' containment reference list.
+   * The list contents are of type {@link org.xtext.example.mydsl.myDsl.Action}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Operations</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Actions</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Operations</em>' containment reference list.
-   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getApply_All_Operations()
+   * @return the value of the '<em>Actions</em>' containment reference list.
+   * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getApply_All_Actions()
    * @model containment="true"
    * @generated
    */
-  EList<Operation> getOperations();
+  EList<Action> getActions();
 
 } // Apply_All

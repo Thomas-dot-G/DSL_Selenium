@@ -142,7 +142,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     Apply_All returns Apply_All
 	 *
 	 * Constraint:
-	 *     (elt=Element operations+=Operation*)
+	 *     (elt=Element actions+=Action*)
 	 */
 	protected void sequence_Apply_All(ISerializationContext context, Apply_All semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

@@ -525,7 +525,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getApply_All_Operations()
+  public EReference getApply_All_Actions()
   {
     return (EReference)apply_AllEClass.getEStructuralFeatures().get(1);
   }
@@ -1081,7 +1081,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
 
     apply_AllEClass = createEClass(APPLY_ALL);
     createEReference(apply_AllEClass, APPLY_ALL__ELT);
-    createEReference(apply_AllEClass, APPLY_ALL__OPERATIONS);
+    createEReference(apply_AllEClass, APPLY_ALL__ACTIONS);
 
     ifEClass = createEClass(IF);
     createEReference(ifEClass, IF__COND);
@@ -1231,7 +1231,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
 
     initEClass(apply_AllEClass, Apply_All.class, "Apply_All", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getApply_All_Elt(), this.getElement(), null, "elt", null, 0, 1, Apply_All.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getApply_All_Operations(), this.getOperation(), null, "operations", null, 0, -1, Apply_All.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getApply_All_Actions(), this.getAction(), null, "actions", null, 0, -1, Apply_All.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(ifEClass, If.class, "If", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getIf_Cond(), this.getCondition(), null, "cond", null, 0, 1, If.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

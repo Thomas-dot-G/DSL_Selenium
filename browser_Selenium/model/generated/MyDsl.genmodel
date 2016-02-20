@@ -35,7 +35,7 @@
     </genClasses>
     <genClasses ecoreClass="MyDsl.ecore#//Apply_All">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Apply_All/elt"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Apply_All/operations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Apply_All/actions"/>
     </genClasses>
     <genClasses ecoreClass="MyDsl.ecore#//If">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//If/cond"/>

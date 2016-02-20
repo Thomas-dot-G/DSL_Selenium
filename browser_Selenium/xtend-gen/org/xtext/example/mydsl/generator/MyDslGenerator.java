@@ -67,6 +67,8 @@ public class MyDslGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.append("import org.openqa.selenium.By;");
     _builder.newLine();
+    _builder.append("import java.util.List;");
+    _builder.newLine();
     _builder.newLine();
     {
       EList<Function> _func = p.getFunc();
@@ -161,8 +163,8 @@ public class MyDslGenerator extends AbstractGenerator {
     _builder.append("\t\t");
     Browser_Task _b = p.getB();
     EList<Operation> _operations = _b.getOperations();
-    CharSequence _genActions = this.genActions(_operations);
-    _builder.append(_genActions, "\t\t");
+    CharSequence _genOperations = this.genOperations(_operations);
+    _builder.append(_genOperations, "\t\t");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
     _builder.append("driver.quit();");
@@ -170,112 +172,152 @@ public class MyDslGenerator extends AbstractGenerator {
     return _builder;
   }
   
-  public CharSequence genCore(final Action a, final int i) {
+  public CharSequence genAction(final Action a, final int i, final Element elt) {
     StringConcatenation _builder = new StringConcatenation();
     {
-      if ((a instanceof Click)) {
-        _builder.append("WebElement element_");
-        _builder.append(i, "");
-        _builder.append(" = ");
-        Element _elt = ((Click)a).getElt();
-        EltType _type = _elt.getType();
-        CharSequence _genCore = this.genCore(_type);
-        _builder.append(_genCore, "");
-        _builder.append(";");
+      boolean _equals = Objects.equal(elt, null);
+      if (_equals) {
+        {
+          if ((a instanceof Click)) {
+            _builder.append("WebElement element_");
+            _builder.append(i, "");
+            _builder.append(" = ");
+            Element _elt = ((Click)a).getElt();
+            EltType _type = _elt.getType();
+            CharSequence _genCore = this.genCore(_type);
+            _builder.append(_genCore, "");
+            _builder.append(";");
+            _builder.newLineIfNotEmpty();
+            _builder.append("element_");
+            _builder.append(i, "");
+            _builder.append(".click();");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+        _builder.append("\t        ");
+        {
+          if ((a instanceof Go)) {
+            _builder.append("driver.get(\"");
+            Text _link = ((Go)a).getLink();
+            String _name = _link.getName();
+            _builder.append(_name, "\t        ");
+            _builder.append("\");");
+          }
+        }
         _builder.newLineIfNotEmpty();
-        _builder.append("element_");
-        _builder.append(i, "");
-        _builder.append(".click();");
+        {
+          if ((a instanceof Fill)) {
+            _builder.append("WebElement element_");
+            _builder.append(i, "");
+            _builder.append(" = ");
+            Element _elt_1 = ((Fill)a).getElt();
+            EltType _type_1 = _elt_1.getType();
+            CharSequence _genCore_1 = this.genCore(_type_1);
+            _builder.append(_genCore_1, "");
+            _builder.append(";");
+            _builder.newLineIfNotEmpty();
+            _builder.append("element_");
+            _builder.append(i, "");
+            _builder.append(".sendKeys(\"");
+            Text _fillwith = ((Fill)a).getFillwith();
+            String _name_1 = _fillwith.getName();
+            _builder.append(_name_1, "");
+            _builder.append("\");");
+            _builder.newLineIfNotEmpty();
+            _builder.append("\t        \t");
+            _builder.append("element_");
+            _builder.append(i, "\t        \t");
+            _builder.append(".submit();");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+        {
+          if ((a instanceof Select)) {
+            _builder.append("\t        ");
+            _builder.append("WebElement element_");
+            _builder.append(i, "\t        ");
+            _builder.append(" = ");
+            Element _elt_2 = ((Select)a).getElt();
+            EltType _type_2 = _elt_2.getType();
+            CharSequence _genCore_2 = this.genCore(_type_2);
+            _builder.append(_genCore_2, "\t        ");
+            _builder.append(";");
+            _builder.newLineIfNotEmpty();
+            _builder.append("\t\t\t\t");
+            _builder.append("element_");
+            _builder.append(i, "\t\t\t\t");
+            _builder.append(".click();");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+        {
+          if ((a instanceof Verify)) {
+            _builder.append("\t        ");
+            _builder.append("WebElement element_");
+            _builder.append(i, "\t        ");
+            _builder.append(" = ");
+            Element _elt_3 = ((Verify)a).getElt();
+            EltType _type_3 = _elt_3.getType();
+            CharSequence _genCore_3 = this.genCore(_type_3);
+            _builder.append(_genCore_3, "\t        ");
+            _builder.append(";");
+            _builder.newLineIfNotEmpty();
+            _builder.append("\t\t\t\t");
+            _builder.append("String message_");
+            _builder.append(i, "\t\t\t\t");
+            _builder.append(" = element_");
+            _builder.append(i, "\t\t\t\t");
+            _builder.append(".getText();");
+            _builder.newLineIfNotEmpty();
+            _builder.append("\t\t\t\t");
+            _builder.append("System.out.println(message_");
+            _builder.append(i, "\t\t\t\t");
+            _builder.append(".contains(\"");
+            Text _find = ((Verify)a).getFind();
+            String _name_2 = _find.getName();
+            _builder.append(_name_2, "\t\t\t\t");
+            _builder.append("\"));");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+      } else {
+        {
+          if ((a instanceof Click)) {
+            _builder.append("elt.click();");
+          }
+        }
         _builder.newLineIfNotEmpty();
+        {
+          if ((a instanceof Fill)) {
+            _builder.append("elt.sendKeys(\"");
+            Text _fillwith_1 = ((Fill)a).getFillwith();
+            String _name_3 = _fillwith_1.getName();
+            _builder.append(_name_3, "");
+            _builder.append("\");");
+            _builder.newLineIfNotEmpty();
+            _builder.append("\t        \t");
+            _builder.append("elt.submit();");
+            _builder.newLine();
+          }
+        }
+        {
+          if ((a instanceof Select)) {
+            _builder.append("elt.click();");
+            _builder.newLine();
+          }
+        }
+        {
+          if ((a instanceof Verify)) {
+            _builder.append("elt.getText().contains(\"");
+            Text _find_1 = ((Verify)a).getFind();
+            String _name_4 = _find_1.getName();
+            _builder.append(_name_4, "");
+            _builder.append("\"));");
+            _builder.newLineIfNotEmpty();
+          }
+        }
       }
     }
-    _builder.append("        ");
-    {
-      if ((a instanceof Go)) {
-        _builder.append("driver.get(\"");
-        Text _link = ((Go)a).getLink();
-        String _name = _link.getName();
-        _builder.append(_name, "        ");
-        _builder.append("\");");
-      }
-    }
-    _builder.newLineIfNotEmpty();
-    {
-      if ((a instanceof Fill)) {
-        _builder.append("WebElement element_");
-        _builder.append(i, "");
-        _builder.append(" = ");
-        Element _elt_1 = ((Fill)a).getElt();
-        EltType _type_1 = _elt_1.getType();
-        CharSequence _genCore_1 = this.genCore(_type_1);
-        _builder.append(_genCore_1, "");
-        _builder.append(";");
-        _builder.newLineIfNotEmpty();
-        _builder.append("element_");
-        _builder.append(i, "");
-        _builder.append(".sendKeys(\"");
-        Text _fillwith = ((Fill)a).getFillwith();
-        String _name_1 = _fillwith.getName();
-        _builder.append(_name_1, "");
-        _builder.append("\");");
-        _builder.newLineIfNotEmpty();
-        _builder.append("        \t");
-        _builder.append("element_");
-        _builder.append(i, "        \t");
-        _builder.append(".submit();");
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    {
-      if ((a instanceof Select)) {
-        _builder.append("        ");
-        _builder.append("WebElement element_");
-        _builder.append(i, "        ");
-        _builder.append(" = ");
-        Element _elt_2 = ((Select)a).getElt();
-        EltType _type_2 = _elt_2.getType();
-        CharSequence _genCore_2 = this.genCore(_type_2);
-        _builder.append(_genCore_2, "        ");
-        _builder.append(";");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t\t\t");
-        _builder.append("element_");
-        _builder.append(i, "\t\t\t");
-        _builder.append(".click();");
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    {
-      if ((a instanceof Verify)) {
-        _builder.append("        ");
-        _builder.append("WebElement element_");
-        _builder.append(i, "        ");
-        _builder.append(" = ");
-        Element _elt_3 = ((Verify)a).getElt();
-        EltType _type_3 = _elt_3.getType();
-        CharSequence _genCore_3 = this.genCore(_type_3);
-        _builder.append(_genCore_3, "        ");
-        _builder.append(";");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t\t\t");
-        _builder.append("String message_");
-        _builder.append(i, "\t\t\t");
-        _builder.append(" = element_");
-        _builder.append(i, "\t\t\t");
-        _builder.append(".getText();");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t\t\t");
-        _builder.append("System.out.println(message_");
-        _builder.append(i, "\t\t\t");
-        _builder.append(".contains(\"");
-        Text _find = ((Verify)a).getFind();
-        String _name_2 = _find.getName();
-        _builder.append(_name_2, "\t\t\t");
-        _builder.append("\"));");
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    _builder.newLine();
     return _builder;
   }
   
@@ -300,6 +342,35 @@ public class MyDslGenerator extends AbstractGenerator {
             _builder.newLineIfNotEmpty();
           } else {
             _builder.append("driver.getCurrentUrl()");
+          }
+        }
+      }
+    }
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+  
+  public CharSequence genCores(final EltType e) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      if ((e instanceof Tag)) {
+        _builder.append("driver.findElements(By.");
+        String _html = ((Tag)e).getHtml();
+        _builder.append(_html, "");
+        _builder.append("(\"");
+        Text _tag = ((Tag)e).getTag();
+        String _name = _tag.getName();
+        _builder.append(_name, "");
+        _builder.append("\"))");
+        _builder.newLineIfNotEmpty();
+      } else {
+        {
+          if ((e instanceof Variable)) {
+            String _name_1 = ((Variable)e).getName();
+            _builder.append(_name_1, "");
+            _builder.newLineIfNotEmpty();
+          } else {
+            _builder.append("[driver.getCurrentUrl()]");
           }
         }
       }
@@ -435,59 +506,76 @@ public class MyDslGenerator extends AbstractGenerator {
     return _builder;
   }
   
-  public CharSequence genActions(final EList<Operation> operations) {
+  public CharSequence genOperations(final EList<Operation> operations) {
     StringConcatenation _builder = new StringConcatenation();
     {
       for(final Operation e : operations) {
+        int _indexOf = operations.indexOf(e);
+        CharSequence _genOperation = this.genOperation(e, _indexOf);
+        _builder.append(_genOperation, "");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    return _builder;
+  }
+  
+  public CharSequence genOperation(final Operation e, final int i) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      if ((e instanceof Action)) {
+        CharSequence _genAction = this.genAction(((Action)e), i, null);
+        _builder.append(_genAction, "");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    {
+      if ((e instanceof Loop)) {
+        _builder.append("    \t");
+        CharSequence _genCore = this.genCore(((Loop)e));
+        _builder.append(_genCore, "    \t");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    {
+      if ((e instanceof Apply_All)) {
+        _builder.append("    \t");
+        _builder.append("for(WebElement elt:");
+        Element _elt = ((Apply_All)e).getElt();
+        EltType _type = _elt.getType();
+        CharSequence _genCores = this.genCores(_type);
+        _builder.append(_genCores, "    \t");
+        _builder.append("){");
+        _builder.newLineIfNotEmpty();
         {
-          if ((e instanceof Action)) {
-            int _indexOf = operations.indexOf(e);
-            CharSequence _genCore = this.genCore(((Action)e), _indexOf);
-            _builder.append(_genCore, "");
+          EList<Action> _actions = ((Apply_All)e).getActions();
+          for(final Action op : _actions) {
+            _builder.append("    \t");
+            _builder.append("\t");
+            Element _elt_1 = ((Apply_All)e).getElt();
+            CharSequence _genAction_1 = this.genAction(op, 0, _elt_1);
+            _builder.append(_genAction_1, "    \t\t");
             _builder.newLineIfNotEmpty();
           }
         }
-        {
-          if ((e instanceof Loop)) {
-            CharSequence _genCore_1 = this.genCore(((Loop)e));
-            _builder.append(_genCore_1, "");
-            _builder.newLineIfNotEmpty();
-          }
-        }
-        {
-          if ((e instanceof Apply_All)) {
-            _builder.append("//Apply_All applyall");
-            int _indexOf_1 = operations.indexOf(e);
-            _builder.append(_indexOf_1, "");
-            _builder.append(" = new Apply_All();");
-            _builder.newLineIfNotEmpty();
-          }
-        }
-        {
-          if ((e instanceof If)) {
-            CharSequence _genCore_2 = this.genCore(((If)e));
-            _builder.append(_genCore_2, "");
-            _builder.newLineIfNotEmpty();
-          }
-        }
-        {
-          if ((e instanceof Store)) {
-            _builder.append("//Store store");
-            int _indexOf_2 = operations.indexOf(e);
-            _builder.append(_indexOf_2, "");
-            _builder.append(" = new Store();");
-            _builder.newLineIfNotEmpty();
-          }
-        }
-        {
-          if ((e instanceof CallFunction)) {
-            _builder.append("//CallFunction callfunc");
-            int _indexOf_3 = operations.indexOf(e);
-            _builder.append(_indexOf_3, "");
-            _builder.append(" = new CallFunction();");
-            _builder.newLineIfNotEmpty();
-          }
-        }
+        _builder.append("    \t");
+        _builder.append("}");
+        _builder.newLine();
+      }
+    }
+    {
+      if ((e instanceof If)) {
+        _builder.append("    \t");
+        CharSequence _genCore_1 = this.genCore(((If)e));
+        _builder.append(_genCore_1, "    \t");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    {
+      if ((e instanceof Store)) {
+      }
+    }
+    {
+      if ((e instanceof CallFunction)) {
       }
     }
     return _builder;
@@ -510,8 +598,8 @@ public class MyDslGenerator extends AbstractGenerator {
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
         EList<Operation> _operations = ((ForLoop)l).getOperations();
-        Object _genActions = this.genActions(_operations);
-        _builder.append(_genActions, "\t");
+        Object _genOperations = this.genOperations(_operations);
+        _builder.append(_genOperations, "\t");
         _builder.newLineIfNotEmpty();
         _builder.append("}");
         _builder.newLine();
@@ -534,8 +622,8 @@ public class MyDslGenerator extends AbstractGenerator {
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
         EList<Operation> _operations_1 = ((WhileLoop)l).getOperations();
-        Object _genActions_1 = this.genActions(_operations_1);
-        _builder.append(_genActions_1, "\t");
+        Object _genOperations_1 = this.genOperations(_operations_1);
+        _builder.append(_genOperations_1, "\t");
         _builder.newLineIfNotEmpty();
         _builder.append("}");
         _builder.newLine();
@@ -544,8 +632,8 @@ public class MyDslGenerator extends AbstractGenerator {
     {
       if ((l instanceof DoLoop)) {
         EList<Operation> _operations_2 = ((DoLoop)l).getOperations();
-        Object _genActions_2 = this.genActions(_operations_2);
-        _builder.append(_genActions_2, "");
+        Object _genOperations_2 = this.genOperations(_operations_2);
+        _builder.append(_genOperations_2, "");
         _builder.newLineIfNotEmpty();
         _builder.append("while(");
         Condition _c_1 = ((DoLoop)l).getC();
@@ -562,8 +650,8 @@ public class MyDslGenerator extends AbstractGenerator {
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
         EList<Operation> _operations_3 = ((DoLoop)l).getOperations();
-        Object _genActions_3 = this.genActions(_operations_3);
-        _builder.append(_genActions_3, "\t");
+        Object _genOperations_3 = this.genOperations(_operations_3);
+        _builder.append(_genOperations_3, "\t");
         _builder.newLineIfNotEmpty();
         _builder.append("}");
         _builder.newLine();
@@ -589,8 +677,8 @@ public class MyDslGenerator extends AbstractGenerator {
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     EList<Operation> _operations = i.getOperations();
-    Object _genActions = this.genActions(_operations);
-    _builder.append(_genActions, "\t");
+    Object _genOperations = this.genOperations(_operations);
+    _builder.append(_genOperations, "\t");
     _builder.newLineIfNotEmpty();
     _builder.append("}");
     _builder.newLine();
@@ -598,8 +686,8 @@ public class MyDslGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.append("\t");
     EList<Operation> _operationsbis = i.getOperationsbis();
-    Object _genActions_1 = this.genActions(_operationsbis);
-    _builder.append(_genActions_1, "\t");
+    Object _genOperations_1 = this.genOperations(_operationsbis);
+    _builder.append(_genOperations_1, "\t");
     _builder.newLineIfNotEmpty();
     _builder.append("}");
     _builder.newLine();

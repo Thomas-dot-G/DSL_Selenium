@@ -42,7 +42,7 @@ Verify:
 ;
 
 Apply_All:
-	'Apply_All' '(' elt=Element ',' operations+=Operation* ')'
+	'Apply_All' '(' elt=Element ',' actions+=Action* ')'
 ;
 
 If:

@@ -646,18 +646,18 @@ ruleApply_All returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getApply_AllAccess().getOperationsOperationParserRuleCall_4_0());
+					newCompositeNode(grammarAccess.getApply_AllAccess().getActionsActionParserRuleCall_4_0());
 				}
-				lv_operations_4_0=ruleOperation
+				lv_actions_4_0=ruleAction
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getApply_AllRule());
 					}
 					add(
 						$current,
-						"operations",
-						lv_operations_4_0,
-						"org.xtext.example.mydsl.MyDsl.Operation");
+						"actions",
+						lv_actions_4_0,
+						"org.xtext.example.mydsl.MyDsl.Action");
 					afterParserOrEnumRuleCall();
 				}
 			)

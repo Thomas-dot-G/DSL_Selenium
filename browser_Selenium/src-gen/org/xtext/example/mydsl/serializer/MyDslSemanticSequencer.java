@@ -22,6 +22,7 @@ import org.xtext.example.mydsl.myDsl.Click;
 import org.xtext.example.mydsl.myDsl.ComparableElt;
 import org.xtext.example.mydsl.myDsl.DoLoop;
 import org.xtext.example.mydsl.myDsl.Element;
+import org.xtext.example.mydsl.myDsl.Elements;
 import org.xtext.example.mydsl.myDsl.Fill;
 import org.xtext.example.mydsl.myDsl.ForLoop;
 import org.xtext.example.mydsl.myDsl.Function;
@@ -76,6 +77,9 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 				return; 
 			case MyDslPackage.ELEMENT:
 				sequence_Element(context, (Element) semanticObject); 
+				return; 
+			case MyDslPackage.ELEMENTS:
+				sequence_Elements(context, (Elements) semanticObject); 
 				return; 
 			case MyDslPackage.FILL:
 				sequence_Fill(context, (Fill) semanticObject); 
@@ -142,7 +146,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     Apply_All returns Apply_All
 	 *
 	 * Constraint:
-	 *     (elt=Element actions+=Action*)
+	 *     (elt=Elements actions+=Action*)
 	 */
 	protected void sequence_Apply_All(ISerializationContext context, Apply_All semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -234,6 +238,24 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getElementAccess().getTypeEltTypeParserRuleCall_1_0(), semanticObject.getType());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Elements returns Elements
+	 *
+	 * Constraint:
+	 *     type=EltType
+	 */
+	protected void sequence_Elements(ISerializationContext context, Elements semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.ELEMENTS__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.ELEMENTS__TYPE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getElementsAccess().getTypeEltTypeParserRuleCall_1_0(), semanticObject.getType());
 		feeder.finish();
 	}
 	
@@ -383,7 +405,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     Store returns Store
 	 *
 	 * Constraint:
-	 *     (var=STRING (text=Text | elt=Element))
+	 *     (vari=ID (text=Text | elts=Elements | elt=Element | cond=Condition))
 	 */
 	protected void sequence_Store(ISerializationContext context, Store semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

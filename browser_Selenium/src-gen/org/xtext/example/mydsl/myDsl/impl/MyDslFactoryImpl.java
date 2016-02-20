@@ -85,6 +85,7 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
       case MyDslPackage.DO_LOOP: return createDoLoop();
       case MyDslPackage.CONDITION: return createCondition();
       case MyDslPackage.ADD_CONDITION: return createAddCondition();
+      case MyDslPackage.ELEMENTS: return createElements();
       case MyDslPackage.ELEMENT: return createElement();
       case MyDslPackage.ELT_TYPE: return createEltType();
       case MyDslPackage.TAG: return createTag();
@@ -315,6 +316,17 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
   {
     AddConditionImpl addCondition = new AddConditionImpl();
     return addCondition;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Elements createElements()
+  {
+    ElementsImpl elements = new ElementsImpl();
+    return elements;
   }
 
   /**

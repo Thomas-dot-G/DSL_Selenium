@@ -42,7 +42,7 @@ Verify:
 ;
 
 Apply_All:
-	'Apply_All' '(' elt=Element ',' actions+=Action* ')'
+	'Apply_All' '(' elt=Elements ',' actions+=Action* ')'
 ;
 
 If:
@@ -51,7 +51,7 @@ If:
 
 
 Store:
-	'Store' 'Var' var=STRING "=" (text=Text | elt=Element)
+	'Store' 'Var' vari=ID "=" (text=Text | elts=Elements | elt=Element | cond=Condition)
 ;
 
 CallFunction:
@@ -90,6 +90,10 @@ AddCondition:
 	op=('And'|'Or') cond=Condition
 ;
 
+
+Elements:
+	'Elements' type=EltType
+;
 
 Element:
 	'Element' type=EltType

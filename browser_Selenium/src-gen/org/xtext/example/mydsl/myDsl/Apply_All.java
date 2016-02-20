@@ -33,12 +33,12 @@ public interface Apply_All extends Operation
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Elt</em>' containment reference.
-   * @see #setElt(Element)
+   * @see #setElt(Elements)
    * @see org.xtext.example.mydsl.myDsl.MyDslPackage#getApply_All_Elt()
    * @model containment="true"
    * @generated
    */
-  Element getElt();
+  Elements getElt();
 
   /**
    * Sets the value of the '{@link org.xtext.example.mydsl.myDsl.Apply_All#getElt <em>Elt</em>}' containment reference.
@@ -48,7 +48,7 @@ public interface Apply_All extends Operation
    * @see #getElt()
    * @generated
    */
-  void setElt(Element value);
+  void setElt(Elements value);
 
   /**
    * Returns the value of the '<em><b>Actions</b></em>' containment reference list.

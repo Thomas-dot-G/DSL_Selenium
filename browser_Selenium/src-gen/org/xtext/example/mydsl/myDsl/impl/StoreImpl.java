@@ -11,7 +11,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.xtext.example.mydsl.myDsl.Condition;
 import org.xtext.example.mydsl.myDsl.Element;
+import org.xtext.example.mydsl.myDsl.Elements;
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
 import org.xtext.example.mydsl.myDsl.Store;
 import org.xtext.example.mydsl.myDsl.Text;
@@ -24,9 +26,11 @@ import org.xtext.example.mydsl.myDsl.Text;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.StoreImpl#getVar <em>Var</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.StoreImpl#getVari <em>Vari</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.StoreImpl#getText <em>Text</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.StoreImpl#getElts <em>Elts</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.StoreImpl#getElt <em>Elt</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.StoreImpl#getCond <em>Cond</em>}</li>
  * </ul>
  *
  * @generated
@@ -34,24 +38,24 @@ import org.xtext.example.mydsl.myDsl.Text;
 public class StoreImpl extends OperationImpl implements Store
 {
   /**
-   * The default value of the '{@link #getVar() <em>Var</em>}' attribute.
+   * The default value of the '{@link #getVari() <em>Vari</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getVar()
+   * @see #getVari()
    * @generated
    * @ordered
    */
-  protected static final String VAR_EDEFAULT = null;
+  protected static final String VARI_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getVar() <em>Var</em>}' attribute.
+   * The cached value of the '{@link #getVari() <em>Vari</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getVar()
+   * @see #getVari()
    * @generated
    * @ordered
    */
-  protected String var = VAR_EDEFAULT;
+  protected String vari = VARI_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getText() <em>Text</em>}' containment reference.
@@ -64,6 +68,16 @@ public class StoreImpl extends OperationImpl implements Store
   protected Text text;
 
   /**
+   * The cached value of the '{@link #getElts() <em>Elts</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getElts()
+   * @generated
+   * @ordered
+   */
+  protected Elements elts;
+
+  /**
    * The cached value of the '{@link #getElt() <em>Elt</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -72,6 +86,16 @@ public class StoreImpl extends OperationImpl implements Store
    * @ordered
    */
   protected Element elt;
+
+  /**
+   * The cached value of the '{@link #getCond() <em>Cond</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getCond()
+   * @generated
+   * @ordered
+   */
+  protected Condition cond;
 
   /**
    * <!-- begin-user-doc -->
@@ -99,9 +123,9 @@ public class StoreImpl extends OperationImpl implements Store
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getVar()
+  public String getVari()
   {
-    return var;
+    return vari;
   }
 
   /**
@@ -109,12 +133,12 @@ public class StoreImpl extends OperationImpl implements Store
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setVar(String newVar)
+  public void setVari(String newVari)
   {
-    String oldVar = var;
-    var = newVar;
+    String oldVari = vari;
+    vari = newVari;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.STORE__VAR, oldVar, var));
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.STORE__VARI, oldVari, vari));
   }
 
   /**
@@ -170,6 +194,54 @@ public class StoreImpl extends OperationImpl implements Store
    * <!-- end-user-doc -->
    * @generated
    */
+  public Elements getElts()
+  {
+    return elts;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetElts(Elements newElts, NotificationChain msgs)
+  {
+    Elements oldElts = elts;
+    elts = newElts;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.STORE__ELTS, oldElts, newElts);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setElts(Elements newElts)
+  {
+    if (newElts != elts)
+    {
+      NotificationChain msgs = null;
+      if (elts != null)
+        msgs = ((InternalEObject)elts).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.STORE__ELTS, null, msgs);
+      if (newElts != null)
+        msgs = ((InternalEObject)newElts).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.STORE__ELTS, null, msgs);
+      msgs = basicSetElts(newElts, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.STORE__ELTS, newElts, newElts));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public Element getElt()
   {
     return elt;
@@ -218,6 +290,54 @@ public class StoreImpl extends OperationImpl implements Store
    * <!-- end-user-doc -->
    * @generated
    */
+  public Condition getCond()
+  {
+    return cond;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetCond(Condition newCond, NotificationChain msgs)
+  {
+    Condition oldCond = cond;
+    cond = newCond;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.STORE__COND, oldCond, newCond);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setCond(Condition newCond)
+  {
+    if (newCond != cond)
+    {
+      NotificationChain msgs = null;
+      if (cond != null)
+        msgs = ((InternalEObject)cond).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.STORE__COND, null, msgs);
+      if (newCond != null)
+        msgs = ((InternalEObject)newCond).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.STORE__COND, null, msgs);
+      msgs = basicSetCond(newCond, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.STORE__COND, newCond, newCond));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -225,8 +345,12 @@ public class StoreImpl extends OperationImpl implements Store
     {
       case MyDslPackage.STORE__TEXT:
         return basicSetText(null, msgs);
+      case MyDslPackage.STORE__ELTS:
+        return basicSetElts(null, msgs);
       case MyDslPackage.STORE__ELT:
         return basicSetElt(null, msgs);
+      case MyDslPackage.STORE__COND:
+        return basicSetCond(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -241,12 +365,16 @@ public class StoreImpl extends OperationImpl implements Store
   {
     switch (featureID)
     {
-      case MyDslPackage.STORE__VAR:
-        return getVar();
+      case MyDslPackage.STORE__VARI:
+        return getVari();
       case MyDslPackage.STORE__TEXT:
         return getText();
+      case MyDslPackage.STORE__ELTS:
+        return getElts();
       case MyDslPackage.STORE__ELT:
         return getElt();
+      case MyDslPackage.STORE__COND:
+        return getCond();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -261,14 +389,20 @@ public class StoreImpl extends OperationImpl implements Store
   {
     switch (featureID)
     {
-      case MyDslPackage.STORE__VAR:
-        setVar((String)newValue);
+      case MyDslPackage.STORE__VARI:
+        setVari((String)newValue);
         return;
       case MyDslPackage.STORE__TEXT:
         setText((Text)newValue);
         return;
+      case MyDslPackage.STORE__ELTS:
+        setElts((Elements)newValue);
+        return;
       case MyDslPackage.STORE__ELT:
         setElt((Element)newValue);
+        return;
+      case MyDslPackage.STORE__COND:
+        setCond((Condition)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -284,14 +418,20 @@ public class StoreImpl extends OperationImpl implements Store
   {
     switch (featureID)
     {
-      case MyDslPackage.STORE__VAR:
-        setVar(VAR_EDEFAULT);
+      case MyDslPackage.STORE__VARI:
+        setVari(VARI_EDEFAULT);
         return;
       case MyDslPackage.STORE__TEXT:
         setText((Text)null);
         return;
+      case MyDslPackage.STORE__ELTS:
+        setElts((Elements)null);
+        return;
       case MyDslPackage.STORE__ELT:
         setElt((Element)null);
+        return;
+      case MyDslPackage.STORE__COND:
+        setCond((Condition)null);
         return;
     }
     super.eUnset(featureID);
@@ -307,12 +447,16 @@ public class StoreImpl extends OperationImpl implements Store
   {
     switch (featureID)
     {
-      case MyDslPackage.STORE__VAR:
-        return VAR_EDEFAULT == null ? var != null : !VAR_EDEFAULT.equals(var);
+      case MyDslPackage.STORE__VARI:
+        return VARI_EDEFAULT == null ? vari != null : !VARI_EDEFAULT.equals(vari);
       case MyDslPackage.STORE__TEXT:
         return text != null;
+      case MyDslPackage.STORE__ELTS:
+        return elts != null;
       case MyDslPackage.STORE__ELT:
         return elt != null;
+      case MyDslPackage.STORE__COND:
+        return cond != null;
     }
     return super.eIsSet(featureID);
   }
@@ -328,8 +472,8 @@ public class StoreImpl extends OperationImpl implements Store
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (var: ");
-    result.append(var);
+    result.append(" (vari: ");
+    result.append(vari);
     result.append(')');
     return result.toString();
   }

@@ -22,6 +22,7 @@ import org.xtext.example.mydsl.myDsl.ComparableElt;
 import org.xtext.example.mydsl.myDsl.Condition;
 import org.xtext.example.mydsl.myDsl.DoLoop;
 import org.xtext.example.mydsl.myDsl.Element;
+import org.xtext.example.mydsl.myDsl.Elements;
 import org.xtext.example.mydsl.myDsl.EltType;
 import org.xtext.example.mydsl.myDsl.Fill;
 import org.xtext.example.mydsl.myDsl.ForLoop;
@@ -172,7 +173,7 @@ public class MyDslGenerator extends AbstractGenerator {
     return _builder;
   }
   
-  public CharSequence genAction(final Action a, final int i, final Element elt) {
+  public CharSequence genAction(final Action a, final int i, final Elements elt) {
     StringConcatenation _builder = new StringConcatenation();
     {
       boolean _equals = Objects.equal(elt, null);
@@ -540,7 +541,7 @@ public class MyDslGenerator extends AbstractGenerator {
       if ((e instanceof Apply_All)) {
         _builder.append("    \t");
         _builder.append("for(WebElement elt:");
-        Element _elt = ((Apply_All)e).getElt();
+        Elements _elt = ((Apply_All)e).getElt();
         EltType _type = _elt.getType();
         CharSequence _genCores = this.genCores(_type);
         _builder.append(_genCores, "    \t");
@@ -551,7 +552,7 @@ public class MyDslGenerator extends AbstractGenerator {
           for(final Action op : _actions) {
             _builder.append("    \t");
             _builder.append("\t");
-            Element _elt_1 = ((Apply_All)e).getElt();
+            Elements _elt_1 = ((Apply_All)e).getElt();
             CharSequence _genAction_1 = this.genAction(op, 0, _elt_1);
             _builder.append(_genAction_1, "    \t\t");
             _builder.newLineIfNotEmpty();
@@ -572,6 +573,66 @@ public class MyDslGenerator extends AbstractGenerator {
     }
     {
       if ((e instanceof Store)) {
+        {
+          Element _elt_2 = ((Store)e).getElt();
+          boolean _notEquals = (!Objects.equal(_elt_2, null));
+          if (_notEquals) {
+            _builder.append("    \t");
+            _builder.append("WebElement ");
+            String _vari = ((Store)e).getVari();
+            _builder.append(_vari, "    \t");
+            _builder.append(" = ");
+            Element _elt_3 = ((Store)e).getElt();
+            EltType _type_1 = _elt_3.getType();
+            CharSequence _genCore_2 = this.genCore(_type_1);
+            _builder.append(_genCore_2, "    \t");
+            _builder.append(";");
+            _builder.newLineIfNotEmpty();
+          } else {
+            {
+              Elements _elts = ((Store)e).getElts();
+              boolean _notEquals_1 = (!Objects.equal(_elts, null));
+              if (_notEquals_1) {
+                _builder.append("    \t");
+                _builder.append("List<WebElement> ");
+                String _vari_1 = ((Store)e).getVari();
+                _builder.append(_vari_1, "    \t");
+                _builder.append(" = ");
+                Elements _elts_1 = ((Store)e).getElts();
+                EltType _type_2 = _elts_1.getType();
+                CharSequence _genCores_1 = this.genCores(_type_2);
+                _builder.append(_genCores_1, "    \t");
+                _builder.append(";");
+                _builder.newLineIfNotEmpty();
+              } else {
+                {
+                  Condition _cond = ((Store)e).getCond();
+                  boolean _notEquals_2 = (!Objects.equal(_cond, null));
+                  if (_notEquals_2) {
+                    _builder.append("Boolean ");
+                    String _vari_2 = ((Store)e).getVari();
+                    _builder.append(_vari_2, "");
+                    _builder.append(" = ");
+                    Condition _cond_1 = ((Store)e).getCond();
+                    CharSequence _genCore_3 = this.genCore(_cond_1);
+                    _builder.append(_genCore_3, "");
+                    _builder.append(";");
+                    _builder.newLineIfNotEmpty();
+                  } else {
+                    _builder.append("String ");
+                    String _vari_3 = ((Store)e).getVari();
+                    _builder.append(_vari_3, "");
+                    _builder.append(" = ");
+                    Text _text = ((Store)e).getText();
+                    _builder.append(_text, "");
+                    _builder.append(";");
+                    _builder.newLineIfNotEmpty();
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
     {

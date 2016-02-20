@@ -322,17 +322,17 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cApply_AllKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cEltAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cEltElementParserRuleCall_2_0 = (RuleCall)cEltAssignment_2.eContents().get(0);
+		private final RuleCall cEltElementsParserRuleCall_2_0 = (RuleCall)cEltAssignment_2.eContents().get(0);
 		private final Keyword cCommaKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cActionsAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cActionsActionParserRuleCall_4_0 = (RuleCall)cActionsAssignment_4.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//Apply_All:
-		//	'Apply_All' '(' elt=Element ',' actions+=Action* ')';
+		//	'Apply_All' '(' elt=Elements ',' actions+=Action* ')';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'Apply_All' '(' elt=Element ',' actions+=Action* ')'
+		//'Apply_All' '(' elt=Elements ',' actions+=Action* ')'
 		public Group getGroup() { return cGroup; }
 		
 		//'Apply_All'
@@ -341,11 +341,11 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		//'('
 		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
 		
-		//elt=Element
+		//elt=Elements
 		public Assignment getEltAssignment_2() { return cEltAssignment_2; }
 		
-		//Element
-		public RuleCall getEltElementParserRuleCall_2_0() { return cEltElementParserRuleCall_2_0; }
+		//Elements
+		public RuleCall getEltElementsParserRuleCall_2_0() { return cEltElementsParserRuleCall_2_0; }
 		
 		//','
 		public Keyword getCommaKeyword_3() { return cCommaKeyword_3; }
@@ -445,20 +445,24 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cStoreKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cVarKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cVarAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cVarSTRINGTerminalRuleCall_2_0 = (RuleCall)cVarAssignment_2.eContents().get(0);
+		private final Assignment cVariAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cVariIDTerminalRuleCall_2_0 = (RuleCall)cVariAssignment_2.eContents().get(0);
 		private final Keyword cEqualsSignKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Alternatives cAlternatives_4 = (Alternatives)cGroup.eContents().get(4);
 		private final Assignment cTextAssignment_4_0 = (Assignment)cAlternatives_4.eContents().get(0);
 		private final RuleCall cTextTextParserRuleCall_4_0_0 = (RuleCall)cTextAssignment_4_0.eContents().get(0);
-		private final Assignment cEltAssignment_4_1 = (Assignment)cAlternatives_4.eContents().get(1);
-		private final RuleCall cEltElementParserRuleCall_4_1_0 = (RuleCall)cEltAssignment_4_1.eContents().get(0);
+		private final Assignment cEltsAssignment_4_1 = (Assignment)cAlternatives_4.eContents().get(1);
+		private final RuleCall cEltsElementsParserRuleCall_4_1_0 = (RuleCall)cEltsAssignment_4_1.eContents().get(0);
+		private final Assignment cEltAssignment_4_2 = (Assignment)cAlternatives_4.eContents().get(2);
+		private final RuleCall cEltElementParserRuleCall_4_2_0 = (RuleCall)cEltAssignment_4_2.eContents().get(0);
+		private final Assignment cCondAssignment_4_3 = (Assignment)cAlternatives_4.eContents().get(3);
+		private final RuleCall cCondConditionParserRuleCall_4_3_0 = (RuleCall)cCondAssignment_4_3.eContents().get(0);
 		
 		//Store:
-		//	'Store' 'Var' var=STRING "=" (text=Text | elt=Element);
+		//	'Store' 'Var' vari=ID "=" (text=Text | elts=Elements | elt=Element | cond=Condition);
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'Store' 'Var' var=STRING "=" (text=Text | elt=Element)
+		//'Store' 'Var' vari=ID "=" (text=Text | elts=Elements | elt=Element | cond=Condition)
 		public Group getGroup() { return cGroup; }
 		
 		//'Store'
@@ -467,16 +471,16 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		//'Var'
 		public Keyword getVarKeyword_1() { return cVarKeyword_1; }
 		
-		//var=STRING
-		public Assignment getVarAssignment_2() { return cVarAssignment_2; }
+		//vari=ID
+		public Assignment getVariAssignment_2() { return cVariAssignment_2; }
 		
-		//STRING
-		public RuleCall getVarSTRINGTerminalRuleCall_2_0() { return cVarSTRINGTerminalRuleCall_2_0; }
+		//ID
+		public RuleCall getVariIDTerminalRuleCall_2_0() { return cVariIDTerminalRuleCall_2_0; }
 		
 		//"="
 		public Keyword getEqualsSignKeyword_3() { return cEqualsSignKeyword_3; }
 		
-		//(text=Text | elt=Element)
+		//(text=Text | elts=Elements | elt=Element | cond=Condition)
 		public Alternatives getAlternatives_4() { return cAlternatives_4; }
 		
 		//text=Text
@@ -485,11 +489,23 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		//Text
 		public RuleCall getTextTextParserRuleCall_4_0_0() { return cTextTextParserRuleCall_4_0_0; }
 		
+		//elts=Elements
+		public Assignment getEltsAssignment_4_1() { return cEltsAssignment_4_1; }
+		
+		//Elements
+		public RuleCall getEltsElementsParserRuleCall_4_1_0() { return cEltsElementsParserRuleCall_4_1_0; }
+		
 		//elt=Element
-		public Assignment getEltAssignment_4_1() { return cEltAssignment_4_1; }
+		public Assignment getEltAssignment_4_2() { return cEltAssignment_4_2; }
 		
 		//Element
-		public RuleCall getEltElementParserRuleCall_4_1_0() { return cEltElementParserRuleCall_4_1_0; }
+		public RuleCall getEltElementParserRuleCall_4_2_0() { return cEltElementParserRuleCall_4_2_0; }
+		
+		//cond=Condition
+		public Assignment getCondAssignment_4_3() { return cCondAssignment_4_3; }
+		
+		//Condition
+		public RuleCall getCondConditionParserRuleCall_4_3_0() { return cCondConditionParserRuleCall_4_3_0; }
 	}
 	public class CallFunctionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.CallFunction");
@@ -871,6 +887,29 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		//Condition
 		public RuleCall getCondConditionParserRuleCall_1_0() { return cCondConditionParserRuleCall_1_0; }
 	}
+	public class ElementsElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.Elements");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cElementsKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cTypeEltTypeParserRuleCall_1_0 = (RuleCall)cTypeAssignment_1.eContents().get(0);
+		
+		//Elements:
+		//	'Elements' type=EltType;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'Elements' type=EltType
+		public Group getGroup() { return cGroup; }
+		
+		//'Elements'
+		public Keyword getElementsKeyword_0() { return cElementsKeyword_0; }
+		
+		//type=EltType
+		public Assignment getTypeAssignment_1() { return cTypeAssignment_1; }
+		
+		//EltType
+		public RuleCall getTypeEltTypeParserRuleCall_1_0() { return cTypeEltTypeParserRuleCall_1_0; }
+	}
 	public class ElementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.Element");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -1094,6 +1133,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	private final DoLoopElements pDoLoop;
 	private final ConditionElements pCondition;
 	private final AddConditionElements pAddCondition;
+	private final ElementsElements pElements;
 	private final ElementElements pElement;
 	private final EltTypeElements pEltType;
 	private final TagElements pTag;
@@ -1133,6 +1173,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		this.pDoLoop = new DoLoopElements();
 		this.pCondition = new ConditionElements();
 		this.pAddCondition = new AddConditionElements();
+		this.pElements = new ElementsElements();
 		this.pElement = new ElementElements();
 		this.pEltType = new EltTypeElements();
 		this.pTag = new TagElements();
@@ -1265,7 +1306,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Apply_All:
-	//	'Apply_All' '(' elt=Element ',' actions+=Action* ')';
+	//	'Apply_All' '(' elt=Elements ',' actions+=Action* ')';
 	public Apply_AllElements getApply_AllAccess() {
 		return pApply_All;
 	}
@@ -1286,7 +1327,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Store:
-	//	'Store' 'Var' var=STRING "=" (text=Text | elt=Element);
+	//	'Store' 'Var' vari=ID "=" (text=Text | elts=Elements | elt=Element | cond=Condition);
 	public StoreElements getStoreAccess() {
 		return pStore;
 	}
@@ -1377,6 +1418,16 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getAddConditionRule() {
 		return getAddConditionAccess().getRule();
+	}
+	
+	//Elements:
+	//	'Elements' type=EltType;
+	public ElementsElements getElementsAccess() {
+		return pElements;
+	}
+	
+	public ParserRule getElementsRule() {
+		return getElementsAccess().getRule();
 	}
 	
 	//Element:

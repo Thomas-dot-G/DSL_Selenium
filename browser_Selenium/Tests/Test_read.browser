@@ -1,5 +1,0 @@
-Selenium {
-	Browser Firefox
-	Store Var myvar = Element {tag Link} {name "Consulter le profil"}
-	Operation Apply_All (Element {tag checkbox}, Operation Select myvar)
-}

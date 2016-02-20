@@ -1,4 +1,0 @@
-Selenium {
-	Browser Firefox
-	Operation Apply_All (Element {tag "checkbox"}, Operation Select Element {name "warn"})
-}

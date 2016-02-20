@@ -35,6 +35,7 @@ import org.xtext.example.mydsl.myDsl.Operation;
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.IfImpl#getCond <em>Cond</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.IfImpl#getAdd <em>Add</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.IfImpl#getOperations <em>Operations</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.myDsl.impl.IfImpl#getOperationsbis <em>Operationsbis</em>}</li>
  * </ul>
  *
  * @generated
@@ -70,6 +71,16 @@ public class IfImpl extends OperationImpl implements If
    * @ordered
    */
   protected EList<Operation> operations;
+
+  /**
+   * The cached value of the '{@link #getOperationsbis() <em>Operationsbis</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getOperationsbis()
+   * @generated
+   * @ordered
+   */
+  protected EList<Operation> operationsbis;
 
   /**
    * <!-- begin-user-doc -->
@@ -173,6 +184,20 @@ public class IfImpl extends OperationImpl implements If
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<Operation> getOperationsbis()
+  {
+    if (operationsbis == null)
+    {
+      operationsbis = new EObjectContainmentEList<Operation>(Operation.class, this, MyDslPackage.IF__OPERATIONSBIS);
+    }
+    return operationsbis;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -184,6 +209,8 @@ public class IfImpl extends OperationImpl implements If
         return ((InternalEList<?>)getAdd()).basicRemove(otherEnd, msgs);
       case MyDslPackage.IF__OPERATIONS:
         return ((InternalEList<?>)getOperations()).basicRemove(otherEnd, msgs);
+      case MyDslPackage.IF__OPERATIONSBIS:
+        return ((InternalEList<?>)getOperationsbis()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -204,6 +231,8 @@ public class IfImpl extends OperationImpl implements If
         return getAdd();
       case MyDslPackage.IF__OPERATIONS:
         return getOperations();
+      case MyDslPackage.IF__OPERATIONSBIS:
+        return getOperationsbis();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -230,6 +259,10 @@ public class IfImpl extends OperationImpl implements If
         getOperations().clear();
         getOperations().addAll((Collection<? extends Operation>)newValue);
         return;
+      case MyDslPackage.IF__OPERATIONSBIS:
+        getOperationsbis().clear();
+        getOperationsbis().addAll((Collection<? extends Operation>)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -253,6 +286,9 @@ public class IfImpl extends OperationImpl implements If
       case MyDslPackage.IF__OPERATIONS:
         getOperations().clear();
         return;
+      case MyDslPackage.IF__OPERATIONSBIS:
+        getOperationsbis().clear();
+        return;
     }
     super.eUnset(featureID);
   }
@@ -273,6 +309,8 @@ public class IfImpl extends OperationImpl implements If
         return add != null && !add.isEmpty();
       case MyDslPackage.IF__OPERATIONS:
         return operations != null && !operations.isEmpty();
+      case MyDslPackage.IF__OPERATIONSBIS:
+        return operationsbis != null && !operationsbis.isEmpty();
     }
     return super.eIsSet(featureID);
   }

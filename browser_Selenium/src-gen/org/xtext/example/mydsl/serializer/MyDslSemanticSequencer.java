@@ -313,7 +313,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     If returns If
 	 *
 	 * Constraint:
-	 *     (cond=Condition add+=AddCondition* operations+=Operation* operations+=Operation*)
+	 *     (cond=Condition add+=AddCondition* operations+=Operation* operationsbis+=Operation*)
 	 */
 	protected void sequence_If(ISerializationContext context, If semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

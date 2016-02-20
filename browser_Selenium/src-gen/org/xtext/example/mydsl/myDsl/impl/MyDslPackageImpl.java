@@ -575,6 +575,16 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getIf_Operationsbis()
+  {
+    return (EReference)ifEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getStore()
   {
     return storeEClass;
@@ -1077,6 +1087,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     createEReference(ifEClass, IF__COND);
     createEReference(ifEClass, IF__ADD);
     createEReference(ifEClass, IF__OPERATIONS);
+    createEReference(ifEClass, IF__OPERATIONSBIS);
 
     storeEClass = createEClass(STORE);
     createEAttribute(storeEClass, STORE__VAR);
@@ -1226,6 +1237,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     initEReference(getIf_Cond(), this.getCondition(), null, "cond", null, 0, 1, If.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getIf_Add(), this.getAddCondition(), null, "add", null, 0, -1, If.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getIf_Operations(), this.getOperation(), null, "operations", null, 0, -1, If.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getIf_Operationsbis(), this.getOperation(), null, "operationsbis", null, 0, -1, If.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(storeEClass, Store.class, "Store", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getStore_Var(), ecorePackage.getEString(), "var", null, 0, 1, Store.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

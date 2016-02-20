@@ -1,7 +1,0 @@
-Function (Name func, Var=(myvar), Operation Apply_All (Element {tag "checkbox"} Operation Select myvar))
-
-Selenium {
-	Browser Firefox
-	Store Var myvar = Element {tag "a", id "Consulter le profil"}
-	Operation func(myvar)
-}

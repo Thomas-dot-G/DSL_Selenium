@@ -774,17 +774,17 @@ ruleIf returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getIfAccess().getOperationsOperationParserRuleCall_8_2_0());
+						newCompositeNode(grammarAccess.getIfAccess().getOperationsbisOperationParserRuleCall_8_2_0());
 					}
-					lv_operations_10_0=ruleOperation
+					lv_operationsbis_10_0=ruleOperation
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getIfRule());
 						}
 						add(
 							$current,
-							"operations",
-							lv_operations_10_0,
+							"operationsbis",
+							lv_operationsbis_10_0,
 							"org.xtext.example.mydsl.MyDsl.Operation");
 						afterParserOrEnumRuleCall();
 					}

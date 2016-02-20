@@ -1,0 +1,4 @@
+Selenium { 
+	Browser "Firefox"
+	For (0,4,1) { Go "http://campus.mines-nantes.fr" }
+}

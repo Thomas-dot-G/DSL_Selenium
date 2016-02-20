@@ -1,0 +1,4 @@
+Selenium { 
+	Browser "Firefox "
+	While (Condition Verify (Element URL, "http://campus.mines-nantes.fr") And Condition (1 == 2)) { Go "http://campus.mines-nantes.fr" }
+}

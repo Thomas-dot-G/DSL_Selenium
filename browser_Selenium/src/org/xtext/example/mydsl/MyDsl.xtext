@@ -1,0 +1,128 @@
+grammar org.xtext.example.mydsl.MyDsl with org.eclipse.xtext.common.Terminals
+
+generate myDsl "http://www.xtext.org/example/mydsl/MyDsl"
+
+Program:
+	func+=Function* b=Browser_Task
+;
+
+Browser_Task:
+	'Selenium' '{' 
+		'Browser' name=STRING
+		operations+=Operation*
+		'}'
+;
+
+Operation:
+	Action | Loop  | Apply_All | If  | Store | CallFunction
+;
+
+Action:
+	Click | Go | Fill | Select | Verify
+;
+
+Click:
+	'Click' elt=Element
+;
+
+Go:
+	'Go' link=Text
+;
+
+Fill:
+	'Fill' '(' elt=Element ',' fillwith=Text ')'
+;
+
+Select:
+	'Select' elt=Element
+;
+
+Verify:
+	'Verify' '(' elt=Element ',' find=Text ')'
+;
+
+Apply_All:
+	'Apply_All' '(' elt=Element ',' operations+=Operation* ')'
+;
+
+If:
+	'if' '(' cond=Condition  add+=AddCondition* ')' '{' operations+=Operation* '}' ('else' '{' operations+=Operation* '}')?
+;
+
+
+Store:
+	'Store' 'Var' var=STRING "=" (text=Text | elt=Element)
+;
+
+CallFunction:
+	'func' '(' vars+=Variable* ')'
+;
+
+Function:
+	'Function' '(' 
+		'Name' name=STRING ','
+		'Var' '=' '(' vars+=Variable* ')' ','
+		 operations+=Operation*
+		 ')'
+;
+
+Loop:
+	ForLoop | WhileLoop | DoLoop
+;
+
+ForLoop:
+	'For' '(' start=INT ',' end=INT ',' step=INT ')' '{' operations+=Operation* '}' 
+;
+
+WhileLoop:
+	'While' '(' Condition  add+=AddCondition* ')' '{' operations+=Operation* '}' 
+;
+
+DoLoop:
+	'DoWhile' '(' Condition  add+=AddCondition* ')' '{' operations+=Operation* '}' 
+;
+	
+Condition:
+	'Condition' (SimpleOp| Verify |Variable)
+;
+
+AddCondition:
+	('And'|'Or') cond=Condition
+;
+
+
+Element:
+	'Element' type=EltType
+;
+
+EltType:
+	Tag | 'URL' | Variable
+;
+
+Tag:
+	'{'html=HTML_ELT tag=Text '}'
+;
+
+SimpleOp:
+	'(' elt1=ComparableElt OP elt2=ComparableElt')'
+;
+
+ComparableElt:
+	int=INT | text=Text
+;
+	
+Text:
+	var=Variable | name=STRING
+;
+
+Variable:
+	'Var' name=ID
+;
+
+terminal HTML_ELT:
+	'id' | 'class' | 'tagName' | 'name' | 'linkText' | 'partialLinkText'
+;
+
+terminal OP:
+	'<' | '>' | '!=' | '=='
+;

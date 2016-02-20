@@ -376,16 +376,17 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_8 = (Group)cGroup.eContents().get(8);
 		private final Keyword cElseKeyword_8_0 = (Keyword)cGroup_8.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_8_1 = (Keyword)cGroup_8.eContents().get(1);
-		private final Assignment cOperationsAssignment_8_2 = (Assignment)cGroup_8.eContents().get(2);
-		private final RuleCall cOperationsOperationParserRuleCall_8_2_0 = (RuleCall)cOperationsAssignment_8_2.eContents().get(0);
+		private final Assignment cOperationsbisAssignment_8_2 = (Assignment)cGroup_8.eContents().get(2);
+		private final RuleCall cOperationsbisOperationParserRuleCall_8_2_0 = (RuleCall)cOperationsbisAssignment_8_2.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_8_3 = (Keyword)cGroup_8.eContents().get(3);
 		
 		//If:
-		//	'if' '(' cond=Condition add+=AddCondition* ')' '{' operations+=Operation* '}' ('else' '{' operations+=Operation*
+		//	'if' '(' cond=Condition add+=AddCondition* ')' '{' operations+=Operation* '}' ('else' '{' operationsbis+=Operation*
 		//	'}')?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'if' '(' cond=Condition add+=AddCondition* ')' '{' operations+=Operation* '}' ('else' '{' operations+=Operation* '}')?
+		//'if' '(' cond=Condition add+=AddCondition* ')' '{' operations+=Operation* '}' ('else' '{' operationsbis+=Operation*
+		//'}')?
 		public Group getGroup() { return cGroup; }
 		
 		//'if'
@@ -421,7 +422,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
 		
-		//('else' '{' operations+=Operation* '}')?
+		//('else' '{' operationsbis+=Operation* '}')?
 		public Group getGroup_8() { return cGroup_8; }
 		
 		//'else'
@@ -430,11 +431,11 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_8_1() { return cLeftCurlyBracketKeyword_8_1; }
 		
-		//operations+=Operation*
-		public Assignment getOperationsAssignment_8_2() { return cOperationsAssignment_8_2; }
+		//operationsbis+=Operation*
+		public Assignment getOperationsbisAssignment_8_2() { return cOperationsbisAssignment_8_2; }
 		
 		//Operation
-		public RuleCall getOperationsOperationParserRuleCall_8_2_0() { return cOperationsOperationParserRuleCall_8_2_0; }
+		public RuleCall getOperationsbisOperationParserRuleCall_8_2_0() { return cOperationsbisOperationParserRuleCall_8_2_0; }
 		
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_8_3() { return cRightCurlyBracketKeyword_8_3; }
@@ -1274,7 +1275,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//If:
-	//	'if' '(' cond=Condition add+=AddCondition* ')' '{' operations+=Operation* '}' ('else' '{' operations+=Operation*
+	//	'if' '(' cond=Condition add+=AddCondition* ')' '{' operations+=Operation* '}' ('else' '{' operationsbis+=Operation*
 	//	'}')?;
 	public IfElements getIfAccess() {
 		return pIf;

@@ -1,0 +1,9 @@
+Selenium { 
+	Browser "Firefox"  
+	if (Condition Verify (Element { id "checkbox" }, "isSelected")) { 
+		Go "http://www.google.com" 
+	} 
+	else { 
+		Go "http://www.google.fr" 
+	}
+}

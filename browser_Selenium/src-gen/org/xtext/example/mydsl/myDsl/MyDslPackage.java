@@ -402,13 +402,22 @@ public interface MyDslPackage extends EPackage
   int IF__OPERATIONS = OPERATION_FEATURE_COUNT + 2;
 
   /**
+   * The feature id for the '<em><b>Operationsbis</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IF__OPERATIONSBIS = OPERATION_FEATURE_COUNT + 3;
+
+  /**
    * The number of structural features of the '<em>If</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int IF_FEATURE_COUNT = OPERATION_FEATURE_COUNT + 3;
+  int IF_FEATURE_COUNT = OPERATION_FEATURE_COUNT + 4;
 
   /**
    * The meta object id for the '{@link org.xtext.example.mydsl.myDsl.impl.StoreImpl <em>Store</em>}' class.
@@ -1281,6 +1290,17 @@ public interface MyDslPackage extends EPackage
   EReference getIf_Operations();
 
   /**
+   * Returns the meta object for the containment reference list '{@link org.xtext.example.mydsl.myDsl.If#getOperationsbis <em>Operationsbis</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Operationsbis</em>'.
+   * @see org.xtext.example.mydsl.myDsl.If#getOperationsbis()
+   * @see #getIf()
+   * @generated
+   */
+  EReference getIf_Operationsbis();
+
+  /**
    * Returns the meta object for class '{@link org.xtext.example.mydsl.myDsl.Store <em>Store</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2008,6 +2028,14 @@ public interface MyDslPackage extends EPackage
      * @generated
      */
     EReference IF__OPERATIONS = eINSTANCE.getIf_Operations();
+
+    /**
+     * The meta object literal for the '<em><b>Operationsbis</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference IF__OPERATIONSBIS = eINSTANCE.getIf_Operationsbis();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.mydsl.myDsl.impl.StoreImpl <em>Store</em>}' class.

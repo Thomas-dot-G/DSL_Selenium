@@ -30,6 +30,8 @@ import org.xtext.example.mydsl.myDsl.SimpleOp
 import org.xtext.example.mydsl.myDsl.DoLoop
 import org.xtext.example.mydsl.myDsl.ComparableElt
 import org.xtext.example.mydsl.myDsl.Text
+import org.eclipse.emf.common.util.EList
+import org.xtext.example.mydsl.myDsl.Operation
 
 /**
  * Generates code from your model files on save.
@@ -73,31 +75,13 @@ var program = resource.contents.head as Program
 	'''
 	
 	def genCore (Program p) '''
-			
+	
+			System.setProperty("webdriver.chrome.driver", "C:/Program Files (x86)/Google/Chrome/Application/chromedriver.exe");
 			WebDriver driver=new  ChromeDriver();
 			driver.get("https://www.google.com");
 			//Selenium selenium = new DefaultSelenium("localhost"", 4444, ""*firefox"", "http://www.google.com");
-            «FOR e : p.b.operations»
-            	«IF e instanceof Action»
-            		«e.genCore(p.b.operations.indexOf(e))»
-            	«ENDIF»
-            	«IF e instanceof Loop»
-            		«e.genCore»
-            	«ENDIF»
-            	«IF e instanceof Apply_All»
-            	     //Apply_All applyall«p.b.operations.indexOf(e)» = new Apply_All();
-            	«ENDIF»
-            	«IF e instanceof If»
-            	     //If if«p.b.operations.indexOf(e)» = new If();
-            	«ENDIF»
-            	«IF e instanceof Store»
-            	     //Store store«p.b.operations.indexOf(e)» = new Store();
-            	«ENDIF»
-            	«IF e instanceof CallFunction»
-            	     //CallFunction callfunc«p.b.operations.indexOf(e)» = new CallFunction();
-            	«ENDIF»
-            «ENDFOR»
-            driver.quit();
+			«p.b.operations.genActions()»
+			driver.quit();
 	'''
 	
 	def genCore (Action a, int i) '''
@@ -105,14 +89,11 @@ var program = resource.contents.head as Program
 			WebElement element_«i» = «a.elt.type.genCore»;
 			element_«i».click();
         «ENDIF»
-        «IF a instanceof Go»
-			driver.get("«a.link.name»");
-        «ENDIF»
+        «IF a instanceof Go»driver.get("«a.link.name»");«ENDIF»
         «IF a instanceof Fill»
-        	WebElement element_«i» = «a.elt.type.genCore»;
-        	element_«i».sendKeys("«a.fillwith.name»");
+			WebElement element_«i» = «a.elt.type.genCore»;
+			element_«i».sendKeys("«a.fillwith.name»");
         	element_«i».submit();
-
         «ENDIF»
         «IF a instanceof Select»
         	WebElement element_«i» = «a.elt.type.genCore»;
@@ -151,25 +132,25 @@ var program = resource.contents.head as Program
 		«IF t.name != null »«t.name»«ENDIF»
 	'''
 
-	def genActions(Loop l)'''
-	«FOR e : l.operations»
+	def genActions(EList<Operation> operations)'''
+	«FOR e : operations»
     	«IF e instanceof Action»
-    		«e.genCore(l.operations.indexOf(e))»
+    		«e.genCore(operations.indexOf(e))»
     	«ENDIF»
     	«IF e instanceof Loop»
     		«e.genCore»
     	«ENDIF»
     	«IF e instanceof Apply_All»
-    	     //Apply_All applyall«l.operations.indexOf(e)» = new Apply_All();
+    	     //Apply_All applyall«operations.indexOf(e)» = new Apply_All();
     	«ENDIF»
     	«IF e instanceof If»
-    	     //If if«l.operations.indexOf(e)» = new If();
+    	     «e.genCore»
     	«ENDIF»
     	«IF e instanceof Store»
-    	     //Store store«l.operations.indexOf(e)» = new Store();
+    	     //Store store«operations.indexOf(e)» = new Store();
     	«ENDIF»
     	«IF e instanceof CallFunction»
-    	     //CallFunction callfunc«l.operations.indexOf(e)» = new CallFunction();
+    	     //CallFunction callfunc«operations.indexOf(e)» = new CallFunction();
     	«ENDIF»
     «ENDFOR»
 	'''
@@ -177,20 +158,28 @@ var program = resource.contents.head as Program
 	def genCore (Loop l) '''
 		«IF l instanceof ForLoop»
 			for(int i=«l.start»; i<«l.end»; i=i+«l.step»){
-				«l.genActions»
+				«l.operations.genActions»
 			}
 		«ENDIF»	
 		«IF l instanceof WhileLoop»
 			while(«l.c.genCore»«FOR c : l.add»«c.genCore»«ENDFOR»){
-				«l.genActions»
+				«l.operations.genActions»
 			}
 		«ENDIF»
 		«IF l instanceof DoLoop»
-			«l.genActions»
+			«l.operations.genActions»
 			while(«l.c.genCore»«FOR c : l.add»«c.genCore»«ENDFOR»){
-				«l.genActions»
+				«l.operations.genActions»
 			}
 		«ENDIF»
+	'''
 	
+	def genCore (If i) '''
+		if(«i.cond.genCore»«FOR c : i.add»«c.genCore»«ENDFOR»){
+			«i.operations.genActions»
+		}
+		else{
+			«i.operationsbis.genActions»
+		}
 	'''
 }

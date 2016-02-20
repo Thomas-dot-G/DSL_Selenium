@@ -46,7 +46,7 @@ Apply_All:
 ;
 
 If:
-	'if' '(' cond=Condition  add+=AddCondition* ')' '{' operations+=Operation* '}' ('else' '{' operations+=Operation* '}')?
+	'if' '(' cond=Condition  add+=AddCondition* ')' '{' operations+=Operation* '}' ('else' '{' operationsbis+=Operation* '}')?
 ;
 
 

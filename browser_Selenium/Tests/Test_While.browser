@@ -1,4 +1,0 @@
-Selenium { 
-	Browser Firefox 
-	Operation While (Condition Verify (Element URL, "http://campus.mines-nantes.fr") { Go "http://campus.mines-nantes.fr" }
-}

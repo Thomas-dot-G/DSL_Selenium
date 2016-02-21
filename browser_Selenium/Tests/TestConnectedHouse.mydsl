@@ -1,0 +1,16 @@
+Selenium { 
+	Browser "Firefox"
+	Go "http://connectedhouseapp.herokuapp.com/"
+	Click Element {tagName "a"}
+	Fill ( Element {id "id_email"} , "thomas.garesse@gmail.com" )
+	Fill ( Element {id "id_password"} , "bla"  )
+	Verify ( Element {tagName "span"} , "Please sign in to access your account." )
+	Fill ( Element {id "id_email"} , "thomas.garesse@gmail.com" )
+	Fill ( Element {id "id_password"} , "admin"  )
+	Go "http://connectedhouseapp.herokuapp.com/energy/photovoltaic/"
+	if (Condition Verify (Element { id "inverter" }, "isSelected")) { 
+	  Select Element {name "inverter"}
+	}
+	For (0,4,1) { Go "http://campus.mines-nantes.fr" }{
+	  Select Element {name "inverter"}
+	}

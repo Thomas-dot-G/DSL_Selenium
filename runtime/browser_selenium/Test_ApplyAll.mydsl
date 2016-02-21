@@ -1,0 +1,4 @@
+Selenium {
+	Browser "Firefox"
+	Apply_All (Elements {tagName "checkbox"}, Select Element {name "warn"})
+}

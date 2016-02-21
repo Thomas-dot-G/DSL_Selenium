@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: browser_selenium
+Bundle-SymbolicName: browser_selenium
+Bundle-Version: 1.0.0.qualifier
+Require-Bundle: org.openqa.selenium;bundle-version="1.0.0"
